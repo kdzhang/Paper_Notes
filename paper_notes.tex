@@ -1,0 +1,251 @@
+\documentclass{book}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}	% make indent in first paragraph
+\usepackage{bm}
+\usepackage{geometry}		% to make typesettings like margins
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{natbib}			% to insert citations
+\usepackage{xcolor}			% extend the colors can be used
+
+\usepackage{bibentry}		% package used to insert full citation in body text
+\nobibliography*
+
+\usepackage[framemethod=default]{mdframed}
+\usepackage{showexpl}
+\mdfdefinestyle{comment}{
+linecolor=gray,leftmargin=60,
+rightmargin=40,
+backgroundcolor=gray!10,
+innertopmargin=4pt,
+topline=false,leftline=false,bottomline=false,rightline=false}
+
+\usepackage[english]{babel}
+\renewcommand{\baselinestretch}{1.5}
+
+\usepackage{amsthm}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section] % reset theorem numbering for each chapter
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition} % definition numbers are dependent on theorem numbers
+\newtheorem{exmp}[thm]{Example} % same for example numbers
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{obs}{Observation}
+
+\citestyle{chicago}
+\geometry{letterpaper, margin=1in}
+% \setlength\parindent{0pt} % to cancel indent
+
+
+% A list of new commands
+\newcommand{\R}{\mathbb{R}}			% depends on the package amssymb
+
+
+
+\title{Paper Notes}
+\author{Kaida Zhang}
+\date{}
+
+\begin{document}
+
+% \maketitle
+
+\tableofcontents{}
+\setcounter{tocdepth}{1}			% show only parts, chapters, and sections in content
+
+
+\chapter{Econometrics}
+\label{cha:econometrics}
+
+
+\section{Low and Meghir, 2017, JEP} % (fold)
+\label{sec:low_and_meghir_jep_2017}
+
+\textbf{\bibentry{Low:2017jb}}\\
+
+\textbf{Defining a structural model:}
+
+A \textbf{fully specified model} make explicit assumptions about the economic actors' objectives and their economic enviroment and information set, as well as specifying which choices are being made within the model. They allow a complete solution to the individual's optimization problem as a function of current information set.
+Fully specified models are particularly useful in understanding mechanism of a policy, especially when we want to estimate some long-term effects of the policy.
+
+A \textbf{partially specified model} relies on a sufficient statistic that summarizes choices not being modeled specifically. For example, assuming that the choices is only intratemporal instead of intertemporal.
+
+\textbf{Treatment effect models} focus on identifying a specific causal effect of a policy while saying least about the theoretical environment. The pro is the cleaness of causality. The con is the limitation in exploiting the results outside. The identification of treatment model depends on assumptions that the experienment has not been compromised and there is no spillovers from the treatment units.
+
+A combination of fully speficied model and randomized experiments can enhance anaysis for both. Experimental evidence can be used either to validate a structural model, or to aid in the estimation process (in identification).
+
+\textbf{Solving structural models}
+
+This has been described in Adda and Cooper(2003) well. 
+The general process is: 
+1) write down the bellmand function;
+2) discrete the state space and decision space;
+3) use value function iteration to solve the bellman function.
+
+
+% section low_and_meghir_jep_2017 (end)
+
+
+\section{Lewbel, 2016, JEL} % (fold)
+\label{sec:lewbel_2016_jel}
+
+\textbf{\bibentry{Lewbel:2016wn}}\\
+
+\url{https://www2.bc.edu/arthur-lewbel/ident-zoo-SL-Part1.pdf} 
+
+\url{https://www2.bc.edu/arthur-lewbel/ident-zoo-SL-Part2.pdf}
+
+are links for a ppt on this paper by Lewbel.\\
+
+There are two kinds of identification problems. 
+1. One is to identify the treatment effect, a typical example is the selection bias. The problem in these cases are that selection (determing who is treated or observed) and outcomes may be correlated. 
+2. Another is to identify the true coefficient in a linear regression when regressors are measureed with error.
+
+\subsection{Point Identification} % (fold)
+\label{sub:point_identification}
+
+We start by assuming some information $\phi$ is knowable. A simple definition of point identification is that a parameter $\theta$ is point identified if, given the model, is uniquely determined from $\phi$. Notice that this definition of point identification is recursive in some sense. To identify $\theta$, we first need to assume some $\phi$ is knowable, which means $\phi$ itself is identified. This identification of $\phi$ can only be justified by further assumptions of DGP (Data Generating Process).
+
+For example, for a model $Y = X\theta +e$, we assume that $E(E^2)\ne0$ and $E(eX)=0$, and suppose $\phi$ includes the second order of $(Y,X)$. Then we can conclude that $\phi$ is point identified, given by $E(XY)/E(X^2)$. Notice that the identification comes from the \textit{assumptions} of model.
+
+One common DGP is IID. Under this DGP, we can consistently indentify the distribution of observation W. Another DGP is where each data point consists of a value of X chosen from its support, then we randomly draw Y conditional on X, which is independent from other draws conditional on this X. Under this DGP, we can consistently identify $F(Y|X)$. We can also use more complicated DGPs, for example, we generally assume only the second order moments are knowable in time series. One reason is this being sufficient for identification, another reason is higher order moments become unstable over time. Assumptions over GDP are always needed, even in experienment data, and which specific assumptions to take depend on the model.
+
+
+% subsection point_identification (end)
+
+% section lewbel_2016_jel (end)
+
+
+% chapter econometrics (end)
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% IO %%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{IO} % (fold)
+\label{cha:io}
+
+\section{Rey and Stiglitz, 1995, RAND} % (fold)
+\label{sec:rey_and_stiglitz_1995_rand}
+
+\textbf{\bibentry{Rey:1995ft}}
+
+For detailed proof of this paper, see Evernote.\\
+
+\textbf{Main result:}
+vertical restrains can be used to reduce interband competition. Because exclusive territories alter the perceived demand curve, making each producer believe he faces a less elastic demand curve, inducing an increase in eqm price and producer's profits even in the abscence of franchise fee. This result is different from traditional Chicago school results, which insist that exclusive terittories will increase efficiency. This difference comes from market structure. Chicago schools investigate in full competition and full monopoly producer cases, while this paper looks at duopoly producer. In full competition and full monopoly case, the competition level has already been \textit{preassumed}, while exclusive territories can reduce the competition level among producers in other cases.\\
+
+The key for the result is the the following compound demand elastic:
+\[\tilde\varepsilon(p^e):=m_1(p,p)\varepsilon_1(q,q)+m_2(p,p)\varepsilon_2(q,q) \]
+where $q=q_1^r(p,p)$ (the response retail price),
+$m_1(p,p)=\partial \log q_1^r(p_1,p_2)/\partial \log p_1$ (the own elasticity of retail price to producer price),
+and  $m_2(p,p)=\partial \log q_1^r(p_1,p_2)/\partial \log p_2$ (the cross elasticity of retail price to producer price),
+and $\varepsilon_1(q_1,q_2)=-\partial \log D^1(q_1,q_2)/q_1$ (the own elasticity of demand to retail price, positive),
+and $\varepsilon_2(q_1,q_2)=-\partial \log D^1(q_1,q_2)/q_2$ (the cross elasticity of demand to retail price, negative).
+
+In the above equation, it is very reasonable to think $0<m_1<1$ and $0<m_2$. $m_1>0$ because the own elasticity of retail price to producer price is positive. $m_1<1$ means that retailer will absorb some increase in producers' price, which will be the case if demand elasticity becomes higher in high retail price. And $0<m_2$ derives from the two products to be substitutes. Under these two conditions, combined with $\varepsilon_1>0$ and $\varepsilon_2<0$, then $\tilde\varepsilon(p^e)<\varepsilon_1$. Thus, under exclusive territories, the producers' perceived demand curve is less elastic. So the equilibrium price (both retail and producer) is higher even when no franchise fee applies.
+
+\noindent
+\textbf{Setting:}
+
+\begin{itemize}
+	\item two manufacturers produce imperfect substitutes at same marginal cost \textit{c}
+	\item retailers are perfect competition / or exclusive territory
+	\item the final good demand depends on retail prices and is given by $D^i(q_1,q_2)$
+	\item costs and demand functions are common knowledge, retailers observe all contracts signed by each producer
+	\item producers only observer the quantity bought by retailers; they do not observe the quantities sold by retailers (i.e. fullline forcing is infeasible)
+	\item producers serve many markets at no addtional cost
+	\item consumers have no search cost
+\end{itemize}
+
+Under these settings and information conditions, we can see it as a two stave game. In the first stage, producers simultaneously set wholesale price $p_1$ and $p_2$. In the second stage, the retailer observe all wholesale price and decide the retail price simutaneously.
+
+\subsection{Benchmark Case} % (fold)
+\label{sub:benchmark}
+
+We use the following assumptions throughout the paper unless specified otherwise:
+
+\begin{enumerate}
+	\item Let $\pi(p_i,q_1,q_2) := (q_i-p_i)D^i(q_1,q_2)$ denote the retail profit for product i; assume it to be twice differentiable wrt each argument, and is sigle peaked wrt $q_i$. The reaction function $q_i^a(p_i,q_j)$ is thus continously differentiable and characterized by FOC.
+	\item Products are substitutes: $\partial D^i/\partial q_i \leq 0$ and $\partial D^i/\partial q_j \geq 0$
+	\item Demand functions are symmetric: $\forall p_1,p_2 \in \R_+, D^1(p_1,p_2) = D^2(p_2,p_1)$
+\end{enumerate}
+
+Think of the benckmark case that no vertical restriction so the retailers are perfect competitive, and the producer monopolizes. In this case, the game is just a one step optimal pricing problem. The producer chooses an optimal retail price.\\
+
+\begin{mdframed}[style=comment]
+
+\noindent
+\textbf{Useful trick:}
+
+Throughout this paper, we can write the symmetric eqm conditions in the following form:
+\[(p^c - c)/p^c=1/\varepsilon(p^c,p^c)\]
+where $p^c$ is the symmetric eqm price, and $\varepsilon$ is some kind of elasticity.
+
+In a symmetric eqm, the FOC of each producer gives 
+\((p^c - c)/p^c=1/\varepsilon_1(p^c,p^c)\)
+where $\varepsilon_1 = -\partial \log D^1(q_1,q_2)/\partial \log q_1$, i.e. the self elasticity of demand.
+
+In the simplest benchmark case, the two factories are integrated, leading us to:
+\((p^c - c)/p^c=1/E(q^m)\),
+$E(q):=\varepsilon_1(q,q)+\varepsilon_2(q,q)$, where $\varepsilon_2 = -\partial \log D^1(q_1,q_2)/\partial \log q_2$ (the cross demand elasticity).
+
+In the exclusive territory case, the symmetric eqm satisfies \((p^e - c)/p^e=1/\tilde\varepsilon(p^e)\), where 
+\[\tilde\varepsilon(p^e):=m_1(p,p)\varepsilon_1(q,q)+m_2(p,p)\varepsilon_2(q,q) \]
+where $q=q_1^r(p,p)$ (the response retail price),
+$m_1(p,p)=\partial \log q_1^r(p_1,p_2)/\partial \log p_1$ (the own elasticity of retail price to producer price),
+and  $m_2(p,p)=\partial \log q_1^r(p_1,p_2)/\partial \log p_2$ (the cross elasticity of retail price to producer price).
+
+\end{mdframed}
+
+
+
+
+% subsection benchmark (end)
+
+
+% section patrick_and_stiglitz_1995_rand (end)
+
+% chapter io (end)
+
+
+
+\chapter{Decision Theory} % (fold)
+\label{cha:decision_theory}
+
+\section{Dekel and Lipman, 2010, Annu Rev Econ} % (fold)
+\label{sec:dekel_and_lipman_2010_annu_rev_econ}
+
+\textbf{\bibentry{Dekel:2010bm}}\\
+
+\noindent
+\textbf{What we can learn from decision theory}
+
+1) to know whether our intuition is correct;
+2) to flesh out initial intuition to get additional or better prediction (e.g. some additional observable prediction);
+3) to help us understand of why and how mechanism works
+
+\noindent
+\textbf{Story of the model}
+
+Why the story of the model is important even if it is not realistic? Why we can't just choose the model by the 'prediction-rejection' procedure?
+
+1) The story makes us believe the predictions more;
+2) Having a nice intuition helps us to utilize the model and to expand the model;
+3) And a model can never be realistic, the important thing is whether it captures something important.
+
+
+% section dekel_and_lipman_2010_annu_rev_econ (end)
+
+% chapter decision_theory (end)
+
+
+
+\renewcommand\refname{Reference}
+\bibliographystyle{plainnat}
+\bibliography{paper_notes}
+
+
+\end{document}
