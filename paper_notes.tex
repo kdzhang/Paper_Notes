@@ -241,6 +241,41 @@ Why the story of the model is important even if it is not realistic? Why we can'
 
 % chapter decision_theory (end)
 
+\chapter{Matching Theory} % (fold)
+\label{cha:matching_theory}
+
+\section{Gale and Shapley, 1962} % (fold)
+\label{sec:gale_and_shapley_1962}
+
+\textbf{\bibentry{Gale:1962kl}}
+
+This paper introduces Deffered Acceptance (DA) algorithms in matching, and shows that it is stable and optimal.
+
+\begin{defn}
+An assignment is called \textbf{unstable} if there are two applicants $\alpha$ and $\beta$ who are assigned to universities A and B, although $\beta$ prefers A to B and A prefers $\beta$ to $\alpha$.
+\end{defn}
+
+\begin{defn}
+A stable assignment is called \textbf{optimal} if \textit{every} applicant is at least as well off under it as under any other stable assignments.
+\end{defn}
+
+Comment: it loos at first that optimal assignments may not always exist. But as we will show constructively, it does.
+
+\begin{defn}
+\textbf{Deferred Acceptance algorithm} works as following. First let each boy propose to his favorite girl. Each girl who receives more than one proposal rejects all but her favorite boy. Yet, she doesn't accept him, but keeps him in a string to allow for the better may come later. Then in the second round, each rejected boy propose their second favorite girl, and each girl picks her favorite among the new proposers and the one in the string, and put him in her string. This process continues, until each girl has one boy in the string (this will happen after finite rounds), then each girl picks the boy in her string.
+\end{defn}
+
+We will show the assignment by above algorithm is stable and optimal.
+
+% section gale_and_shapley_1962 (end)
+
+
+% chapter matching_theory (end)
+
+
+
+
+
 
 \chapter{Macro} % (fold)
 \label{cha:chapter_name}
