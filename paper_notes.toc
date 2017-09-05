@@ -1,0 +1,15 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {1}Econometrics}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}Low and Meghir, 2017, JEP}{3}{section.1.1}
+\contentsline {section}{\numberline {1.2}Lewbel, 2016, JEL}{4}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Point Identification}{4}{subsection.1.2.1}
+\contentsline {chapter}{\numberline {2}IO}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}Rey and Stiglitz, 1995, RAND}{5}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Benchmark Case}{6}{subsection.2.1.1}
+\contentsline {section}{\numberline {2.2}Production Function Estimation}{7}{section.2.2}
+\contentsline {chapter}{\numberline {3}Decision Theory}{9}{chapter.3}
+\contentsline {section}{\numberline {3.1}Dekel and Lipman, 2010, Annu Rev Econ}{9}{section.3.1}
+\contentsline {chapter}{\numberline {4}Matching Theory}{11}{chapter.4}
+\contentsline {section}{\numberline {4.1}Gale and Shapley, 1962}{11}{section.4.1}
+\contentsline {chapter}{\numberline {5}Macro}{13}{chapter.5}
+\contentsline {section}{\numberline {5.1}Kiyotaki, 2011}{13}{section.5.1}

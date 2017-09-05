@@ -1,0 +1,60 @@
+\begin{thebibliography}{9}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Ackerberg et~al.(2015)Ackerberg, Caves, and Frazer]{Ackerberg:2015ha}
+Daniel~A Ackerberg, Kevin Caves, and Garth Frazer.
+\newblock {Identification Properties of Recent Production Function Estimators}.
+\newblock \emph{Econometrica}, 83\penalty0 (6):\penalty0 2411--2451, 2015.
+
+\bibitem[Dekel and Lipman(2010)]{Dekel:2010bm}
+E~Dekel and B~L Lipman.
+\newblock {How (not) to do decision theory}.
+\newblock \emph{Annu Rev Econ}, 2\penalty0 (1):\penalty0 257--282, 2010.
+
+\bibitem[Gale and Shapley(1962)]{Gale:1962kl}
+D~Gale and L~S Shapley.
+\newblock {College Admissions and the Stability of Marriage}.
+\newblock \emph{The American Mathematical Monthly}, 69\penalty0 (1):\penalty0
+  9--15, January 1962.
+
+\bibitem[Kiyotaki(2011)]{Kiyotaki:2011fc}
+N~Kiyotaki.
+\newblock {A mechanism design approach to financial frictions}.
+\newblock \emph{manuscript}, 2011.
+
+\bibitem[Levinsohn and Petrin(2003)]{Levinsohn:2003ej}
+James Levinsohn and Amil Petrin.
+\newblock {Estimating Production Functions Using Inputs to Control for
+  Unobservables}.
+\newblock \emph{The Review of Economic Studies}, 70\penalty0 (2):\penalty0
+  317--341, April 2003.
+
+\bibitem[Lewbel(2016)]{Lewbel:2016wn}
+A~Lewbel.
+\newblock {The Identification Zoo-Meanings of Identification in Econometrics}.
+\newblock \emph{Forthcoming on Journal of Economic Literature}, 2016.
+
+\bibitem[Low and Meghir(2017)]{Low:2017jb}
+Hamish Low and Costas Meghir.
+\newblock {The Use of Structural Models in Econometrics}.
+\newblock \emph{Journal of Economic Perspectives}, 31\penalty0 (2):\penalty0
+  33--58, May 2017.
+
+\bibitem[Olley and Pakes(1996)]{Olley:1996ef}
+G~Steven Olley and Ariel Pakes.
+\newblock {The Dynamics of Productivity in the Telecommunications Equipment
+  Industry}.
+\newblock \emph{Econometrica}, 64\penalty0 (6):\penalty0 1263--1297, November
+  1996.
+
+\bibitem[Rey and Stiglitz(1995)]{Rey:1995ft}
+Patrick Rey and Joseph Stiglitz.
+\newblock {The Role of Exclusive Territories in Producers' Competition}.
+\newblock \emph{The RAND Journal of Economics}, 26\penalty0 (3):\penalty0
+  431--451, October 1995.
+
+\end{thebibliography}

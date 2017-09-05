@@ -208,6 +208,32 @@ and  $m_2(p,p)=\partial \log q_1^r(p_1,p_2)/\partial \log p_2$ (the cross elasti
 
 % section patrick_and_stiglitz_1995_rand (end)
 
+\section{Production Function Estimation} % (fold)
+\label{sec:production_function_estimation}
+
+There are several difficulties in estimating production functions which will cause endogeneity problem. To name some:
+\begin{itemize}
+	\item Simultaneouty. For a production function like $y_{it}=\beta_0+\beta_1 k_{it}+\beta_2 l_{it} + \omega_{it}+\varepsilon_{it}$, we suppose that $\omega_{it}$ is obseved by firm but not by econometricians, and $\varepsilon_{it}$ is observed neither by firm nor econometrician. This could induce endogeneity when directly using OLS. Suppose $\omega_{it}$ has positive serial correlation, when $\omega_{it}$ is high, firm will choose higher input bacause it is very possible that $\omega$ in next period will be high as well. This induces a positive bias for $\beta_k$.
+	\item Exit selection bias. When constructing a balanced panel, then we only observe those firms with high $\omega_{it}$.
+\end{itemize}
+
+There are several approaches in solving this problem.
+
+\begin{itemize}
+	\item Classical Approach.
+	\begin{itemize}
+		\item Use input price as IV. The problem is input price is generally the same across firms. When we do observe different input prices, which generally indicates market power in input markets. Thus those facing higher $\omega_i$ will tend to produce more, inducing their input price to increase, which has a negative bias on $\beta_k$.
+		\item Use fixed effect. If we assume that a firm faces same $\omega_{it}$ across time, which is not very practical.
+	\end{itemize}
+	\item Proxy for $\omega_{it}$. This approach first raised by \cite{Olley:1996ef} and developed by \cite{Levinsohn:2003ej} and \cite{Ackerberg:2015ha}. We name them OP, LP, ACF here after. The key idea is to use a function of what we know (for example, $k_t$ and $i_{t-1}$ in OP) to proxy $\omega$, the existence of such function is guaranteed by the solutioin property of the firm optimization problem. And the specific form of this function is estimated nonparametrically.
+\end{itemize}
+
+% section production_function_estimation (end)
+
+
+
+
+
 % chapter io (end)
 
 
