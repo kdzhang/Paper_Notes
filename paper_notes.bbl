@@ -1,4 +1,4 @@
-\begin{thebibliography}{9}
+\begin{thebibliography}{10}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -20,6 +20,11 @@ D~Gale and L~S Shapley.
 \newblock {College Admissions and the Stability of Marriage}.
 \newblock \emph{The American Mathematical Monthly}, 69\penalty0 (1):\penalty0
   9--15, January 1962.
+
+\bibitem[Gandhi et~al.(2017)Gandhi, Navarro, and Rivers]{Gandhi:2017un}
+A~Gandhi, S~Navarro, and D~Rivers.
+\newblock {On the Identification of Gross Output Production Functions}.
+\newblock 2017.
 
 \bibitem[Kiyotaki(2011)]{Kiyotaki:2011fc}
 N~Kiyotaki.

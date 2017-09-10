@@ -6,6 +6,7 @@
 \usepackage{mathrsfs}
 \usepackage{amssymb}
 \usepackage{hyperref}
+\usepackage{amsmath}
 \usepackage{natbib}			% to insert citations
 \usepackage{xcolor}			% extend the colors can be used
 
@@ -223,10 +224,17 @@ There are several approaches in solving this problem.
 	\item Classical Approach.
 	\begin{itemize}
 		\item Use input price as IV. The problem is input price is generally the same across firms. When we do observe different input prices, which generally indicates market power in input markets. Thus those facing higher $\omega_i$ will tend to produce more, inducing their input price to increase, which has a negative bias on $\beta_k$.
-		\item Use fixed effect. If we assume that a firm faces same $\omega_{it}$ across time, which is not very practical.
+		\item Use fixed effect. We need to assume that a firm faces same $\omega_{it}$ across time, which is not very practical.
 	\end{itemize}
-	\item Proxy for $\omega_{it}$. This approach first raised by \cite{Olley:1996ef} and developed by \cite{Levinsohn:2003ej} and \cite{Ackerberg:2015ha}. We name them OP, LP, ACF here after. The key idea is to use a function of what we know (for example, $k_t$ and $i_{t-1}$ in OP) to proxy $\omega$, the existence of such function is guaranteed by the solutioin property of the firm optimization problem. And the specific form of this function is estimated nonparametrically.
+	\item Control Function for  $\omega_{it}$. This approach first raised by \cite{Olley:1996ef} and developed by \cite{Levinsohn:2003ej} and \cite{Ackerberg:2015ha}. We name them OP, LP, ACF here after. The key idea is to use a function of what we know (for example, $k_t$ and $i_{t-1}$ in OP) to proxy $\omega$, the existence of such function is guaranteed by the solutioin property of the firm optimization problem. And the specific form of this function is estimated nonparametrically.
+	\begin{itemize}
+		\item OP uses a two step estimation process. First step, use $k_t$ and $i_{t-1}$ nonparametrically estimate $\omega_t$, plug this into original production function then use OLS. Notice the unobserved $\omega_t$ has been controled by $k_t$ and $i_{t-1}$, then OLS will give consistent estimator for $l_t$ but not $k_t$. In second step, we first write $\omega_{it} = E[\omega_{it}|\omega_{it-1}]+\xi_{it}$, notice that $\xi_{it}$ is independent of any information set at t-1. Thus we get the moment condition $E[\xi_{it}k_{it}]=0$, then we can use method of simulating moments to estimate $\beta_k$.
+		\item LP is very similar to OP, just that use intermediate input $m_{it}$ instead of investment $i_{it}$ in proxy $\omega_{it}$. Because OP approach requires the policy function of $i_{it}$ be monotonicity in $\omega_{it}$, which is unsatisfied when $i_{it}=0$. But data shows that in many observations $i=0$. Using intermediate input can solve this.
+		\item ACF critizition is
+	\end{itemize}
+	\item \cite{Gandhi:2017un} Approach (GNR). GNR criticizes control function approach is nonparametrically not identified in the presence of flexible inputs. They raise a new approach using FOC conditions.
 \end{itemize}
+
 
 % section production_function_estimation (end)
 
@@ -319,6 +327,145 @@ This paper mainly discusses the micro structures which may induce financial fric
 
 % chapter chapter_name (end)
 
+
+\chapter{General (mathematical) Skills} % (fold)
+\label{cha:general_mathematical_skills}
+
+\section{Log-Linearization}
+
+\noindent
+\textbf{Motivation}
+
+Why we need log linearizations?
+Because for most nonlinear discrete dynamic programming problems,
+we fail to find a closed solution.
+Thus we have to use numerical method or to find a approximation.
+By using log-linearization,
+we transform the nonlinear problem to a linear problem (around the steady state),
+and we know how to solve the linear diffrence equations.
+
+Another advantege of log-linearization is,
+the new variables are in forms of $\frac{x-x^*}{x^*}$,
+which is interpretable.\\
+
+
+% subsection: how to do log-linearization
+\subsection{How to do Log-Linearization}
+
+Log linearization is a common method to approximate non-linear function using Taylor expansion.
+
+When we do linearization in macroeconomics, one key is to find \emph{\textbf{steady state}} of the model.
+Then we do linearization aroud the steady state.
+
+The basic idea is, for functions like:
+\[f(x)=\frac{g(x)}{h(x)}\]
+
+take log in both sides:
+\[ln(f(x))=ln(g(x))-ln(h(x))\]
+
+By Taylor expansion, for a smooth function f(x) we have:
+\[f(x)=f(x^*)+\frac{f'(x^*)}{1!}(x-x^*)+o(1)\]
+
+Thus 
+\[lnf(x) \approx lnf(x^*)+\frac{f'(x^*)}{f(x^*)}(x-x^*)\]
+
+The above follows from the fact that $\frac{dln(f(x))}{dx}=\frac{f'(x)}{f(x)}$. Thus,
+\[lnf(x)-lnf(x^*)=\frac{f'(x^*)}{f(x^*)} \cdot x^* \cdot \frac{x-x^*}{x^*}\]
+
+And the equation becomes:
+\[lnf(x^*)+\frac{f'(x^*)}{f(x^*)} \cdot x^* \cdot \frac{x-x^*}{x^*}=lng(x^*)-lnh(x^*)
+\frac{g'(x^*)}{g(x^*)} \cdot x^* \cdot \frac{x-x^*}{x^*}-
+\frac{h'(x^*)}{h(x^*)} \cdot x^* \cdot \frac{x-x^*}{x^*}\]
+
+\[\frac{f'(x^*)}{f(x^*)} \cdot x^* \cdot \frac{x-x^*}{x^*}=
+\frac{g'(x^*)}{g(x^*)} \cdot x^* \cdot \frac{x-x^*}{x^*}-
+\frac{h'(x^*)}{h(x^*)} \cdot x^* \cdot \frac{x-x^*}{x^*}\]
+
+Dedine $\hat x=\frac{x-x^*}{x^*}$, and we are done.
+\[\frac{f'(x^*)}{f(x^*)} x^* \cdot \hat x=
+\frac{g'(x^*)}{g(x^*)} x^* \cdot \hat x-
+\frac{h'(x^*)}{h(x^*)} x^* \cdot \hat x\]
+
+Notice, when we use $\hat x$ in place of $x-x^*$in the approximation,
+don't forget to times $x^*$ !!\\
+
+% How to do log-linearization when there is Expectation
+
+\subsection{log-linearization when there is expectation (An Example)}
+
+It may be annoying to do log-linearization when there is expectation,
+because in general,
+log and expectation cannot switch.
+But if we don't switch, we cannot do the log-linearization as previous.
+For example, see Adda\&Cooper(2003) CH5, page 115.
+
+Suppose we have the following Euler equation:
+
+\[u'(c)=\beta E_{A'|A}u'(c)[Af'(k')+(1-\delta)]\]
+
+where $c=Af(k)+(1-\delta)k-k'$.
+
+These two expressions, along with the evolution of A,
+defines a system of equations.
+
+In this system, actually we do not have to take log,
+but directly do Taylor expansion at $c^*$, $x^*$ and $k^*$.
+We get:
+
+\begin{multline}
+u'(c^*)+u''(c^*)c^*\hat c_t=
+\beta E_{A'|A}[u'(c^*)(\bar Af'(k^*)+(1-\delta))
++(\bar Af'(k^*)+(1-\delta))u''(c^*)c^*\hat c_{t+1}\\
++u'(c^*)f'(k^*)\bar A\hat A_{t+1}+
+u'(c^*)\bar Af''(k^*)k^* \hat k_{t+1}]
+\end{multline}
+
+
+The first term in LHS and the first term in RHS cancel each other.
+And we divide both sides by $u'(c^*)$, and we will get:
+
+\begin{equation}\label{eq1}
+\frac{u''(c^*)c^*}{u'(c^*)}\hat c_t
+=\beta E_{A|A'}[\frac{u''(c^*)c^*}{u'(c^*)}\hat c_{t+1} \frac{1}{\beta}
++f'(k^*)\bar A \hat A{t+1}
++f''(k^*)k^*\hat k_{t+1}]
+\end{equation}
+
+Notice, we derive this based on the fact $\frac{1}{\beta}=\bar A f'(k^*)+(1-\delta)$.
+Because by FOC
+\[u'(c)=\beta E_{A'|A}V'(k')\]
+
+To derive $V'(k')$, we first derive $V'(k)$,
+by Envelop THM we get:
+\[V'(k)=u'(c)[Af'(k)+(1-\delta)]\]
+
+Substitute this into FOC we get:
+\[u'(c)=\beta E_{A|A'}[u'(c')(A'f'(k')+(1-\delta))]\]
+
+In this approach we fix A at the mean $\bar A$,
+and thus the steady state satisfy:
+\[1=\beta [\bar Af'(k^*)+(1-\delta)]\]
+
+Here, the introduce of $\bar A$ is to describe the steady state in existence of shock.
+We can see $\bar A$ as the "long term" growth of the economy,
+and the we investigate what's the optimal steady $k^*$ under this long-term growth rate.
+
+\textcolor{red}
+{But I still don't know why we can cancel the expectation in the RHS.}
+
+The equation \ref{eq1} is the linear function we want.\\
+
+\noindent
+\emph{Some Comments on the above method:}
+
+Although it seems that the above method uses no log-linearization,
+actually it does!
+
+(to be added later)
+
+% section log-linearization (end)
+
+% chapter general_mathematical_skills (end)
 
 
 
