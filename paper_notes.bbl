@@ -1,4 +1,4 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{14}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -9,6 +9,19 @@
 Daniel~A Ackerberg, Kevin Caves, and Garth Frazer.
 \newblock {Identification Properties of Recent Production Function Estimators}.
 \newblock \emph{Econometrica}, 83\penalty0 (6):\penalty0 2411--2451, 2015.
+
+\bibitem[Bernanke and Gertler(1989)]{BenBernanke:1989eg}
+Ben Bernanke and Mark Gertler.
+\newblock {Agency Costs, Net Worth, and Business Fluctuations}.
+\newblock \emph{American Economic Review}, 79\penalty0 (1):\penalty0 14--31,
+  March 1989.
+
+\bibitem[Carlstrom and Fuerst(1997)]{Carlstrom:1997fb}
+Charles~T Carlstrom and Timothy~S Fuerst.
+\newblock {Agency Costs, Net Worth, and Business Fluctuations: A Computable
+  General Equilibrium Analysis}.
+\newblock \emph{American Economic Review}, 87\penalty0 (5):\penalty0 893--910,
+  December 1997.
 
 \bibitem[Dekel and Lipman(2010)]{Dekel:2010bm}
 E~Dekel and B~L Lipman.
@@ -30,6 +43,12 @@ A~Gandhi, S~Navarro, and D~Rivers.
 N~Kiyotaki.
 \newblock {A mechanism design approach to financial frictions}.
 \newblock \emph{manuscript}, 2011.
+
+\bibitem[Kiyotaki and Moore(1997)]{Kiyotaki:1997hl}
+N~Kiyotaki and J~Moore.
+\newblock {Credit cycles}.
+\newblock \emph{Journal of Political Economy}, 105\penalty0 (2):\penalty0
+  211--248, 1997.
 
 \bibitem[Levinsohn and Petrin(2003)]{Levinsohn:2003ej}
 James Levinsohn and Amil Petrin.
@@ -61,5 +80,12 @@ Patrick Rey and Joseph Stiglitz.
 \newblock {The Role of Exclusive Territories in Producers' Competition}.
 \newblock \emph{The RAND Journal of Economics}, 26\penalty0 (3):\penalty0
   431--451, October 1995.
+
+\bibitem[Townsend(1979)]{Townsend:1979ef}
+R~M Townsend.
+\newblock {Optimal contracts and competitive markets with costly state
+  verification}.
+\newblock \emph{Journal of Economic Theory}, 21\penalty0 (2):\penalty0
+  265--293, 1979.
 
 \end{thebibliography}

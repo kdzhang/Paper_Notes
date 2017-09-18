@@ -10,9 +10,11 @@
 \contentsline {chapter}{\numberline {3}Decision Theory}{9}{chapter.3}
 \contentsline {section}{\numberline {3.1}Dekel and Lipman, 2010, Annu Rev Econ}{9}{section.3.1}
 \contentsline {chapter}{\numberline {4}Matching Theory}{11}{chapter.4}
-\contentsline {section}{\numberline {4.1}Gale and Shapley, 1962}{11}{section.4.1}
+\contentsline {section}{\numberline {4.1}Gale and Shapley, 1962, Ame.Math.Mon.}{11}{section.4.1}
 \contentsline {chapter}{\numberline {5}Macro}{13}{chapter.5}
 \contentsline {section}{\numberline {5.1}Kiyotaki, 2011}{13}{section.5.1}
+\contentsline {section}{\numberline {5.2}Costly State Verification}{13}{section.5.2}
+\contentsline {section}{\numberline {5.3}Collateral Constraints}{14}{section.5.3}
 \contentsline {chapter}{\numberline {6}General (mathematical) Skills}{15}{chapter.6}
 \contentsline {section}{\numberline {6.1}Log-Linearization}{15}{section.6.1}
 \contentsline {subsection}{\numberline {6.1.1}How to do Log-Linearization}{15}{subsection.6.1.1}

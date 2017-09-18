@@ -13,6 +13,9 @@
 \usepackage{bibentry}		% package used to insert full citation in body text
 \nobibliography*
 
+\usepackage{graphicx}		% to insert image
+\graphicspath{ {images/} }
+
 \usepackage[framemethod=default]{mdframed}
 \usepackage{showexpl}
 \mdfdefinestyle{comment}{
@@ -278,7 +281,7 @@ Why the story of the model is important even if it is not realistic? Why we can'
 \chapter{Matching Theory} % (fold)
 \label{cha:matching_theory}
 
-\section{Gale and Shapley, 1962} % (fold)
+\section{Gale and Shapley, 1962, Ame.Math.Mon.} % (fold)
 \label{sec:gale_and_shapley_1962}
 
 \textbf{\bibentry{Gale:1962kl}}
@@ -325,7 +328,41 @@ This paper mainly discusses the micro structures which may induce financial fric
 
 % section kiyotaki_2011 (end)
 
-% chapter chapter_name (end)
+
+\section{Costly State Verification} % (fold)
+\label{sec:costly_state_verification}
+
+Financial frictions is an important yet not well explained phenomena. Generally financial frictions means some possible financial frictions not happening, resulting in fluctuations in real economy. There are several micro foundations for financial frictions, we learned some in Ruilin's course:
+\begin{itemize}
+	\item costly state verification
+	\item collateral constraints
+	\item moral hazard
+	\item asymmetric information
+\end{itemize}
+
+The main framework for costly state verification is following. The borrower has some private information on productivity, and lender has to pay some cost to get this information. This will give the borrower some advantage, and make some possible transactions unable to happen. \cite{Townsend:1979ef} gives a micro model describing contract under costly state verification. \cite{BenBernanke:1989eg} and \cite{Carlstrom:1997fb} are two important works using this to explain business cycles (also called Financial Accelarator).
+
+\textcolor{red}{Add breif introduction for costly state verification literature.}
+
+
+% section costly_state_verification (end)
+
+\section{Collateral Constraints} % (fold)
+\label{sec:collateral_constraints}
+
+
+Another explaination for financial friction is collateral constraint. Important literatures include \cite{Kiyotaki:1997hl},
+
+\cite{Kiyotaki:1997hl} has a simple idea. Suppose the borrower needs some collateral (say land) for borrowing. What is the effect of a temporary increase in land productivity? The direct effect is it will increase this period land price. More important is the indirect effect, the borrower now can buy more land since their collateral becomes more valuable. And thus in next period they can buy even more land. This long chain has a large effect on the initial price of the land. Thus financial sector can amplify the fluctuation of real economy.
+
+\includegraphics[width=\textwidth]{kiyotaki-moore-97.png}
+
+
+% section collateral_constraints (end)
+
+
+
+% chapter macro (end)
 
 
 \chapter{General (mathematical) Skills} % (fold)

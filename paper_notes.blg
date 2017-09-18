@@ -4,45 +4,45 @@ The top-level auxiliary file: paper_notes.aux
 The style file: plainnat.bst
 Database file #1: paper_notes.bib
 Warning--empty journal in Gandhi:2017un
-You've used 10 entries,
+You've used 14 entries,
             2773 wiz_defined-function locations,
-            662 strings with 6273 characters,
-and the built_in function-call counts, 4284 in all, are:
-= -- 394
-> -- 206
-< -- 8
-+ -- 70
-- -- 60
-* -- 345
-:= -- 658
-add.period$ -- 30
-call.type$ -- 10
-change.case$ -- 50
-chr.to.int$ -- 10
-cite$ -- 21
-duplicate$ -- 199
-empty$ -- 372
-format.name$ -- 82
-if$ -- 886
+            693 strings with 6876 characters,
+and the built_in function-call counts, 6029 in all, are:
+= -- 562
+> -- 279
+< -- 12
++ -- 95
+- -- 81
+* -- 487
+:= -- 919
+add.period$ -- 42
+call.type$ -- 14
+change.case$ -- 69
+chr.to.int$ -- 14
+cite$ -- 29
+duplicate$ -- 279
+empty$ -- 530
+format.name$ -- 113
+if$ -- 1252
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 10
-newline$ -- 58
-num.names$ -- 40
-pop$ -- 90
+missing$ -- 14
+newline$ -- 78
+num.names$ -- 56
+pop$ -- 121
 preamble$ -- 1
-purify$ -- 40
+purify$ -- 55
 quote$ -- 0
-skip$ -- 148
+skip$ -- 207
 stack$ -- 0
-substring$ -- 192
-swap$ -- 14
+substring$ -- 294
+swap$ -- 20
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 110
+type$ -- 154
 warning$ -- 1
-while$ -- 44
+while$ -- 64
 width$ -- 0
-write$ -- 133
+write$ -- 185
 (There was 1 warning)
