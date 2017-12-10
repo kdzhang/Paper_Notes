@@ -1,0 +1,873 @@
+\documentclass{beamer}
+
+%\usepackage[table]{xcolor}
+\mode<presentation> {
+  \usetheme{Boadilla}
+%  \usetheme{Pittsburgh}
+%\usefonttheme[2]{sans}
+\renewcommand{\familydefault}{cmss}
+%\usepackage{lmodern}
+%\usepackage[T1]{fontenc}
+%\usepackage{palatino}
+%\usepackage{cmbright}
+  \setbeamercovered{transparent}
+\useinnertheme{rectangles}
+}
+%\usepackage{normalem}{ulem}
+%\usepackage{colortbl, textcomp}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{structure}{fg= black}
+\definecolor{trial}{cmyk}{1,0,0, 0}
+\definecolor{trial2}{cmyk}{0.00,0,1, 0}
+\definecolor{darkgreen}{rgb}{0,.4, 0.1}
+\usepackage{array}
+\beamertemplatesolidbackgroundcolor{white}  \setbeamercolor{alerted
+text}{fg=red}
+
+\setbeamertemplate{caption}[numbered]\newcounter{mylastframe}
+
+%\usepackage{color}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{colortbl}
+%\usepackage[usenames, dvipsnames]{color}
+%\setbeamertemplate{caption}[numbered]\newcounter{mylastframe}c
+%\newcolumntype{Y}{\columncolor[cmyk]{0, 0, 1, 0}\raggedright}
+%\newcolumntype{C}{\columncolor[cmyk]{1, 0, 0, 0}\raggedright}
+%\newcolumntype{G}{\columncolor[rgb]{0, 1, 0}\raggedright}
+%\newcolumntype{R}{\columncolor[rgb]{1, 0, 0}\raggedright}
+
+%\begin{beamerboxesrounded}[upper=uppercol,lower=lowercol,shadow=true]{Block}
+%$A = B$.
+%\end{beamerboxesrounded}}
+\renewcommand{\familydefault}{cmss}
+%\usepackage[all]{xy}
+
+\usepackage{tikz}
+\usepackage{lipsum}
+
+ \newenvironment{changemargin}[3]{%
+ \begin{list}{}{%
+ \setlength{\topsep}{0pt}%
+ \setlength{\leftmargin}{#1}%
+ \setlength{\rightmargin}{#2}%
+ \setlength{\topmargin}{#3}%
+ \setlength{\listparindent}{\parindent}%
+ \setlength{\itemindent}{\parindent}%
+ \setlength{\parsep}{\parskip}%
+ }%
+\item[]}{\end{list}}
+\usetikzlibrary{arrows}
+%\usepackage{palatino}
+%\usepackage{eulervm}
+\usecolortheme{lily}
+%\usepackage[latin1]{inputenc}
+\title[Text as Data] % (optional, nur bei langen Titeln nötig)
+{Text as Data}
+
+\author{Justin Grimmer}
+\institute[Stanford University]{Associate Professor\\Department of Political Science \\  Stanford University}
+\vspace{0.3in}
+
+
+\date{November 10th, 2014}%[Big Data Workshop] 
+%\date{\today}
+
+
+
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Supervised Learning Methods}
+
+\begin{itemize}
+\item[1)] Task
+\begin{itemize}
+\item[-] Classify documents to pre existing categories
+\item[-] Measure the proportion of documents in each category
+\end{itemize}
+\item[2)] Objective function
+\begin{itemize}
+\item[1)] Penalized Regressions
+\begin{itemize}
+\item[-] Ridge regression 
+\item[-] LASSO regression
+\end{itemize}
+\item[2)] Classification Surface $\leadsto$ Support Vector Machines
+\item[3)] Measure Proportions $\leadsto$ Naive Bayes(ish) objective
+\end{itemize}
+\item[3)] Optimization
+\begin{itemize}
+\item[-] Depends on method
+\end{itemize}
+\item[4)] Validation
+\begin{itemize}
+\item[-] Obtain predicted fit for new data $f(\boldsymbol{X}_{i}, \widehat{\boldsymbol{\theta}})$
+\item[-] Examine prediction performance$\leadsto$ compare classification to \alert{gold standard}
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Regression models}
+
+Suppose we have $N$ documents, with each document $i$ having label $y_{i} \in \{-1, 1\}\leadsto\{$liberal, conservative$\}$ \pause \\
+\invisible<1>{We represent each document $i$ is $\boldsymbol{x}_{i} = (x_{i1}, x_{i2}, \hdots, x_{iJ})$. } \pause  \\
+
+\begin{eqnarray}
+\invisible<1-2>{f(\boldsymbol{\beta}, \boldsymbol{X}, \boldsymbol{Y})  & = & \sum_{i=1}^{N}\left( y_{i} - \boldsymbol{\beta}^{'} \boldsymbol{x}_{i} \right)^{2}  \nonumber \\} \pause 
+\invisible<1-3>{\widehat{\boldsymbol{\beta} } & = & \text{arg min}_{\boldsymbol{\beta}} \left\{\sum_{i=1}^{N}\left( y_{i} - \boldsymbol{\beta}^{'} \boldsymbol{x}_{i} \right)^{2}\right\} \nonumber \\} \pause 
+ \invisible<1-4>{& = & \left( \boldsymbol{X}^{'}\boldsymbol{X}   \right)^{-1}\boldsymbol{X}^{'}\boldsymbol{Y} \nonumber } \pause 
+\end{eqnarray}
+
+\invisible<1-5>{Problem: \\} \pause 
+\begin{itemize}
+\invisible<1-6>{\item[-] $J$ will likely be large (perhaps $J> N$)} \pause 
+\invisible<1-7>{\item[-] There many correlated variables} \pause 
+\end{itemize}
+
+\invisible<1-8>{Predictions will be \alert{variable}}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Mean Square Error}
+Suppose $\theta$ is some value of the true parameter \pause \\
+\invisible<1>{Bias: \\} \pause 
+\begin{eqnarray}
+\invisible<1-2>{\text{Bias} & = & E[\widehat{\theta} - \theta]\nonumber } \pause 
+\end{eqnarray}
+
+\invisible<1-3>{We may care about average distance from truth} \pause 
+
+\begin{eqnarray}
+\invisible<1-4>{\text{E}[(\hat{\theta} - \theta)^{2}]}\pause\invisible<1-5>{ & = & E[\hat{\theta}^{2}]  - 2 \theta E[\hat{\theta}] + \theta^2 } \pause \nonumber \\
+ \invisible<1-6>{& = &  E[\hat{\theta}^{2}] - E[\hat{\theta}]^{2} + E[\hat{\theta}]^{2}- 2 \theta E[\hat{\theta}] + \theta^2} \pause  \nonumber \\
+\invisible<1-7>{& = & E[\hat{\theta}^{2}] - E[\hat{\theta}]^{2} +  (E[\widehat{\theta} - \theta])^2 } \pause \nonumber \\
+  \invisible<1-8>{& = & \text{Var}(\theta) + \text{Bias}^{2} } \pause \nonumber 
+\end{eqnarray}
+
+\invisible<1-9>{To reduce MSE, we are willing to induce bias to decrease variance$\leadsto$ methods that \alert{shrink} coefficeints toward zero}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Ridge Regression}
+
+Penalty for model complexity \pause 
+
+\begin{eqnarray}
+\invisible<1>{f(\boldsymbol{\beta}, \boldsymbol{X}, \boldsymbol{Y} ) }\pause \invisible<1-2>{& = & \sum_{i=1}^{N} \left(y_{i} - \
+\beta_{0} + \sum_{j=1}^{J}\beta_{j} x_{ij}\right)^{2} } \pause \invisible<1-3>{ + \underbrace{\lambda \sum_{j=1}^{J} \beta_{j}^{2}}_{\text{Penalty}} } \pause \nonumber 
+\end{eqnarray}
+
+\invisible<1-4>{where:} \pause 
+
+\begin{itemize}
+\invisible<1-5>{\item[-] $\beta_{0}\leadsto$ intercept} \pause 
+\invisible<1-6>{\item[-] $\lambda\leadsto$ penalty parameter} 
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Ridge Regression$\leadsto$ Optimization}
+
+\begin{eqnarray}
+\boldsymbol{\beta}^{\text{Ridge}} & = & \text{arg min}_{\boldsymbol{\beta}} \left\{f(\boldsymbol{\beta}, \boldsymbol{X}, \boldsymbol{Y})\right\} \nonumber  \pause \\
+\invisible<1>{& = & \text{arg min}_{\boldsymbol{\beta}} \left\{\sum_{i=1}^{N} \left(y_{i} - \beta_{0} + \sum_{j=1}^{J}\beta_{j} x_{ij}\right)^{2}  + \lambda \sum_{j=1}^{J} \beta_{j}^{2}\right\} } \pause \nonumber \\
+ \invisible<1-2>{& = & \text{arg min}_{\boldsymbol{\beta}} \left\{ (\boldsymbol{Y} - \boldsymbol{X}^{'} \boldsymbol{\beta})^{'}(\boldsymbol{Y} - \boldsymbol{X}^{'} \boldsymbol{\beta}) + \lambda \boldsymbol{\beta}^{'}\boldsymbol{\beta} \right\} } \nonumber \\
+\invisible<1-3>{& = & \left(\boldsymbol{X}^{'}\boldsymbol{X} + \lambda \boldsymbol{I}_{J}     \right)^{-1} \boldsymbol{X}^{'} \boldsymbol{Y} } \nonumber 
+\end{eqnarray}
+
+\invisible<1-2>{Demean the data and set $\beta_{0} = \bar{y} = \sum_{i=1}^{N} \frac{y_{i}}{N}$ }
+\pause \pause 
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Ridge Regression$\leadsto$ Intuition (1)}
+
+
+Suppose $\boldsymbol{X}^{'}\boldsymbol{X} = \boldsymbol{I}_{J}$.  \pause 
+\begin{eqnarray}
+\invisible<1>{\widehat{\boldsymbol{\beta}} & = & \left(\boldsymbol{X}^{'}\boldsymbol{X}\right)^{-1} \boldsymbol{X}^{'}\boldsymbol{Y} \nonumber} \pause  \\
+ \invisible<1-2>{& = & \boldsymbol{X}^{'}\boldsymbol{Y} } \pause \nonumber \\
+ \invisible<1-3>{\boldsymbol{\beta}^{\text{ridge}} & = & \left(\boldsymbol{X}^{'}\boldsymbol{X} + \lambda \boldsymbol{I}_{J}     \right)^{-1} \boldsymbol{X}^{'} \boldsymbol{Y} \nonumber } \pause \\
+  \invisible<1-4>{&= & \left(\boldsymbol{I}_{j} + \lambda \boldsymbol{I}_{j} \right) \boldsymbol{X}^{'}\boldsymbol{Y} \nonumber} \pause  \\
+   \invisible<1-5>{&= & \left(\boldsymbol{I}_{j} + \lambda \boldsymbol{I}_{j} \right) \widehat{\boldsymbol{\beta}} \nonumber } \pause \\
+ \invisible<1-6>{\beta_{j}^{\text{Ridge}} & =  & \frac{\widehat{\beta}_{j}}{1 + \lambda} \nonumber } 
+\end{eqnarray}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Ridge Regression$\leadsto$ Intuition (2)}
+
+\begin{eqnarray}
+\boldsymbol{\beta}_{j} & \sim & \text{Normal}(0, \tau^{2}) \nonumber \\
+y_{i} & \sim & \text{Normal}(\beta_{0} + \boldsymbol{x}_{i}^{'}\boldsymbol{\beta}, \sigma^{2}) \nonumber 
+\end{eqnarray}
+
+
+\pause 
+\begin{small}
+\begin{eqnarray}
+\invisible<1>{p(\boldsymbol{\beta}| \boldsymbol{X}, \boldsymbol{Y})  & \propto & \prod_{j=1}^{J} p(\beta_{j}) \prod_{i=1}^{N} p(y_{i}| \boldsymbol{x}_{i}, \boldsymbol{\beta}) \nonumber} \pause  \\
+\invisible<1-2>{& \propto &   \prod_{j=1}^{J}\frac{1}{\sqrt{2 \pi} \tau } \exp\left( - \frac{\beta_{j}^2}{2 \tau^2 }  \right) \prod_{i=1}^{N} \frac{1}{\sqrt{2\pi} \sigma} \exp\left( - \frac{ (y_{i} - \beta_{0} + \boldsymbol{x}^{'} \boldsymbol{\beta})^{2}  }{2 \sigma^2 }   \right) } \nonumber 
+\end{eqnarray}
+\end{small}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Ridge Regression$\leadsto$ Intuition (2)}
+
+\begin{eqnarray}
+\log p(\boldsymbol{\beta}| \boldsymbol{X}, \boldsymbol{Y}) & = &  - \sum_{j=1}^{J} \frac{\beta_{j}^2}{2 \tau^2 } - \sum_{i=1}^{N} \frac{ (y_{i} - \beta_{0} + \boldsymbol{x}^{'} \boldsymbol{\beta})^{2}  }{2 \sigma^2 } \nonumber \pause \\
+\invisible<1>{- 2 \sigma^2\log p(\boldsymbol{\beta}| \boldsymbol{X}, \boldsymbol{Y}) & = &   \sum_{i=1}^{N} (y_{i} - \beta_{0} + \boldsymbol{x}^{'} \boldsymbol{\beta})^{2} + \sum_{j=1}^{J} \frac{\sigma^2}{\tau^2} \beta_{j}^2  } \pause  \nonumber 
+\end{eqnarray}
+
+\invisible<1-2>{where:} \pause 
+\begin{itemize}
+\invisible<1-3>{\item[-] $\lambda = \frac{\sigma^2}{\tau^2} \beta_{j}^2$}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Lasso Regression Objective Function/Optimization}
+
+Different Penalty for Model Complexity
+
+\begin{eqnarray}
+f(\boldsymbol{\beta}, \boldsymbol{X}, \boldsymbol{Y} ) & = & \sum_{i=1}^{N} \left(y_{i} - \beta_{0} + \sum_{j=1}^{J} \beta_{j} x_{ij}  \right)^{2} + \lambda \sum_{j=1}^{J} \underbrace{|\beta_{j}|}_{\text{Penalty}} \nonumber \pause 
+\end{eqnarray}
+
+
+\begin{itemize}
+\invisible<1>{\item[-] Optimization is non-linear (Absolute Value)} \pause 
+\begin{itemize}
+\invisible<1-2>{\item[-] Coordinate Descent} \pause 
+\invisible<1-3>{\item[-] Start with Ridge} \pause 
+\invisible<1-4>{\item[-] Sub-differential, update steps} \pause 
+\end{itemize}
+\invisible<1-5>{\item[-] Induces \alert{sparsity}$\leadsto$ sets some coefficients to zero} 
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Lasso Regression$\leadsto$ Intuition 1, Soft Thresholding}
+
+Suppose again $\boldsymbol{X}^{'}\boldsymbol{X} = \boldsymbol{I}_{J}$ \pause 
+
+\begin{eqnarray}
+\invisible<1>{f(\boldsymbol{\beta}, \boldsymbol{X}, \boldsymbol{Y} ) & = & \left(Y - \boldsymbol{X}\boldsymbol{\beta} \right)^{'}\left(Y - \boldsymbol{X}\boldsymbol{\beta} \right)  + \lambda \sum_{j=1}^{J}| \beta_{j}| \nonumber \\} \pause 
+ \invisible<1-2>{& = & - 2 \boldsymbol{X}^{'}\boldsymbol{Y} \boldsymbol{\beta} + \boldsymbol{\beta}^{'}\boldsymbol{\beta} + \lambda  \sum_{j=1}^{J}| \beta_{j}| } \pause  \nonumber 
+\end{eqnarray}
+
+\invisible<1-3>{The coefficient is } \pause 
+\begin{eqnarray}
+\invisible<1-4>{\beta_{j}^{\text{LASSO}} & = & \text{sign}\left(\widehat{\beta}_{j}\right) \left(|\widehat{\beta}_{j}| - \lambda  \right)_{+} \nonumber } \pause 
+\end{eqnarray}
+
+\begin{itemize}
+\invisible<1-5>{\item[-] $\text{sign}(\cdot) \leadsto$ $1$ or $-1$} \pause 
+\invisible<1-6>{\item[-] $\left( |\widehat{\beta}_{j}| - \lambda \right)_{+} = \text{max}( |\widehat{\beta}_{j}| - \lambda, 0 )$} 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Lasso Regression$\leadsto$ Intuition 1, Soft Thresholding}
+
+
+Compare soft assignment \pause 
+\begin{eqnarray}
+\invisible<1>{\beta_{j}^{\text{LASSO}} & = & \text{sign}\left(\widehat{\beta}_{j}\right) \left(|\widehat{\beta}_{j}| - \lambda  \right)_{+} } \pause \nonumber 
+\end{eqnarray}
+
+\invisible<1-2>{With hard assignment, selecting $M$ biggest components} \pause 
+\begin{eqnarray}
+\invisible<1-3>{\beta_{j}^{\text{subset}} & = & \widehat{\beta}_{j} \cdot I\left(|\widehat{\beta}_{j}| \geq | \widehat{\beta}_{(M)} |     \right) \nonumber } \pause 
+\end{eqnarray}
+
+
+\invisible<1-4>{Intuition 2: Prior on coefficients $\leadsto$ Double exponential} \pause 
+
+\invisible<1-5>{Why does LASSO induce sparsity?}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Comparing Ridge and LASSO}
+
+
+\only<1>{\scalebox{0.8}{\includegraphics{RidgeExamp1.pdf}}}
+\only<2>{\scalebox{0.8}{\includegraphics{LassoExamp1.pdf}}}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Comparing Ridge and LASSO}
+
+Contrast $\beta = (\frac{1}{\sqrt{2}},\frac{1}{\sqrt{2}} )$ and $\tilde{\beta} = (1, 0)$ \pause 
+
+\invisible<1>{Under ridge:}\pause 
+\begin{eqnarray}
+\invisible<1-2>{\sum_{j=1}^{2} \beta_{j}^{2} & = & \frac{1}{2} + \frac{1}{2} = 1\nonumber \\} \pause 
+\invisible<1-3>{\sum_{j=1}^{2} \tilde{\beta}_{j}^{2}  & = &  1 + 0 = 1 } \pause \nonumber 
+\end{eqnarray}
+
+\invisible<1-4>{Under LASSO } \pause 
+\begin{eqnarray}
+\invisible<1-5>{\sum_{j=1}^{2} |\beta_{j}| & = & \frac{1}{\sqrt{2}} + \frac{1}{\sqrt{2}}  = \sqrt{2} \nonumber \\} \pause 
+\invisible<1-6>{\sum_{j=1}^{2} |\tilde{\beta}_{j}| & = & 1 +0 = 1 \nonumber } 
+\end{eqnarray}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Selecting $\lambda$}
+
+How do we determine $\lambda$? $\leadsto$ Cross validation (lecture on Thursday) \pause \\
+\invisible<1>{Applying models gives score (probability) of document belong to class$\leadsto$ threshold to classify} \pause \\
+
+{\tt To the R code!}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Assessing Models (Elements of Statistical Learning) } 
+
+
+\begin{itemize}
+\item[-] \alert{Model Selection}: tuning parameters to select final model (next week's discussion)
+\item[-] \alert{Model assessment} : after selecting model, estimating error in classification
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Comparing Training and Validation Set} 
+
+Text classification and model assessment 
+\begin{itemize}
+\item[-] \alert{Replicate} classification exercise with \alert{validation} set
+\item[-] General \alert{principle} of classification/prediction
+\item[-] Compare supervised learning labels to hand labels
+\end{itemize}
+
+\alert{Confusion matrix} 
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Comparing Training and Validation Set} 
+
+Representation of Test Statistics from Dictionary week (along with some new ones) \\
+
+
+\begin{tabular}{l|l|l}
+ \hline
+  & \multicolumn{2}{c}{Actual Label}  \\
+  \hline
+  Classification (algorithm) &   Liberal & Conservative \\
+  \hline 
+  Liberal &  \alert{True Liberal} & False Liberal \\
+  \hline
+  Conservative & False Conservative & \alert{True Conservative} \\
+  \hline
+  \hline
+\end{tabular}
+
+\pause 
+\begin{eqnarray}
+\invisible<1>{\text{Accuracy} & = & \frac{ \alert{\text{TrueLib} }+ \alert{\text{TrueCons}}  } { \alert{\text{TrueLib} } + \alert{\text{TrueCons}} + \text{FalseLib} + \text{FalseCons} } \nonumber } \pause  \\
+\invisible<1-2>{\text{Precision}_{\text{Liberal}} &= &   \frac{ \alert{\text{True Liberal}}    }  { \alert{\text{True Liberal }} + \text{False Liberal}      } } \pause  \nonumber \\
+\invisible<1-3>{\text{Recall}_{\text{Liberal} } & = & \frac{ \alert{\text{True Liberal}}   } { \alert{\text{True Liberal}} + \text{False Conservative}   } } \pause  \nonumber \\
+\invisible<1-4>{F_{\text{Liberal}} & = & \frac{ 2\text{Precision}_{\text{Liberal}} \text{Recall}_{\text{Liberal} } } { \text{Precision}_{\text{Liberal}} +  \text{Recall}_{\text{Liberal} }} }   \nonumber \pause 
+\end{eqnarray}
+
+\end{frame}
+
+
+% \begin{frame}
+% \frametitle{Precision Recall Tradeoff} 
+
+
+
+% \scalebox{0.4}{\includegraphics{PrecRecall.pdf}}
+
+
+
+% \end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{ROC Curve} 
+
+ROC as a measure of model performance
+\begin{eqnarray}
+\text{Recall}_{\text{Liberal}} & = & \frac{\text{True Liberal}  } {\text{True Liberal} + \text{False Conservative}  }\nonumber \\
+\text{Recall}_{\text{Conservative}} & =  & \frac{\text{True Conservative}  } {\text{True Conservative} + \text{False Liberal}  }\nonumber 
+\end{eqnarray}
+
+\alert{Tension}:
+\begin{itemize}
+\item[-] Everything liberal: Recall$_{\text{Liberal}}$ =1 ; $\text{Recall}_{\text{Conservative}}=0$
+\item[-] Everything conservative: Recall$_{\text{Liberal}}$ =0 ; $\text{Recall}_{\text{Conservative}}=1$
+\end{itemize}
+
+Characterize Tradeoff: \\
+Plot True Positive Rate $\text{Recall}_{\text{Liberal}}$ \\
+ False Positive Rate (1 - $\text{Recall}_{\text{Conservative}}$) 
+
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Precision/Recall Tradeoff} 
+
+\scalebox{0.4}{\includegraphics{ROC.pdf}}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Simple Classification Example}
+
+Analyzing house press releases\\
+\alert{Hand Code}: 1,000 press releases
+\begin{itemize}
+\item[-] Advertising
+\item[-] Credit Claiming
+\item[-] Position Taking
+\end{itemize}
+Divide 1,000 press releases into two sets
+\begin{itemize}
+\item[-] 500: Training set
+\item[-] 500: Test set
+\end{itemize}
+
+\alert{Initial exploration}: provides baseline measurement at classifier performances \\
+\alert{Improve}: through improving model fit
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Example from First Model Fit} 
+
+
+
+\begin{tabular}{l|lll}
+ & \multicolumn{3}{c}{Actual Label} \\
+ \hline
+Classification (Naive Bayes) & Position Taking & Advertising & Credit Claim. \\ 
+Position Taking   &    10  &   0  &   0 \\
+Advertising   & 2  & 40  &  2 \\
+Credit Claiming   &   80 & 60 & 306\\
+\hline\hline
+\end{tabular}
+
+\footnotesize
+\begin{eqnarray}
+\text{Accuracy} & = & \frac{10 + 40 + 306} {500}  = 0.71 \nonumber  \\
+\text{Precision}_{PT} & = & \frac{10}{10}  = 1 \nonumber \\
+\text{Recall}_{PT} & = & \frac{10}{10 + 2 + 80 }  = 0.11 \nonumber \\
+\text{Precision}_{AD} & = & \frac{40}{40 + 2 + 2}  = 0.91 \nonumber \\
+\text{Recall}_{AD} & = & \frac{40}{40 + 60 }  = 0.4 \nonumber \\
+\text{Precision}_{Credit} & = & \frac{306}{306  + 80 + 60 } = 0.67 \nonumber  \\
+\text{Recall}_{Credit} & = & \frac{306}{306 + 2}  = 0.99 \nonumber 
+\end{eqnarray}
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Fit Statistics in R} 
+
+{\tt RWeka} library provides \textbf{Amazing} functionality.\\
+You can easily code them yourself
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Support Vector Machines} 
+
+Document $i$ is an $J \times 1$ vector of counts
+\begin{eqnarray}
+\boldsymbol{x}_i & = & (x_{1i}, x_{2i}, \hdots, x_{Ji} ) \nonumber 
+\end{eqnarray}
+
+Suppose we have \alert{two} classes, $C_1, C_2$.  
+\begin{eqnarray}
+Y_i & = & 1 \text{ if $i$ is in class 1} \nonumber \\
+Y_i & = & -1 \text{ if $i$ is in class 2} \nonumber 
+\end{eqnarray}
+
+
+
+Suppose they are \alert{separable}: 
+\begin{itemize} 
+\item[-] Draw a line between groups
+\item[-] Goal: identify the line \alert{in the middle} 
+\item[-] \alert{Maximum margin} 
+\end{itemize}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Support Vector Machines: Maximum Margin Classifier (Bishop 2006)} 
+
+\only<1>{\scalebox{0.45}{\includegraphics{SVM1.pdf}}}
+\only<2>{\scalebox{0.45}{\includegraphics{SVM2.pdf}}}
+\only<3>{\scalebox{0.45}{\includegraphics{SVM3.pdf}}}
+\only<4>{\scalebox{0.45}{\includegraphics{SVM4.pdf}}}
+\only<5>{\scalebox{0.45}{\includegraphics{SVM5.pdf}}}
+
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Support Vector Machines: Algebra (Bishop 2006) } 
+
+Goal create a score to classify: 
+\begin{eqnarray}
+s(\boldsymbol{x}_i) & = & \boldsymbol{\beta}^{'} \boldsymbol{x}_i + b \nonumber 
+\end{eqnarray} 
+
+
+
+\begin{itemize}
+\item[-] $\boldsymbol{\beta} $ Determines orientation of surface (slope) 
+\item[-] $b$ determines location (moves surface up or down)
+\item[-] If $s(\boldsymbol{x}_i) > 0 \rightarrow $ class 1
+\item[-] If $s(\boldsymbol{x}_i ) < 0 \rightarrow $ class 2 
+\item[-] $\frac{| s(\boldsymbol{x}_i) | } {|| \boldsymbol{\beta} || } $ = Document distance from decision surface  (margin) 
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Support Vector Machines: Algebra (Bishop 2006) } 
+
+Objective function: \alert{maximum} \textcolor{purple}{margin} \pause \\
+\invisible<1>{$\text{ min}_{i} [\text{   } | (s(\boldsymbol{x}_i) |\text{   } ]  $: Point closest to decision surface } \pause \\
+\invisible<1-2>{We want to identify $\boldsymbol{\beta}$ and $b$ to maximize the margin:  } \pause
+
+\begin{eqnarray}
+\invisible<1-3>{\text{arg max}_{\boldsymbol{\beta}, b }  \left\{ \frac{1}{||\boldsymbol{\beta} || } \text{ min}_{i} [\text{   } | (s(\boldsymbol{x}_i) |\text{   } ] \right\} \nonumber } \pause \\
+\invisible<1-4>{\text{arg max}_{\boldsymbol{\beta}, b }  \left\{ \frac{1}{||\boldsymbol{\beta} || } \text{ min}_{i} [\text{   } | \boldsymbol{\beta}^{'} \boldsymbol{x}_i + b |\text{   } ] \right\} \nonumber  } \pause
+\end{eqnarray}
+
+\invisible<1-5>{Constrained optimization problem$\leadsto$ Quadratic programming problem }  
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{What About Overlap? (Bishop 2006) }
+
+\begin{itemize}
+\item[-] Rare that classes are separable.\pause 
+\invisible<1>{\item[-] Define: } \pause 
+\end{itemize}
+\begin{eqnarray}
+\invisible<1-2>{\xi_i & = & 0 \text{  if correctly classified } } \pause \nonumber \\ 
+\invisible<1-3>{\xi_i & = & |s(\boldsymbol{x}_i) |  \text{ if incorrectly classified }} \nonumber \pause 
+\end{eqnarray}
+\invisible<1-4>{Tradeoff: } \pause
+\begin{itemize}
+\invisible<1-5>{\item[-] Maximize margin between correctly classified groups} \pause
+\invisible<1-6>{\item[-] Minimize error from misclassified documents } \pause
+\end{itemize}
+\begin{eqnarray}
+\invisible<1-7>{\text{arg max}_{\boldsymbol{\beta}, b }  \left\{ C\sum_{i=1}^{N} \xi_i +  \frac{1}{||\boldsymbol{\beta} || } \text{ min}_{i} [\text{   } | \boldsymbol{\beta}^{'} \boldsymbol{x}_i + b |\text{   } ] \right\}} \pause \nonumber 
+\end{eqnarray}
+
+\invisible<1-8>{\alert{C} captures tradeoff } \pause
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{How to Handle Multiple Comparisons?}
+
+\begin{itemize}
+\item[-] Rare that we only want to classify two categories \pause 
+\invisible<1>{\item[-] How to handle classification into $K$ groups? } \pause 
+\begin{itemize}
+\invisible<1-2>{\item[1)] Set up $K$ classification problems: } \pause 
+\begin{itemize}
+\invisible<1-3>{\item[-] Compare each class to all other classes} \pause 
+\invisible<1-4>{\item[-] Problem: can lead to inconsistent results} \pause 
+\invisible<1-5>{\item[-] Solution(?): select category with largest ``score"} \pause 
+\invisible<1-6>{\item[-] Problem: scales are not comparable} \pause 
+\end{itemize}
+\invisible<1-7>{\item[2)] Common solution: set up $K(K-1)/2$  classifications} \pause 
+\invisible<1-8>{\item[-] Perform vote to select class (still suboptimal) } \pause 
+\invisible<1-9>{\item[3)] Simultaneous estimation possible, much slower }
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{{\tt R} Code to Run SVMs } 
+
+
+{\tt library(e1071) } \\
+{\tt fit<- svm(T~. , as.data.frame(tdm) , method ='C', kernel='linear') } \\
+where:
+{\tt method = `C'} $\rightarrow$ Classification \\
+{\tt kernel='linear'} $\rightarrow$ allows for distortion of feature space.  Options:\\
+\begin{itemize} 
+\item[-] Linear
+\item[-] Polynomial
+\item[-] Radial
+\item[-] sigmoid
+\end{itemize}
+{\tt preds<- predict(fit, data = as.data.frame(tdm[-c(1:no.train),]))}
+
+
+
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Example of SVMs in Political Science Research} 
+
+Hillard, Purpura, Wilkerson: SVMs to code topic/sub topics for policy agendas project
+
+\scalebox{0.5}{\includegraphics{PurpuraWilkerson.png}}
+
+
+SVMs are \alert{under utilized} in political science
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{ReadMe: Optimization for a Different Goal (Hopkins and King 2010) } 
+
+Naive Bayes (and next week, SVM): focused on individual document classification. \pause \\
+\invisible<1>{But what if we're focused on \alert{proportions only}? } \pause  \\
+\invisible<1-2>{Hopkins and King (2010): method for characterizing distribution of classes} \pause  \\
+\invisible<1-3>{\alert{Can be much more accurate than individual classifiers}, requires fewer assumptions (\alert{do not need random sample of documents } ) .} \pause   
+\begin{itemize}
+\invisible<1-4>{\item[-] King and Lu (2008): derive method for characterizing causes of deaths for verbal autopsies }\pause 
+\invisible<1-5>{\item[-] Hopkins and King (2010): extend the method to text documents } \pause 
+\end{itemize}
+
+
+\invisible<1-6>{Basic intuition: } \pause 
+\begin{itemize}
+\invisible<1-7>{\item[-] Examine joint distribution of characteristics (without making Naive Bayes like assumption)
+\item[-] Focus on distributions (only) makes this analysis possible} 
+\end{itemize}
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{ReadMe: Optimization for a Different Goal (Hopkins and King 2010) } 
+
+Measure \alert{only} presence/absence of each term [$(J x 1) $ vector ] \pause 
+\begin{eqnarray}
+\invisible<1>{\boldsymbol{x}_i & = & (1, 0, 0, 1, \hdots, 0) \nonumber } \pause 
+\end{eqnarray}
+
+\invisible<1-2>{What are the possible realizations of $\boldsymbol{x}_i$?} \pause 
+\begin{itemize}
+\invisible<1-3>{\item[-] $2^{J}$ possible vectors} \pause 
+\end{itemize}
+
+\invisible<1-4>{Define:} \pause 
+\begin{eqnarray}
+\invisible<1-5>{P(\boldsymbol{x}) & = & \text{probability of observing } \boldsymbol{x}} \pause  \nonumber \\
+\invisible<1-6>{P(\boldsymbol{x}|C_j) & = & \text{Probability of observing } \boldsymbol{x} \text{ conditional on category } C_j} \pause  \nonumber \\
+\invisible<1-7>{P(\boldsymbol{X}| C) & = & \text{Matrix collecting vectors} } \pause \nonumber \\
+\invisible<1-8>{P(C ) & = & P(C_1, C_2, \hdots, C_K) \text{ target quantity of interest } } \pause \nonumber
+\end{eqnarray}
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{ReadMe: Optimization for a Different Goal (Hopkins and King 2010) } 
+
+\begin{eqnarray}
+\underbrace{P(\boldsymbol{x} )}_{2^{J} x 1}  & = & \underbrace{P(\boldsymbol{x}| C )}_{2^{J} x K}  \underbrace{P(C)}_{K x 1 }  \nonumber
+\end{eqnarray}
+Matrix algebra problem to solve, for $P(C)$ \\
+Like Naive Bayes, requires two pieces to estimate\\
+Complication $2^{J} >> \text{no. documents} $\\
+\alert{Kernel Smoothing Methods} (without a formal model)
+\begin{itemize}
+\item[-] $P(\boldsymbol{x})$ = estimate directly from test set
+\item[-] $P(\boldsymbol{x}| C)$ = estimate from training set 
+\begin{itemize}
+\item[-] Key assumption: $P(\boldsymbol{x}| C)$ in training set is equivalent to $P(\boldsymbol{x}| C)$ in test set
+\end{itemize}
+\item[-] If true, can perform biased sampling of documents, worry less about drift...
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Algorithm Summarized} 
+
+\begin{itemize}
+\item[-] Estimate $\hat{p}(\boldsymbol{x})$ from test set
+\item[-] Estimate $\hat{p}(\boldsymbol{x}|C)$ from training set 
+\item[-] Use $\hat{p}(\boldsymbol{x})$ and $\hat{p}(\boldsymbol{x}|C)$ to solve for $p(C)$
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Assessing Model Performance} 
+
+Not classifying individual documents $\rightarrow$ different standards\\
+\alert{Mean Square Error} : 
+\begin{eqnarray}
+\text{E}[(\hat{\theta} - \theta) ^2] & = & \text{var} (\hat{\theta} ) + \text{Bias}(\hat{\theta},  \theta)^2 \nonumber 
+\end{eqnarray}
+Suppose we have true proportions $P(C)^{\text{true}}$.  Then, we'll estimate \alert{Root Mean Square Error } 
+\begin{eqnarray}
+\text{RMSE} & = & \sqrt{ \frac{\sum_{j=1}^{J} (P(C_j)^{\text{true}} - P(C_j) ) } {J} } \nonumber \\
+\text{Mean Abs. Prediction Error} & = & | \frac{\sum_{j=1}^{J} (P(C_j)^{\text{true}} - P(C_j) ) } {J} | \nonumber
+\end{eqnarray}
+
+\alert{Visualize}: plot true and estimated proportions
+
+
+\end{frame}
+
+
+\begin{frame}
+\begin{center}
+\only<1>{\scalebox{0.8}{\includegraphics{Shot1.png}}} 
+\end{center}
+\only<2>{\scalebox{0.5}{\includegraphics{Shot2.png}}}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Using the House Press Release Data}
+
+\begin{tabular}{lll} 
+\hline\hline
+Method & RMSE & APSE  \\
+\hline
+ReadMe &  0.036  & 0.056 \\
+NaiveBayes & 0.096 & 0.14 \\
+SVM & 0.052 & 0.084 \\
+\hline
+\end{tabular}
+
+
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Code to Run in R}
+
+
+
+
+
+Control file: \\
+\begin{tabular}{lll} 
+filename & truth & trainingset \\
+\hline
+20July2009LEWIS53.txt & 4 & \alert{1} \\
+26July2006LEWIS249.txt & 2 & \alert{0} \\
+\hline
+\end{tabular} 
+
+
+
+{\tt tdm<- undergrad(control=control, fullfreq=F)  } \\
+{\tt process<- preprocess(tdm) } \\
+{\tt output<- undergrad(process) } \\
+{\tt output\$est.CSMF \#\# proportion in each category} \\
+{\tt output\$true.CSMF \#\# if labeled for validation set (but not used in training set) } 
+
+
+
+\end{frame}
+
+\begin{frame}
+
+\alert{Model Selection!}
+
+\end{frame}
+
+
+
+\end{document}

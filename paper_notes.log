@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  18 SEP 2017 00:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  7 DEC 2017 00:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -506,71 +506,12 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip43
 )
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2016/03/10 v2.15b AMS math features
-\@mathmargin=\skip44
-
-For additional information on amsmath, use the `?' option.
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amstext.sty
-Package: amstext 2000/06/29 v2.01 AMS text
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsgen.sty
-File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks19
-\ex@=\dimen115
-))
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsbsy.sty
-Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-LaTeX Info: Redefining \boldsymbol on input line 28.
-\pmbraise@=\dimen116
-)
-(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsopn.sty
-Package: amsopn 2016/03/08 v2.02 operator names
-)
-\inf@bad=\count101
-LaTeX Info: Redefining \frac on input line 199.
-\uproot@=\count102
-\leftroot@=\count103
-LaTeX Info: Redefining \overline on input line 297.
-\classnum@=\count104
-\DOTSCASE@=\count105
-LaTeX Info: Redefining \ldots on input line 394.
-LaTeX Info: Redefining \dots on input line 397.
-LaTeX Info: Redefining \cdots on input line 518.
-\Mathstrutbox@=\box26
-\strutbox@=\box27
-\big@size=\dimen117
-LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
-\macc@depth=\count106
-\c@MaxMatrixCols=\count107
-\dotsspace@=\muskip11
-\c@parentequation=\count108
-\dspbrk@lvl=\count109
-\tag@help=\toks20
-\row@=\count110
-\column@=\count111
-\maxfields@=\count112
-\andhelp@=\toks21
-\eqnshift@=\dimen118
-\alignsep@=\dimen119
-\tagshift@=\dimen120
-\tagwidth@=\dimen121
-\totwidth@=\dimen122
-\lineht@=\dimen123
-\@envbody=\toks22
-\multlinegap=\skip45
-\multlinetaggap=\skip46
-\mathdisplay@stack=\toks23
-LaTeX Info: Redefining \[ on input line 2739.
-LaTeX Info: Redefining \] on input line 2740.
-)
 (/usr/local/texlive/2016/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip47
-\bibsep=\skip48
+\bibhang=\skip44
+\bibsep=\skip45
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count113
+\c@NAT@ctr=\count101
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
@@ -582,7 +523,7 @@ Package xcolor Info: Driver file: pdftex.def on input line 225.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
-\Gread@gobject=\count114
+\Gread@gobject=\count102
 )
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
@@ -594,10 +535,16 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
+(/usr/local/texlive/2016/texmf-dist/tex/latex/calrsfs/calrsfs.sty
+\symrsfscript=\mathgroup10
+)
 (/usr/local/texlive/2016/texmf-dist/tex/latex/natbib/bibentry.sty
 Package: bibentry 2007/10/30 1.5 (PWD)
 )
 (./paper_notes.bbl)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
 (/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
@@ -612,8 +559,8 @@ File: graphics.cfg 2016/01/02 v1.10 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 96.
 )
-\Gin@req@height=\dimen124
-\Gin@req@width=\dimen125
+\Gin@req@height=\dimen115
+\Gin@req@width=\dimen116
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/mdframed/mdframed.sty
 Package: mdframed 2013/07/01 1.9b: mdframed
@@ -632,118 +579,118 @@ L3 Module: l3tl 2016/03/26 v6465 L3 Token lists
 L3 Module: l3str 2016/03/24 v6441 L3 Strings
 L3 Module: l3seq 2015/08/05 v5777 L3 Sequences and stacks
 L3 Module: l3int 2016/03/24 v6441 L3 Integers
-\c_max_int=\count115
-\l_tmpa_int=\count116
-\l_tmpb_int=\count117
-\g_tmpa_int=\count118
-\g_tmpb_int=\count119
+\c_max_int=\count103
+\l_tmpa_int=\count104
+\l_tmpb_int=\count105
+\g_tmpa_int=\count106
+\g_tmpb_int=\count107
 L3 Module: l3quark 2015/08/17 v5855 L3 Quarks
 L3 Module: l3prg 2015/11/01 v6216 L3 Control structures
-\g__prg_map_int=\count120
+\g__prg_map_int=\count108
 L3 Module: l3clist 2015/09/02 v5901 L3 Comma separated lists
 L3 Module: l3token 2016/04/03 v6470 L3 Experimental token manipulation
 L3 Module: l3prop 2016/01/05 v6366 L3 Property lists
 L3 Module: l3msg 2016/03/26 v6464 L3 Messages
 L3 Module: l3file 2016/03/25 v6458 L3 File and I/O operations
-\l_iow_line_count_int=\count121
-\l__iow_target_count_int=\count122
-\l__iow_current_line_int=\count123
-\l__iow_current_word_int=\count124
-\l__iow_current_indentation_int=\count125
+\l_iow_line_count_int=\count109
+\l__iow_target_count_int=\count110
+\l__iow_current_line_int=\count111
+\l__iow_current_word_int=\count112
+\l__iow_current_indentation_int=\count113
 L3 Module: l3skip 2016/01/05 v6366 L3 Dimensions and skips
-\c_zero_dim=\dimen126
-\c_max_dim=\dimen127
-\l_tmpa_dim=\dimen128
-\l_tmpb_dim=\dimen129
-\g_tmpa_dim=\dimen130
-\g_tmpb_dim=\dimen131
-\c_zero_skip=\skip49
-\c_max_skip=\skip50
-\l_tmpa_skip=\skip51
-\l_tmpb_skip=\skip52
-\g_tmpa_skip=\skip53
-\g_tmpb_skip=\skip54
-\c_zero_muskip=\muskip12
-\c_max_muskip=\muskip13
-\l_tmpa_muskip=\muskip14
-\l_tmpb_muskip=\muskip15
-\g_tmpa_muskip=\muskip16
-\g_tmpb_muskip=\muskip17
+\c_zero_dim=\dimen117
+\c_max_dim=\dimen118
+\l_tmpa_dim=\dimen119
+\l_tmpb_dim=\dimen120
+\g_tmpa_dim=\dimen121
+\g_tmpb_dim=\dimen122
+\c_zero_skip=\skip46
+\c_max_skip=\skip47
+\l_tmpa_skip=\skip48
+\l_tmpb_skip=\skip49
+\g_tmpa_skip=\skip50
+\g_tmpb_skip=\skip51
+\c_zero_muskip=\muskip11
+\c_max_muskip=\muskip12
+\l_tmpa_muskip=\muskip13
+\l_tmpb_muskip=\muskip14
+\g_tmpa_muskip=\muskip15
+\g_tmpb_muskip=\muskip16
 L3 Module: l3keys 2015/11/17 v6284 L3 Key-value interfaces
-\g__keyval_level_int=\count126
-\l_keys_choice_int=\count127
+\g__keyval_level_int=\count114
+\l_keys_choice_int=\count115
 L3 Module: l3fp 2016/03/26 v6465 L3 Floating points
-\c__fp_leading_shift_int=\count128
-\c__fp_middle_shift_int=\count129
-\c__fp_trailing_shift_int=\count130
-\c__fp_big_leading_shift_int=\count131
-\c__fp_big_middle_shift_int=\count132
-\c__fp_big_trailing_shift_int=\count133
-\c__fp_Bigg_leading_shift_int=\count134
-\c__fp_Bigg_middle_shift_int=\count135
-\c__fp_Bigg_trailing_shift_int=\count136
+\c__fp_leading_shift_int=\count116
+\c__fp_middle_shift_int=\count117
+\c__fp_trailing_shift_int=\count118
+\c__fp_big_leading_shift_int=\count119
+\c__fp_big_middle_shift_int=\count120
+\c__fp_big_trailing_shift_int=\count121
+\c__fp_Bigg_leading_shift_int=\count122
+\c__fp_Bigg_middle_shift_int=\count123
+\c__fp_Bigg_trailing_shift_int=\count124
 L3 Module: l3box 2015/08/09 v5822 L3 Experimental boxes
-\c_empty_box=\box28
-\l_tmpa_box=\box29
-\l_tmpb_box=\box30
-\g_tmpa_box=\box31
-\g_tmpb_box=\box32
+\c_empty_box=\box26
+\l_tmpa_box=\box27
+\l_tmpb_box=\box28
+\g_tmpa_box=\box29
+\g_tmpb_box=\box30
 L3 Module: l3coffins 2016/05/17 v6508 L3 Coffin code layer
-\l__coffin_internal_box=\box33
-\l__coffin_internal_dim=\dimen132
-\l__coffin_offset_x_dim=\dimen133
-\l__coffin_offset_y_dim=\dimen134
-\l__coffin_x_dim=\dimen135
-\l__coffin_y_dim=\dimen136
-\l__coffin_x_prime_dim=\dimen137
-\l__coffin_y_prime_dim=\dimen138
-\c_empty_coffin=\box34
-\l__coffin_aligned_coffin=\box35
-\l__coffin_aligned_internal_coffin=\box36
-\l_tmpa_coffin=\box37
-\l_tmpb_coffin=\box38
-\l__coffin_display_coffin=\box39
-\l__coffin_display_coord_coffin=\box40
-\l__coffin_display_pole_coffin=\box41
-\l__coffin_display_offset_dim=\dimen139
-\l__coffin_display_x_dim=\dimen140
-\l__coffin_display_y_dim=\dimen141
+\l__coffin_internal_box=\box31
+\l__coffin_internal_dim=\dimen123
+\l__coffin_offset_x_dim=\dimen124
+\l__coffin_offset_y_dim=\dimen125
+\l__coffin_x_dim=\dimen126
+\l__coffin_y_dim=\dimen127
+\l__coffin_x_prime_dim=\dimen128
+\l__coffin_y_prime_dim=\dimen129
+\c_empty_coffin=\box32
+\l__coffin_aligned_coffin=\box33
+\l__coffin_aligned_internal_coffin=\box34
+\l_tmpa_coffin=\box35
+\l_tmpb_coffin=\box36
+\l__coffin_display_coffin=\box37
+\l__coffin_display_coord_coffin=\box38
+\l__coffin_display_pole_coffin=\box39
+\l__coffin_display_offset_dim=\dimen130
+\l__coffin_display_x_dim=\dimen131
+\l__coffin_display_y_dim=\dimen132
 L3 Module: l3color 2014/08/23 v5354 L3 Experimental color support
 L3 Module: l3sys 2015/09/25 v6087 L3 Experimental system/runtime functions
 L3 Module: l3candidates 2016/05/13 v6484 L3 Experimental additions to l3kernel
-\l__box_top_dim=\dimen142
-\l__box_bottom_dim=\dimen143
-\l__box_left_dim=\dimen144
-\l__box_right_dim=\dimen145
-\l__box_top_new_dim=\dimen146
-\l__box_bottom_new_dim=\dimen147
-\l__box_left_new_dim=\dimen148
-\l__box_right_new_dim=\dimen149
-\l__box_internal_box=\box42
-\l__coffin_bounding_shift_dim=\dimen150
-\l__coffin_left_corner_dim=\dimen151
-\l__coffin_right_corner_dim=\dimen152
-\l__coffin_bottom_corner_dim=\dimen153
-\l__coffin_top_corner_dim=\dimen154
-\l__coffin_scaled_total_height_dim=\dimen155
-\l__coffin_scaled_width_dim=\dimen156
+\l__box_top_dim=\dimen133
+\l__box_bottom_dim=\dimen134
+\l__box_left_dim=\dimen135
+\l__box_right_dim=\dimen136
+\l__box_top_new_dim=\dimen137
+\l__box_bottom_new_dim=\dimen138
+\l__box_left_new_dim=\dimen139
+\l__box_right_new_dim=\dimen140
+\l__box_internal_box=\box40
+\l__coffin_bounding_shift_dim=\dimen141
+\l__coffin_left_corner_dim=\dimen142
+\l__coffin_right_corner_dim=\dimen143
+\l__coffin_bottom_corner_dim=\dimen144
+\l__coffin_top_corner_dim=\dimen145
+\l__coffin_scaled_total_height_dim=\dimen146
+\l__coffin_scaled_width_dim=\dimen147
 L3 Module: l3luatex 2016/03/26 v6465 L3 Experimental LuaTeX-specific functions
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/l3kernel/l3pdfmode.def
 File: l3pdfmode.def 2016/03/26 v6465 L3 Experimental driver: PDF mode
-\l__driver_color_stack_int=\count137
-\l__driver_tmp_box=\box43
+\l__driver_color_stack_int=\count125
+\l__driver_tmp_box=\box41
 ))
 Package: xparse 2016/05/18 v6512 L3 Experimental document command parser
-\l__xparse_current_arg_int=\count138
-\l__xparse_m_args_int=\count139
-\l__xparse_mandatory_args_int=\count140
-\l__xparse_processor_int=\count141
-\l__xparse_v_nesting_int=\count142
+\l__xparse_current_arg_int=\count126
+\l__xparse_m_args_int=\count127
+\l__xparse_mandatory_args_int=\count128
+\l__xparse_processor_int=\count129
+\l__xparse_v_nesting_int=\count130
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count143
+\etb@tempcnta=\count131
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/zref-abspage.sty
 Package: zref-abspage 2016/05/16 v2.25 Module abspage for zref (HO)
@@ -754,90 +701,90 @@ Package zref Info: New property list: main on input line 759.
 Package zref Info: New property: default on input line 760.
 Package zref Info: New property: page on input line 761.
 )
-\c@abspage=\count144
+\c@abspage=\count132
 Package zref Info: New property: abspage on input line 62.
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/needspace/needspace.sty
 Package: needspace 2010/09/12 v1.3d reserve vertical space
 )
-\mdf@templength=\skip55
-\c@mdf@globalstyle@cnt=\count145
-\mdf@skipabove@length=\skip56
-\mdf@skipbelow@length=\skip57
-\mdf@leftmargin@length=\skip58
-\mdf@rightmargin@length=\skip59
-\mdf@innerleftmargin@length=\skip60
-\mdf@innerrightmargin@length=\skip61
-\mdf@innertopmargin@length=\skip62
-\mdf@innerbottommargin@length=\skip63
-\mdf@splittopskip@length=\skip64
-\mdf@splitbottomskip@length=\skip65
-\mdf@outermargin@length=\skip66
-\mdf@innermargin@length=\skip67
-\mdf@linewidth@length=\skip68
-\mdf@innerlinewidth@length=\skip69
-\mdf@middlelinewidth@length=\skip70
-\mdf@outerlinewidth@length=\skip71
-\mdf@roundcorner@length=\skip72
-\mdf@footenotedistance@length=\skip73
-\mdf@userdefinedwidth@length=\skip74
-\mdf@needspace@length=\skip75
-\mdf@frametitleaboveskip@length=\skip76
-\mdf@frametitlebelowskip@length=\skip77
-\mdf@frametitlerulewidth@length=\skip78
-\mdf@frametitleleftmargin@length=\skip79
-\mdf@frametitlerightmargin@length=\skip80
-\mdf@shadowsize@length=\skip81
-\mdf@extratopheight@length=\skip82
-\mdf@subtitleabovelinewidth@length=\skip83
-\mdf@subtitlebelowlinewidth@length=\skip84
-\mdf@subtitleaboveskip@length=\skip85
-\mdf@subtitlebelowskip@length=\skip86
-\mdf@subtitleinneraboveskip@length=\skip87
-\mdf@subtitleinnerbelowskip@length=\skip88
-\mdf@subsubtitleabovelinewidth@length=\skip89
-\mdf@subsubtitlebelowlinewidth@length=\skip90
-\mdf@subsubtitleaboveskip@length=\skip91
-\mdf@subsubtitlebelowskip@length=\skip92
-\mdf@subsubtitleinneraboveskip@length=\skip93
-\mdf@subsubtitleinnerbelowskip@length=\skip94
+\mdf@templength=\skip52
+\c@mdf@globalstyle@cnt=\count133
+\mdf@skipabove@length=\skip53
+\mdf@skipbelow@length=\skip54
+\mdf@leftmargin@length=\skip55
+\mdf@rightmargin@length=\skip56
+\mdf@innerleftmargin@length=\skip57
+\mdf@innerrightmargin@length=\skip58
+\mdf@innertopmargin@length=\skip59
+\mdf@innerbottommargin@length=\skip60
+\mdf@splittopskip@length=\skip61
+\mdf@splitbottomskip@length=\skip62
+\mdf@outermargin@length=\skip63
+\mdf@innermargin@length=\skip64
+\mdf@linewidth@length=\skip65
+\mdf@innerlinewidth@length=\skip66
+\mdf@middlelinewidth@length=\skip67
+\mdf@outerlinewidth@length=\skip68
+\mdf@roundcorner@length=\skip69
+\mdf@footenotedistance@length=\skip70
+\mdf@userdefinedwidth@length=\skip71
+\mdf@needspace@length=\skip72
+\mdf@frametitleaboveskip@length=\skip73
+\mdf@frametitlebelowskip@length=\skip74
+\mdf@frametitlerulewidth@length=\skip75
+\mdf@frametitleleftmargin@length=\skip76
+\mdf@frametitlerightmargin@length=\skip77
+\mdf@shadowsize@length=\skip78
+\mdf@extratopheight@length=\skip79
+\mdf@subtitleabovelinewidth@length=\skip80
+\mdf@subtitlebelowlinewidth@length=\skip81
+\mdf@subtitleaboveskip@length=\skip82
+\mdf@subtitlebelowskip@length=\skip83
+\mdf@subtitleinneraboveskip@length=\skip84
+\mdf@subtitleinnerbelowskip@length=\skip85
+\mdf@subsubtitleabovelinewidth@length=\skip86
+\mdf@subsubtitlebelowlinewidth@length=\skip87
+\mdf@subsubtitleaboveskip@length=\skip88
+\mdf@subsubtitlebelowskip@length=\skip89
+\mdf@subsubtitleinneraboveskip@length=\skip90
+\mdf@subsubtitleinnerbelowskip@length=\skip91
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/mdframed/md-frame-0.mdf
 File: md-frame-0.mdf 2013/07/01\ 1.9b: md-frame-0
 )
-\mdf@frametitlebox=\box44
-\mdf@footnotebox=\box45
-\mdf@splitbox@one=\box46
-\mdf@splitbox@two=\box47
-\mdf@splitbox@save=\box48
-\mdfsplitboxwidth=\skip95
-\mdfsplitboxtotalwidth=\skip96
-\mdfsplitboxheight=\skip97
-\mdfsplitboxdepth=\skip98
-\mdfsplitboxtotalheight=\skip99
-\mdfframetitleboxwidth=\skip100
-\mdfframetitleboxtotalwidth=\skip101
-\mdfframetitleboxheight=\skip102
-\mdfframetitleboxdepth=\skip103
-\mdfframetitleboxtotalheight=\skip104
-\mdffootnoteboxwidth=\skip105
-\mdffootnoteboxtotalwidth=\skip106
-\mdffootnoteboxheight=\skip107
-\mdffootnoteboxdepth=\skip108
-\mdffootnoteboxtotalheight=\skip109
-\mdftotallinewidth=\skip110
-\mdfboundingboxwidth=\skip111
-\mdfboundingboxtotalwidth=\skip112
-\mdfboundingboxheight=\skip113
-\mdfboundingboxdepth=\skip114
-\mdfboundingboxtotalheight=\skip115
-\mdf@freevspace@length=\skip116
-\mdf@horizontalwidthofbox@length=\skip117
-\mdf@verticalmarginwhole@length=\skip118
-\mdf@horizontalspaceofbox=\skip119
-\mdfsubtitleheight=\skip120
-\mdfsubsubtitleheight=\skip121
-\c@mdfcountframes=\count146
+\mdf@frametitlebox=\box42
+\mdf@footnotebox=\box43
+\mdf@splitbox@one=\box44
+\mdf@splitbox@two=\box45
+\mdf@splitbox@save=\box46
+\mdfsplitboxwidth=\skip92
+\mdfsplitboxtotalwidth=\skip93
+\mdfsplitboxheight=\skip94
+\mdfsplitboxdepth=\skip95
+\mdfsplitboxtotalheight=\skip96
+\mdfframetitleboxwidth=\skip97
+\mdfframetitleboxtotalwidth=\skip98
+\mdfframetitleboxheight=\skip99
+\mdfframetitleboxdepth=\skip100
+\mdfframetitleboxtotalheight=\skip101
+\mdffootnoteboxwidth=\skip102
+\mdffootnoteboxtotalwidth=\skip103
+\mdffootnoteboxheight=\skip104
+\mdffootnoteboxdepth=\skip105
+\mdffootnoteboxtotalheight=\skip106
+\mdftotallinewidth=\skip107
+\mdfboundingboxwidth=\skip108
+\mdfboundingboxtotalwidth=\skip109
+\mdfboundingboxheight=\skip110
+\mdfboundingboxdepth=\skip111
+\mdfboundingboxtotalheight=\skip112
+\mdf@freevspace@length=\skip113
+\mdf@horizontalwidthofbox@length=\skip114
+\mdf@verticalmarginwhole@length=\skip115
+\mdf@horizontalspaceofbox=\skip116
+\mdfsubtitleheight=\skip117
+\mdfsubsubtitleheight=\skip118
+\c@mdfcountframes=\count134
 
 ****** mdframed patching \endmdf@trivlist
 
@@ -853,34 +800,34 @@ File: md-frame-0.mdf 2013/07/01\ 1.9b: md-frame-0
 . 
 . Defining command \mdtheorem with sig. ' O{} m o m o ' on line 701.
 .................................................
-\mdf@envdepth=\count147
-\c@mdf@env@i=\count148
-\c@mdf@env@ii=\count149
-\c@mdf@zref@counter=\count150
+\mdf@envdepth=\count135
+\c@mdf@env@i=\count136
+\c@mdf@env@ii=\count137
+\c@mdf@zref@counter=\count138
 Package zref Info: New property: mdf@pagevalue on input line 895.
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/showexpl/showexpl.sty
 Package: showexpl 2014/01/19 v0.3l Typesetting example code (RN)
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count151
-\lst@gtempboxa=\box49
-\lst@token=\toks24
-\lst@length=\count152
-\lst@currlwidth=\dimen157
-\lst@column=\count153
-\lst@pos=\count154
-\lst@lostspace=\dimen158
-\lst@width=\dimen159
-\lst@newlines=\count155
-\lst@lineno=\count156
-\lst@maxwidth=\dimen160
+\lst@mode=\count139
+\lst@gtempboxa=\box47
+\lst@token=\toks19
+\lst@length=\count140
+\lst@currlwidth=\dimen148
+\lst@column=\count141
+\lst@pos=\count142
+\lst@lostspace=\dimen149
+\lst@width=\dimen150
+\lst@newlines=\count143
+\lst@lineno=\count144
+\lst@maxwidth=\dimen151
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count157
-\lst@skipnumbers=\count158
-\lst@framebox=\box50
+\c@lstnumber=\count145
+\lst@skipnumbers=\count146
+\lst@framebox=\box48
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2015/06/04 1.6 listings configuration
@@ -889,34 +836,34 @@ Package: listings 2015/06/04 1.6 (Carsten Heinz)
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count159
-\calc@Bcount=\count160
-\calc@Adimen=\dimen161
-\calc@Bdimen=\dimen162
-\calc@Askip=\skip122
-\calc@Bskip=\skip123
+\calc@Acount=\count147
+\calc@Bcount=\count148
+\calc@Adimen=\dimen152
+\calc@Bdimen=\dimen153
+\calc@Askip=\skip119
+\calc@Bskip=\skip120
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count161
-\calc@Cskip=\skip124
+\calc@Ccount=\count149
+\calc@Cskip=\skip121
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
-\@vwid@box=\box51
-\sift@deathcycles=\count162
-\@vwid@loff=\dimen163
-\@vwid@roff=\dimen164
+\@vwid@box=\box49
+\sift@deathcycles=\count150
+\@vwid@loff=\dimen154
+\@vwid@roff=\dimen155
 )
 (/usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\lst@WFtoken=\toks25
+\lst@WFtoken=\toks20
 \lst@WF=\write3
 )
-\SX@ResBox=\box52
-\c@ltxexample=\count163
+\SX@ResBox=\box50
+\c@ltxexample=\count151
 )
 (/usr/local/texlive/2016/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2016/04/23 3.9r The Babel package
@@ -926,46 +873,127 @@ Language: english 2012/08/20 v3.3p English support from the babel system
 
 (/usr/local/texlive/2016/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2016/04/23 3.9r Babel common definitions
-\babel@savecnt=\count164
-\U@D=\dimen165
+\babel@savecnt=\count152
+\U@D=\dimen156
 )
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
 ))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/tocbibind/tocbibind.sty
+Package: tocbibind 2010/10/13 v1.5k extra ToC listings
+Package tocbibind Info: The document has chapter divisions on input line 50.
+
+
+Package tocbibind Note: Using chapter style headings, unless overridden.
+
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/bookmark.sty
+Package: bookmark 2016/05/16 v1.25 PDF bookmarks (HO)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/bkm-pdftex.def
+File: bkm-pdftex.def 2016/05/16 v1.25 bookmark driver for pdfTeX (HO)
+\BKM@id=\count153
+))
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2015/03/04 v2.20.2
-\thm@style=\toks26
-\thm@bodyfont=\toks27
-\thm@headfont=\toks28
-\thm@notefont=\toks29
-\thm@headpunct=\toks30
-\thm@preskip=\skip125
-\thm@postskip=\skip126
-\thm@headsep=\skip127
-\dth@everypar=\toks31
+\thm@style=\toks21
+\thm@bodyfont=\toks22
+\thm@headfont=\toks23
+\thm@notefont=\toks24
+\thm@headpunct=\toks25
+\thm@preskip=\skip122
+\thm@postskip=\skip123
+\thm@headsep=\skip124
+\dth@everypar=\toks26
 )
-\c@thm=\count165
-\c@prop=\count166
-\c@obs=\count167
+\c@thm=\count154
+\c@defn=\count155
+\c@exmp=\count156
+\c@obs=\count157
 
-(./paper_notes.aux)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2016/03/10 v2.15b AMS math features
+\@mathmargin=\skip125
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks27
+\ex@=\dimen157
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+LaTeX Info: Redefining \boldsymbol on input line 28.
+\pmbraise@=\dimen158
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count158
+LaTeX Info: Redefining \frac on input line 199.
+\uproot@=\count159
+\leftroot@=\count160
+LaTeX Info: Redefining \overline on input line 297.
+\classnum@=\count161
+\DOTSCASE@=\count162
+LaTeX Info: Redefining \ldots on input line 394.
+LaTeX Info: Redefining \dots on input line 397.
+LaTeX Info: Redefining \cdots on input line 518.
+\Mathstrutbox@=\box51
+\strutbox@=\box52
+\big@size=\dimen159
+LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
+\macc@depth=\count163
+\c@MaxMatrixCols=\count164
+\dotsspace@=\muskip17
+\c@parentequation=\count165
+\dspbrk@lvl=\count166
+\tag@help=\toks28
+\row@=\count167
+\column@=\count168
+\maxfields@=\count169
+\andhelp@=\toks29
+\eqnshift@=\dimen160
+\alignsep@=\dimen161
+\tagshift@=\dimen162
+\tagwidth@=\dimen163
+\totwidth@=\dimen164
+\lineht@=\dimen165
+\@envbody=\toks30
+\multlinegap=\skip126
+\multlinetaggap=\skip127
+\mathdisplay@stack=\toks31
+LaTeX Info: Redefining \[ on input line 2739.
+LaTeX Info: Redefining \] on input line 2740.
+)
+(./paper_notes.aux
+
+LaTeX Warning: Label `sec:seminar_notes' multiply defined.
+
+
+LaTeX Warning: Label `sec:seminar_notes' multiply defined.
+
+)
 \openout1 = `paper_notes.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1002,36 +1030,31 @@ LaTeX Font Info:    ... okay on input line 55.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box53
-Package hyperref Info: Link coloring OFF on input line 55.
+Package hyperref Info: Link coloring OFF on input line 86.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count168
+\c@section@level=\count170
 )
-LaTeX Info: Redefining \ref on input line 55.
-LaTeX Info: Redefining \pageref on input line 55.
-LaTeX Info: Redefining \nameref on input line 55.
-
-(./paper_notes.out) (./paper_notes.out)
-\@outlinefile=\write4
-\openout4 = `paper_notes.out'.
-
+LaTeX Info: Redefining \ref on input line 86.
+LaTeX Info: Redefining \pageref on input line 86.
+LaTeX Info: Redefining \nameref on input line 86.
 
 (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count169
+\scratchcounter=\count171
 \scratchdimen=\dimen166
 \scratchbox=\box54
-\nofMPsegments=\count170
-\nofMParguments=\count171
+\nofMPsegments=\count172
+\nofMParguments=\count173
 \everyMPshowfont=\toks32
-\MPscratchCnt=\count172
+\MPscratchCnt=\count174
 \MPscratchDim=\dimen167
-\MPnumerator=\count173
-\makeMPintoPDFobject=\count174
+\MPnumerator=\count175
+\makeMPintoPDFobject=\count176
 \everyMPtoPDFconversion=\toks33
 ) (/usr/local/texlive/2016/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -1048,201 +1071,454 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count175
+\c@lstlisting=\count177
 
 (./paper_notes.toc
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 3.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 5.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 3.
+LaTeX Font Info:    Try loading font information for U+msa on input line 5.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 3.
+LaTeX Font Info:    Try loading font information for U+msb on input line 5.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-))
-\tf@toc=\write5
-\openout5 = `paper_notes.toc'.
+)
+LaTeX Font Info:    Try loading font information for OMS+rsfs on input line 5.
 
- [1
+(/usr/local/texlive/2016/texmf-dist/tex/latex/calrsfs/OMSrsfs.fd) [1
 
 
-{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2
+{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2])
+\tf@toc=\write4
+\openout4 = `paper_notes.toc'.
+
+ [3] [4
 
 ]
+[5] [6]
 Chapter 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 70--71
+Underfull \hbox (badness 10000) in paragraph at lines 105--106
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 98--99
+Underfull \hbox (badness 10000) in paragraph at lines 133--134
 
  []
 
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 104--105
+[7
 
- []
-
-[4]
-Chapter 2.
-
+]
 Underfull \hbox (badness 10000) in paragraph at lines 139--140
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 141--143
-
- []
-
-[5
+[8] [9] [10
 
 ]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 158.
+Chapter 2.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 225.
 
- (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 158.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 225.
 
-Underfull \hbox (badness 10000) in paragraph at lines 180--181
+Overfull \hbox (106.4902pt too wide) in paragraph at lines 260--261
+[][]$\OT1/cmtt/m/n/10 https : / / www . kellogg . northwestern . edu / research
+computing / docs / ParallelComputing / ParallelizationForRBCModel .
+ []
+
+
+Overfull \hbox (21.04724pt too wide) in paragraph at lines 262--263
+[]\OT1/cmr/m/n/10 Another source: []$\OT1/cmtt/m/n/10 https : / / bfi . uchicag
+o . edu / sites / default / files / file _ uploads / Lecture _ Parallel _
+ []
+
+[11]pdfTeX warning (ext4): destination with the same identifier (name{cite.Gent
+zkow_el.al:17WP}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.272 	\item \bibentry{Gentzkow_el.al:17WP}
+                                           
+Underfull \hbox (badness 10000) in paragraph at lines 285--286
 
  []
 
-Package mdframed Info: mdframed works in twoside mode on input line 182.
+
+Underfull \hbox (badness 10000) in paragraph at lines 287--289
+
+ []
+
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 326--327
+
+ []
+
+Package mdframed Info: mdframed works in twoside mode on input line 328.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 182.
-[6] [7] [8]
-Chapter 3.
-
-Underfull \hbox (badness 10000) in paragraph at lines 258--259
+(mdframed)              on input line 328.
+[13] [14]
+Underfull \hbox (badness 10000) in paragraph at lines 409--411
 
  []
 
-[9
+[15] [16]
+Underfull \hbox (badness 10000) in paragraph at lines 464--466
 
-] [10
+ []
+
+[17] [18]pdfTeX warning (ext4): destination with the same identifier (name{cite
+.Gentzkow_el.al:17WP}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.609 ...m also see \bibentry{Gentzkow_el.al:17WP}
+                                                   [19] [20
 
 ]
+Chapter 3.
+[21] [22] [23]
+Underfull \hbox (badness 10000) in paragraph at lines 802--803
+
+ []
+
+[24] [25] [26] [27]
+Underfull \hbox (badness 10000) in paragraph at lines 991--992
+
+ []
+
+[28]
+Underfull \hbox (badness 10000) in paragraph at lines 1050--1052
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1074--1076
+
+ []
+
+[29] [30]
 Chapter 4.
-[11] [12
+
+Underfull \hbox (badness 10000) in paragraph at lines 1164--1165
+
+ []
+
+[31
+
+] [32
 
 ]
 Chapter 5.
-[13] <images/kiyotaki-moore-97.png, id=201, 630.355pt x 380.42125pt>
+[33] [34
+
+]
+Chapter 6.
+[35] [36
+
+]
+Chapter 7.
+[37] <images/kiyotaki-moore-97.png, id=480, 630.355pt x 380.42125pt>
 File: images/kiyotaki-moore-97.png Graphic file (type png)
 
 <use images/kiyotaki-moore-97.png>
-Package pdftex.def Info: images/kiyotaki-moore-97.png used on input line 358.
+Package pdftex.def Info: images/kiyotaki-moore-97.png used on input line 1286.
 (pdftex.def)             Requested size: 469.75502pt x 283.49834pt.
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 358--359
+Overfull \hbox (15.0pt too wide) in paragraph at lines 1286--1287
 [][] 
  []
 
-[14 <./images/kiyotaki-moore-97.png>]
-Chapter 6.
 
-Underfull \hbox (badness 10000) in paragraph at lines 384--387
+Underfull \hbox (badness 10000) in paragraph at lines 1301--1302
 
  []
 
-[15
+
+Underfull \vbox (badness 3049) has occurred while \output is active []
+
+ [38 <./images/kiyotaki-moore-97.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1326--1327
+
+ []
+
+[39]
+Underfull \hbox (badness 10000) in paragraph at lines 1352--1353
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1359--1360
+
+ []
+
+[40]
+Underfull \hbox (badness 10000) in paragraph at lines 1419--1420
+
+ []
+
+[41] [42] [43] [44
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 426--428
+Chapter 8.
+[45] [46] [47
+
+] [48]
+Chapter 9.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1600--1603
 
  []
 
-[16]
-Underfull \hbox (badness 10000) in paragraph at lines 493--494
+
+Underfull \vbox (badness 1735) has occurred while \output is active []
+
+ [49
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 1642--1644
 
  []
 
-(./paper_notes.bbl [17] [18
+[50]
+Underfull \hbox (badness 10000) in paragraph at lines 1709--1710
 
-]pdfTeX warning (ext4): destination with the same identifier (name{cite.Dekel:2
-010bm}) has been already used, duplicate ignored
+ []
+
+
+Overfull \hbox (50.1017pt too wide) in paragraph at lines 1729--1730
+[][]\OT1/cmr/m/n/10 A more de-tailed note:[] []$\OT1/cmtt/m/n/10 https : / / pa
+ges . wustl . edu / files / pages / imce / nachbar / monotonecomparativestatics
+ .
+ []
+
+[51] [52]
+Chapter 10.
+[53
+
+] [54
+
+]
+Chapter 11.
+[55] [56]
+Chapter 12.
+(./paper_notes.bbl [57
+
+] [58
+
+]pdfTeX warning (ext4): destination with the same identifier (name{cite.baldwin
+2015eurozone}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.26 ...item[Dekel and Lipman(2010)]{Dekel:2010bm}
-                                                  pdfTeX warning (ext4): destin
-ation with the same identifier (name{cite.Gale:1962kl}) has been already used, 
-duplicate ignored
+l.15   Giavazzi}{2015}]{baldwin2015eurozone}
+                                            pdfTeX warning (ext4): destination 
+with the same identifier (name{cite.Baye:2013un}) has been already used, duplic
+ate ignored
 <to be read again> 
                    \relax 
-l.31 \bibitem[Gale and Shapley(1962)]{Gale:1962kl}
+l.22   et~al.}{2013}]{Baye:2013un}
+                                  pdfTeX warning (ext4): destination with the s
+ame identifier (name{cite.Beyer:2010cj}) has been already used, duplicate ignor
+ed
+<to be read again> 
+                   \relax 
+l.51   et~al.}{2010}]{Beyer:2010cj}
+                                   pdfTeX warning (ext4): destination with the 
+same identifier (name{cite.Bikhchandani:1992fs}) has been already used, duplica
+te ignored
+<to be read again> 
+                   \relax 
+l.59 ...andani et~al.}{1992}]{Bikhchandani:1992fs}
                                                   pdfTeX warning (ext4): destin
+ation with the same identifier (name{cite.Chari_etal2014:aer}) has been already
+ used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.73   et~al.}{2014}]{Chari_etal2014:aer}
+                                         pdfTeX warning (ext4): destination wit
+h the same identifier (name{cite.deb_kitamura_quah_stoye:2017wp}) has been alre
+ady used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.80 ...l.}{2017}]{deb_kitamura_quah_stoye:2017wp}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{cite.Dekel:2010bm}) has been already used,
+ duplicate ignored
+<to be read again> 
+                   \relax 
+l.85   Lipman}{2010}]{Dekel:2010bm}
+                                    [59]pdfTeX warning (ext4): destination with
+ the same identifier (name{cite.erdem_kean:96_MngSci}) has been already used, d
+uplicate ignored
+<to be read again> 
+                   \relax 
+l.96   Keane}{1996}]{erdem_kean:96_MngSci}
+                                          pdfTeX warning (ext4): destination wi
+th the same identifier (name{cite.Gale:1962kl}) has been already used, duplicat
+e ignored
+<to be read again> 
+                   \relax 
+l.109   Shapley}{1962}]{Gale:1962kl}
+                                    pdfTeX warning (ext4): destination with the
+ same identifier (name{cite.Gentzkow:2017hb}) has been already used, duplicate 
+ignored
+<to be read again> 
+                   \relax 
+l.120   et~al.}{2017}]{Gentzkow:2017hb}
+                                       pdfTeX warning (ext4): destination with 
+the same identifier (name{cite.Gentzkow_el.al:17WP}) has been already used, dup
+licate ignored
+<to be read again> 
+                   \relax 
+l.126   et~al.}{2017}]{Gentzkow_el.al:17WP}
+                                           pdfTeX warning (ext4): destination w
+ith the same identifier (name{cite.10.1257/aer.104.2.343}) has been already use
+d, duplicate ignored
+<to be read again> 
+                   \relax 
+l.138   Ordo{\~n}ez}{2014}]{10.1257/aer.104.2.343}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{cite.Green_Porter:1984EMCA}) has been alre
+ady used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.144   Porter}{1984}]{Green_Porter:1984EMCA}
+                                             pdfTeX warning (ext4): destination
+ with the same identifier (name{cite.grimmer_stewart_2013}) has been already us
+ed, duplicate ignored
+<to be read again> 
+                   \relax 
+l.156   Stewart}{2013}]{grimmer_stewart_2013}
+                                              [60]pdfTeX warning (ext4): destin
 ation with the same identifier (name{cite.Kiyotaki:2011fc}) has been already us
 ed, duplicate ignored
 <to be read again> 
                    \relax 
-l.42 \bibitem[Kiyotaki(2011)]{Kiyotaki:2011fc}
+l.188 ...yotaki}{Kiyotaki}{2011}]{Kiyotaki:2011fc}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{cite.Kiyotaki:1997hl}) has been already us
+ed, duplicate ignored
+<to be read again> 
+                   \relax 
+l.194   Moore}{1997}]{Kiyotaki:1997hl}
+                                      pdfTeX warning (ext4): destination with t
+he same identifier (name{cite.KMP:2014jpe}) has been already used, duplicate ig
+nored
+<to be read again> 
+                   \relax 
+l.200   et~al.}{2014}]{KMP:2014jpe}
+                                   pdfTeX warning (ext4): destination with the 
+same identifier (name{cite.Krugman:2012eu}) has been already used, duplicate ig
+nored
+<to be read again> 
+                   \relax 
+l.206 ...{Krugman}{Krugman}{2012}]{Krugman:2012eu}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{cite.Lewbel:2016wn}) has been already used
+, duplicate ignored
+<to be read again> 
+                   \relax 
+l.219 ...ear{Lewbel}{Lewbel}{2016}]{Lewbel:2016wn}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{cite.Low:2017jb}) has been already used, d
+uplicate ignored
+<to be read again> 
+                   \relax 
+l.225   Meghir}{2017}]{Low:2017jb}
+                                  pdfTeX warning (ext4): destination with the s
+ame identifier (name{cite.Milgrom:1981dv}) has been already used, duplicate ign
+ored
+<to be read again> 
+                   \relax 
+l.243 ...{Milgrom}{Milgrom}{1981}]{Milgrom:1981dv}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{cite.Quan_Williams:2017wp}) has been alrea
+dy used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.256   Williams}{2017}]{Quan_Williams:2017wp}
                                               pdfTeX warning (ext4): destinatio
-n with the same identifier (name{cite.Lewbel:2016wn}) has been already used, du
-plicate ignored
+n with the same identifier (name{cite.Rey:1995ft}) has been already used, dupli
+cate ignored
 <to be read again> 
                    \relax 
-l.60 \bibitem[Lewbel(2016)]{Lewbel:2016wn}
-                                          pdfTeX warning (ext4): destination wi
-th the same identifier (name{cite.Low:2017jb}) has been already used, duplicate
- ignored
+l.268   Stiglitz}{1995}]{Rey:1995ft}
+                                    pdfTeX warning (ext4): destination with the
+ same identifier (name{cite.Evans_Schmalensee:2012wp}) has been already used, d
+uplicate ignored
 <to be read again> 
                    \relax 
-l.65 \bibitem[Low and Meghir(2017)]{Low:2017jb}
-                                               pdfTeX warning (ext4): destinati
-on with the same identifier (name{cite.Rey:1995ft}) has been already used, dupl
-icate ignored
+l.274   Richard}{2013}]{Evans_Schmalensee:2012wp}
+                                                  [61]pdfTeX warning (ext4): de
+stination with the same identifier (name{cite.topkis1998:supermodularity}) has 
+been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.78 \bibitem[Rey and Stiglitz(1995)]{Rey:1995ft}
-                                                  [19])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 514.
- [20]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 514.
+l.290 ...opkis}{1998}]{topkis1998:supermodularity}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{cite.10.2307/1884684}) has been already us
+ed, duplicate ignored
+<to be read again> 
+                   \relax 
+l.301 ...mson}{Williamson}{1987}]{10.2307/1884684}
+                                                  )
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1895.
+ [62]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1895.
  (./paper_notes.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 514.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 514.
-Package rerunfilecheck Info: File `paper_notes.out' has not changed.
-(rerunfilecheck)             Checksum: 2662F6B04477EA0944B0A62B4690ECB9;1009.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 514.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1895.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1895.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1895.
  ) 
 Here is how much of TeX's memory you used:
- 17813 strings out of 493014
- 297623 string characters out of 6133351
- 392532 words of memory out of 5000000
- 21090 multiletter control sequences out of 15000+600000
- 12239 words of font info for 46 fonts, out of 8000000 for 9000
+ 18625 strings out of 493014
+ 310982 string characters out of 6133351
+ 409844 words of memory out of 5000000
+ 21708 multiletter control sequences out of 15000+600000
+ 17851 words of font info for 68 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,8n,43p,10421b,490s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb
-></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
-</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></
-usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></us
-r/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/l
-ocal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/lo
-cal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
-al/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local
-/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/t
-exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/te
-xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/tex
-live/2016/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on paper_notes.pdf (20 pages, 315769 bytes).
+ 40i,8n,45p,10421b,538s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exi
+st, replaced by a fixed one
+
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><
+/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></
+usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><
+/usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
+usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr
+/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/l
+ocal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
+al/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/
+texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/tex
+live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texliv
+e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/local/texlive
+/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/
+2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/20
+16/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2016
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2016/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2016/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb></usr/local/texlive/2016/tex
+mf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2016
+/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/
+2016/texmf-dist/fonts/type1/public/rsfs/rsfs10.pfb>
+Output written on paper_notes.pdf (62 pages, 477797 bytes).
 PDF statistics:
- 302 PDF objects out of 1000 (max. 8388607)
- 261 compressed objects within 3 object streams
- 65 named destinations out of 1000 (max. 500000)
- 134 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 908 PDF objects out of 1000 (max. 8388607)
+ 812 compressed objects within 9 object streams
+ 228 named destinations out of 1000 (max. 500000)
+ 406 words of extra memory for PDF output out of 10000 (max. 10000000)
 

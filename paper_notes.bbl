@@ -1,91 +1,307 @@
-\begin{thebibliography}{14}
-\providecommand{\natexlab}[1]{#1}
-\providecommand{\url}[1]{\texttt{#1}}
-\expandafter\ifx\csname urlstyle\endcsname\relax
-  \providecommand{\doi}[1]{doi: #1}\else
-  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+\begin{thebibliography}{}
 
-\bibitem[Ackerberg et~al.(2015)Ackerberg, Caves, and Frazer]{Ackerberg:2015ha}
-Daniel~A Ackerberg, Kevin Caves, and Garth Frazer.
+\bibitem[\protect\citeauthoryear{Ackerberg, Caves, and Frazer}{Ackerberg
+  et~al.}{2015}]{Ackerberg:2015ha}
+Ackerberg, D.~A., K.~Caves, and G.~Frazer (2015).
 \newblock {Identification Properties of Recent Production Function Estimators}.
-\newblock \emph{Econometrica}, 83\penalty0 (6):\penalty0 2411--2451, 2015.
+\newblock {\em Econometrica\/}~{\em 83\/}(6), 2411--2451.
 
-\bibitem[Bernanke and Gertler(1989)]{BenBernanke:1989eg}
-Ben Bernanke and Mark Gertler.
+\bibitem[\protect\citeauthoryear{Anderson}{Anderson}{1972}]{anderson1972:science}
+Anderson, P.~W. (1972).
+\newblock {More is different}.
+\newblock {\em Science\/}~{\em 177\/}(4047), 393--396.
+
+\bibitem[\protect\citeauthoryear{Baldwin and Giavazzi}{Baldwin and
+  Giavazzi}{2015}]{baldwin2015eurozone}
+Baldwin, R.~E. and F.~Giavazzi (2015).
+\newblock {\em The Eurozone Crisis: A Consensus View of the Causes and a Few
+  Possible Remedies}.
+\newblock CEPR Press.
+
+\bibitem[\protect\citeauthoryear{Baye, De~los Santos, and Wildenbeest}{Baye
+  et~al.}{2013}]{Baye:2013un}
+Baye, M.~R., B.~De~los Santos, and M.~R. Wildenbeest (2013).
+\newblock {The Evolution of Product Search}.
+\newblock {\em The Journal of Law, Economics Policy\/}~{\em 9\/}(2), 1--21.
+
+\bibitem[\protect\citeauthoryear{Ben-Porath, Dekel, and Lipman}{Ben-Porath
+  et~al.}{2014}]{BenPorath:2014bc}
+Ben-Porath, E., E.~Dekel, and B.~L. Lipman (2014, December).
+\newblock {Optimal Allocation with Costly Verification}.
+\newblock {\em American Economic Review\/}~{\em 104\/}(12), 3779--3813.
+
+\bibitem[\protect\citeauthoryear{Bernanke and Gertler}{Bernanke and
+  Gertler}{1989}]{BenBernanke:1989eg}
+Bernanke, B. and M.~Gertler (1989, March).
 \newblock {Agency Costs, Net Worth, and Business Fluctuations}.
-\newblock \emph{American Economic Review}, 79\penalty0 (1):\penalty0 14--31,
-  March 1989.
+\newblock {\em American Economic Review\/}~{\em 79\/}(1), 14--31.
 
-\bibitem[Carlstrom and Fuerst(1997)]{Carlstrom:1997fb}
-Charles~T Carlstrom and Timothy~S Fuerst.
+\bibitem[\protect\citeauthoryear{Berry, Levinsohn, and Pakes}{Berry
+  et~al.}{1995}]{berry.et.al.1995.emca}
+Berry, S., J.~Levinsohn, and A.~Pakes (1995).
+\newblock {Automobile Prices in Market Equilibrium}.
+\newblock {\em Econometrica\/}~{\em 63\/}(4), 841--890.
+
+\bibitem[\protect\citeauthoryear{Berry}{Berry}{1994}]{Berry:1994jh}
+Berry, S.~T. (1994, July).
+\newblock {Estimating Discrete-Choice Models of Product Differentiation}.
+\newblock ~{\em 25\/}(2), 242--262.
+
+\bibitem[\protect\citeauthoryear{Beyer, Cohen, Lys, and Walther}{Beyer
+  et~al.}{2010}]{Beyer:2010cj}
+Beyer, A., D.~A. Cohen, T.~Z. Lys, and B.~R. Walther (2010, December).
+\newblock {The financial reporting environment Review of the recent
+  literature}.
+\newblock {\em Journal of Accounting and Economics\/}~{\em 50\/}(2-3),
+  296--343.
+
+\bibitem[\protect\citeauthoryear{Bikhchandani, Hirshleifer, and
+  Welch}{Bikhchandani et~al.}{1992}]{Bikhchandani:1992fs}
+Bikhchandani, S., D.~Hirshleifer, and I.~Welch (1992).
+\newblock {A Theory of Fads, Fashion, Custom, and Cultural Change as
+  Informational Cascades}.
+\newblock {\em Journal of Political Economy\/}~{\em 100\/}(5), 992--1026.
+
+\bibitem[\protect\citeauthoryear{Carlstrom and Fuerst}{Carlstrom and
+  Fuerst}{1997}]{Carlstrom:1997fb}
+Carlstrom, C.~T. and T.~S. Fuerst (1997, December).
 \newblock {Agency Costs, Net Worth, and Business Fluctuations: A Computable
   General Equilibrium Analysis}.
-\newblock \emph{American Economic Review}, 87\penalty0 (5):\penalty0 893--910,
-  December 1997.
+\newblock {\em American Economic Review\/}~{\em 87\/}(5), 893--910.
 
-\bibitem[Dekel and Lipman(2010)]{Dekel:2010bm}
-E~Dekel and B~L Lipman.
-\newblock {How (not) to do decision theory}.
-\newblock \emph{Annu Rev Econ}, 2\penalty0 (1):\penalty0 257--282, 2010.
+\bibitem[\protect\citeauthoryear{Chari, Shourideh, and Zetlin-Jones}{Chari
+  et~al.}{2014}]{Chari_etal2014:aer}
+Chari, V.~V., A.~Shourideh, and A.~Zetlin-Jones (2014, December).
+\newblock {Reputation and Persistence of Adverse Selection in Secondary Loan
+  Markets}.
+\newblock {\em American Economic Review\/}~{\em 104\/}(12), 4027--4070.
 
-\bibitem[Gale and Shapley(1962)]{Gale:1962kl}
-D~Gale and L~S Shapley.
+\bibitem[\protect\citeauthoryear{Deb, Kitamura, Quah, and Stoye}{Deb
+  et~al.}{2017}]{deb_kitamura_quah_stoye:2017wp}
+Deb, R., Y.~Kitamura, J.~K.-H. Quah, and J.~Stoye (2017).
+\newblock Revealed price preference: Theory and stochastic testing.
+
+\bibitem[\protect\citeauthoryear{Dekel and Lipman}{Dekel and
+  Lipman}{2010}]{Dekel:2010bm}
+Dekel, E. and B.~L. Lipman (2010).
+\newblock How (not) to do decision theory.
+\newblock {\em Annual Review of Economics\/}~{\em 2\/}(1), 257--282.
+
+\bibitem[\protect\citeauthoryear{Dye}{Dye}{1985}]{Dye:1985a}
+Dye, R.~A. (1985).
+\newblock {Disclosure of Nonproprietary Information}.
+\newblock {\em Journal of accounting research\/}~{\em 23\/}(1), 123--145.
+
+\bibitem[\protect\citeauthoryear{Erdem and Keane}{Erdem and
+  Keane}{1996}]{erdem_kean:96_MngSci}
+Erdem, T. and M.~P. Keane (1996).
+\newblock {Decision-Making Under Uncertainty: Capturing Dynamic Brand Choice
+  Processes in Turbulent Consumer Goods Markets}.
+\newblock {\em Marketing Science\/}~{\em 15\/}(1), 1--20.
+
+\bibitem[\protect\citeauthoryear{Fudenberg and Levine}{Fudenberg and
+  Levine}{1993}]{Fudenberg_Levine:93EMCAa}
+Fudenberg, D. and D.~K. Levine (1993).
+\newblock {Self-Confirming Equilibrium}.
+\newblock {\em Econometrica\/}~{\em 61\/}(3), 523--545.
+
+\bibitem[\protect\citeauthoryear{Gale and Shapley}{Gale and
+  Shapley}{1962}]{Gale:1962kl}
+Gale, D. and L.~S. Shapley (1962, January).
 \newblock {College Admissions and the Stability of Marriage}.
-\newblock \emph{The American Mathematical Monthly}, 69\penalty0 (1):\penalty0
-  9--15, January 1962.
+\newblock {\em The American Mathematical Monthly\/}~{\em 69\/}(1), 9--15.
 
-\bibitem[Gandhi et~al.(2017)Gandhi, Navarro, and Rivers]{Gandhi:2017un}
-A~Gandhi, S~Navarro, and D~Rivers.
+\bibitem[\protect\citeauthoryear{Gandhi, Navarro, and Rivers}{Gandhi
+  et~al.}{2017}]{Gandhi:2017un}
+Gandhi, A., S.~Navarro, and D.~Rivers (2017).
 \newblock {On the Identification of Gross Output Production Functions}.
-\newblock 2017.
 
-\bibitem[Kiyotaki(2011)]{Kiyotaki:2011fc}
-N~Kiyotaki.
+\bibitem[\protect\citeauthoryear{Gentzkow, Shapiro, and Taddy}{Gentzkow
+  et~al.}{2017}]{Gentzkow:2017hb}
+Gentzkow, M., J.~Shapiro, and M.~Taddy (2017, May).
+\newblock {Measuring Polarization in High-Dimensional Data: Method and
+  Application to Congressional Speech}.
+
+\bibitem[\protect\citeauthoryear{Gentzkow, Taddy, and Kelly}{Gentzkow
+  et~al.}{2017}]{Gentzkow_el.al:17WP}
+Gentzkow, M., M.~Taddy, and B.~T. Kelly (2017, February).
+\newblock {Text as Data}.
+\newblock pp.\  1--53.
+
+\bibitem[\protect\citeauthoryear{Glazer and Rubinstein}{Glazer and
+  Rubinstein}{2004}]{galzer_ruinstein:emca04}
+Glazer, J. and A.~Rubinstein (2004).
+\newblock {On Optimal Rules of Persuasion}.
+\newblock {\em Econometrica\/}~{\em 72\/}(6), 1715--1736.
+
+\bibitem[\protect\citeauthoryear{Gorton and Ordo{\~n}ez}{Gorton and
+  Ordo{\~n}ez}{2014}]{10.1257/aer.104.2.343}
+Gorton, G. and G.~Ordo{\~n}ez (2014, February).
+\newblock {Collateral Crises}.
+\newblock {\em American Economic Review\/}~{\em 104\/}(2), 343--378.
+
+\bibitem[\protect\citeauthoryear{Green and Porter}{Green and
+  Porter}{1984}]{Green_Porter:1984EMCA}
+Green, E.~J. and R.~H. Porter (1984).
+\newblock {Noncooperative Collusion under Imperfect Price Information}.
+\newblock {\em Econometrica\/}~{\em 52\/}(1), 87--100.
+
+\bibitem[\protect\citeauthoryear{Green and Laffont}{Green and
+  Laffont}{1986}]{Green:1986gs}
+Green, J.~R. and J.-J. Laffont (1986).
+\newblock {Partially Verifiable Information and Mechanism Design}.
+\newblock {\em The Review of Economic Studies\/}~{\em 53\/}(3), 447.
+
+\bibitem[\protect\citeauthoryear{Grimmer and Stewart}{Grimmer and
+  Stewart}{2013}]{grimmer_stewart_2013}
+Grimmer, J. and B.~M. Stewart (2013).
+\newblock Text as data: The promise and pitfalls of automatic content analysis
+  methods for political texts.
+\newblock {\em Political Analysis\/}~{\em 21\/}(3), 267–297.
+
+\bibitem[\protect\citeauthoryear{Grossman}{Grossman}{1981}]{Grossman:1981ih}
+Grossman, S.~J. (1981, December).
+\newblock {The Informational Role of Warranties and Private Disclosure about
+  Product Quality}.
+\newblock {\em The Journal of Law {\&} Economics\/}~{\em 24\/}(3), 461--483.
+
+\bibitem[\protect\citeauthoryear{Hart, Kremer, and Perry}{Hart
+  et~al.}{2017}]{Hart_et:17aer_evidence_games}
+Hart, S., I.~Kremer, and M.~Perry (2017, March).
+\newblock {Evidence Games: Truth and Commitment}.
+\newblock {\em American Economic Review\/}~{\em 107\/}(3), 690--713.
+
+\bibitem[\protect\citeauthoryear{Hausman, Leonard, and Zona}{Hausman
+  et~al.}{1994}]{Hausman:1994km}
+Hausman, J., G.~Leonard, and J.~D. Zona (1994, April).
+\newblock {Competitive Analysis with Differenciated Products}.
+\newblock {\em Annales d'{\'E}conomie et de Statistique\/}~(34), 159--180.
+
+\bibitem[\protect\citeauthoryear{Keane and Wolpin}{Keane and
+  Wolpin}{1994}]{keane_wolpin:94REStat}
+Keane, M.~P. and K.~I. Wolpin (1994).
+\newblock The solution and estimation of discrete choice dynamic programming
+  models by simulation and interpolation: Monte carlo evidence.
+\newblock {\em The Review of Economics and Statistics\/}~{\em 76\/}(4),
+  648--672.
+
+\bibitem[\protect\citeauthoryear{Kiyotaki}{Kiyotaki}{2011}]{Kiyotaki:2011fc}
+Kiyotaki, N. (2011).
 \newblock {A mechanism design approach to financial frictions}.
-\newblock \emph{manuscript}, 2011.
+\newblock {\em manuscript\/}.
 
-\bibitem[Kiyotaki and Moore(1997)]{Kiyotaki:1997hl}
-N~Kiyotaki and J~Moore.
+\bibitem[\protect\citeauthoryear{Kiyotaki and Moore}{Kiyotaki and
+  Moore}{1997}]{Kiyotaki:1997hl}
+Kiyotaki, N. and J.~Moore (1997).
 \newblock {Credit cycles}.
-\newblock \emph{Journal of Political Economy}, 105\penalty0 (2):\penalty0
-  211--248, 1997.
+\newblock {\em Journal of Political Economy\/}~{\em 105\/}(2), 211--248.
 
-\bibitem[Levinsohn and Petrin(2003)]{Levinsohn:2003ej}
-James Levinsohn and Amil Petrin.
+\bibitem[\protect\citeauthoryear{Kremer, Mansour, and Perry}{Kremer
+  et~al.}{2014}]{KMP:2014jpe}
+Kremer, I., Y.~Mansour, and M.~Perry (2014).
+\newblock {Implementing the {\textquotedblleft}Wisdom of the
+  Crowd{\textquotedblright}}.
+\newblock {\em Journal of Political Economy\/}~{\em 122\/}(5), 988--1012.
+
+\bibitem[\protect\citeauthoryear{Krugman}{Krugman}{2012}]{Krugman:2012eu}
+Krugman, P. (2012).
+\newblock {Revenge of the Optimum Currency Area}.
+\newblock In {\em NBER Macroeconomics Annual 2012, Volume 27}, pp.\  439--448.
+  National Bureau of Economic Research, Inc.
+
+\bibitem[\protect\citeauthoryear{Levinsohn and Petrin}{Levinsohn and
+  Petrin}{2003}]{Levinsohn:2003ej}
+Levinsohn, J. and A.~Petrin (2003, April).
 \newblock {Estimating Production Functions Using Inputs to Control for
   Unobservables}.
-\newblock \emph{The Review of Economic Studies}, 70\penalty0 (2):\penalty0
-  317--341, April 2003.
+\newblock {\em The Review of Economic Studies\/}~{\em 70\/}(2), 317--341.
 
-\bibitem[Lewbel(2016)]{Lewbel:2016wn}
-A~Lewbel.
+\bibitem[\protect\citeauthoryear{Lewbel}{Lewbel}{2016}]{Lewbel:2016wn}
+Lewbel, A. (2016).
 \newblock {The Identification Zoo-Meanings of Identification in Econometrics}.
-\newblock \emph{Forthcoming on Journal of Economic Literature}, 2016.
+\newblock {\em Forthcoming on Journal of Economic Literature\/}.
 
-\bibitem[Low and Meghir(2017)]{Low:2017jb}
-Hamish Low and Costas Meghir.
+\bibitem[\protect\citeauthoryear{Low and Meghir}{Low and
+  Meghir}{2017}]{Low:2017jb}
+Low, H. and C.~Meghir (2017, May).
 \newblock {The Use of Structural Models in Econometrics}.
-\newblock \emph{Journal of Economic Perspectives}, 31\penalty0 (2):\penalty0
-  33--58, May 2017.
+\newblock {\em Journal of Economic Perspectives\/}~{\em 31\/}(2), 33--58.
 
-\bibitem[Olley and Pakes(1996)]{Olley:1996ef}
-G~Steven Olley and Ariel Pakes.
+\bibitem[\protect\citeauthoryear{Maniadis and Tufano}{Maniadis and
+  Tufano}{2017}]{Maniadis:2017gq}
+Maniadis, Z. and F.~Tufano (2017, October).
+\newblock {The Research Reproducibility Crisis and Economics of Science}.
+\newblock {\em The Economic Journal\/}~{\em 127\/}(605), F200--F208.
+
+\bibitem[\protect\citeauthoryear{Maniadis, Tufano, and List}{Maniadis
+  et~al.}{2017}]{Maniadis:2017hi}
+Maniadis, Z., F.~Tufano, and J.~A. List (2017, October).
+\newblock {To Replicate or Not To Replicate? Exploring Reproducibility in
+  Economics through the Lens of a Model and a Pilot Study}.
+\newblock {\em The Economic Journal\/}~{\em 127\/}(605), F209--F235.
+
+\bibitem[\protect\citeauthoryear{Milgrom}{Milgrom}{1981}]{Milgrom:1981dv}
+Milgrom, P.~R. (1981, October).
+\newblock {Good News and Bad News: Representation Theorems and Applications}.
+\newblock {\em The Bell Journal of Economics\/}~{\em 12\/}(2), 380--391.
+
+\bibitem[\protect\citeauthoryear{Olley and Pakes}{Olley and
+  Pakes}{1996}]{Olley:1996ef}
+Olley, G.~S. and A.~Pakes (1996, November).
 \newblock {The Dynamics of Productivity in the Telecommunications Equipment
   Industry}.
-\newblock \emph{Econometrica}, 64\penalty0 (6):\penalty0 1263--1297, November
-  1996.
+\newblock {\em Econometrica\/}~{\em 64\/}(6), 1263--1297.
 
-\bibitem[Rey and Stiglitz(1995)]{Rey:1995ft}
-Patrick Rey and Joseph Stiglitz.
+\bibitem[\protect\citeauthoryear{Quan and Williams}{Quan and
+  Williams}{2017}]{Quan_Williams:2017wp}
+Quan, T.~W. and K.~R. Williams (2017).
+\newblock {Product Variety, Across-Market Demand Heterogeneity, and the Value
+  of Online Retail}.
+\newblock {\em SSRN Electronic Journal\/}, 1--74.
+
+\bibitem[\protect\citeauthoryear{Quigley and Walther}{Quigley and
+  Walther}{2017}]{Quigley:2017us}
+Quigley, D. and A.~Walther (2017, May).
+\newblock {Inside and Outside Information}.
+
+\bibitem[\protect\citeauthoryear{Rey and Stiglitz}{Rey and
+  Stiglitz}{1995}]{Rey:1995ft}
+Rey, P. and J.~Stiglitz (1995, October).
 \newblock {The Role of Exclusive Territories in Producers' Competition}.
-\newblock \emph{The RAND Journal of Economics}, 26\penalty0 (3):\penalty0
-  431--451, October 1995.
+\newblock {\em The RAND Journal of Economics\/}~{\em 26\/}(3), 431--451.
 
-\bibitem[Townsend(1979)]{Townsend:1979ef}
-R~M Townsend.
+\bibitem[\protect\citeauthoryear{Schmalensee and Richard}{Schmalensee and
+  Richard}{2013}]{Evans_Schmalensee:2012wp}
+Schmalensee, D. S.~E. and Richard (2013, October).
+\newblock {The Antitrust Analysis of Multi-Sided Platform Businesses}.
+\newblock {\em manuscript\/}, 1--45.
+
+\bibitem[\protect\citeauthoryear{Shum}{Shum}{2016}]{shum:2016bk}
+Shum, M. (2016).
+\newblock {\em Econometric Models for Industrial Organization}.
+\newblock World Scientific.
+
+\bibitem[\protect\citeauthoryear{Smith and S{\o}rensen}{Smith and
+  S{\o}rensen}{2000}]{Smith:2000tz}
+Smith, L. and P.~S{\o}rensen (2000).
+\newblock {Pathological outcomes of observational learning}.
+\newblock {\em Econometrica\/}.
+
+\bibitem[\protect\citeauthoryear{Topkis}{Topkis}{1998}]{topkis1998:supermodularity}
+Topkis, D. (1998).
+\newblock {\em Supermodularity and Complementarity, 1998}.
+\newblock Princeton University Press.
+
+\bibitem[\protect\citeauthoryear{Townsend}{Townsend}{1979}]{Townsend:1979ef}
+Townsend, R.~M. (1979).
 \newblock {Optimal contracts and competitive markets with costly state
   verification}.
-\newblock \emph{Journal of Economic Theory}, 21\penalty0 (2):\penalty0
-  265--293, 1979.
+\newblock {\em Journal of Economic Theory\/}~{\em 21\/}(2), 265--293.
+
+\bibitem[\protect\citeauthoryear{Williamson}{Williamson}{1987}]{10.2307/1884684}
+Williamson, S.~D. (1987).
+\newblock {Costly Monitoring, Loan Contracts, and Equilibrium Credit
+  Rationing}.
+\newblock {\em The Quarterly Journal of Economics\/}~{\em 102\/}(1), 135--145.
 
 \end{thebibliography}

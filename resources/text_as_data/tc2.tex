@@ -1,0 +1,803 @@
+\documentclass{beamer}
+
+%\usepackage[table]{xcolor}
+\mode<presentation> {
+  \usetheme{Boadilla}
+%  \usetheme{Pittsburgh}
+%\usefonttheme[2]{sans}
+\renewcommand{\familydefault}{cmss}
+%\usepackage{lmodern}
+%\usepackage[T1]{fontenc}
+%\usepackage{palatino}
+%\usepackage{cmbright}
+  \setbeamercovered{transparent}
+\useinnertheme{rectangles}
+}
+%\usepackage{normalem}{ulem}
+%\usepackage{colortbl, textcomp}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{structure}{fg= black}
+\definecolor{trial}{cmyk}{1,0,0, 0}
+\definecolor{trial2}{cmyk}{0.00,0,1, 0}
+\definecolor{darkgreen}{rgb}{0,.4, 0.1}
+\usepackage{array}
+\newcommand{\argmin}{\arg\!\min}
+\beamertemplatesolidbackgroundcolor{white}  \setbeamercolor{alerted
+text}{fg=red}
+
+\setbeamertemplate{caption}[numbered]\newcounter{mylastframe}
+
+%\usepackage{color}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{colortbl}
+%\usepackage[usenames, dvipsnames]{color}
+%\setbeamertemplate{caption}[numbered]\newcounter{mylastframe}c
+%\newcolumntype{Y}{\columncolor[cmyk]{0, 0, 1, 0}\raggedright}
+%\newcolumntype{C}{\columncolor[cmyk]{1, 0, 0, 0}\raggedright}
+%\newcolumntype{G}{\columncolor[rgb]{0, 1, 0}\raggedright}
+%\newcolumntype{R}{\columncolor[rgb]{1, 0, 0}\raggedright}
+
+%\begin{beamerboxesrounded}[upper=uppercol,lower=lowercol,shadow=true]{Block}
+%$A = B$.
+%\end{beamerboxesrounded}}
+\renewcommand{\familydefault}{cmss}
+%\usepackage[all]{xy}
+
+\usepackage{tikz}
+\usepackage{lipsum}
+
+ \newenvironment{changemargin}[3]{%
+ \begin{list}{}{%
+ \setlength{\topsep}{0pt}%
+ \setlength{\leftmargin}{#1}%
+ \setlength{\rightmargin}{#2}%
+ \setlength{\topmargin}{#3}%
+ \setlength{\listparindent}{\parindent}%
+ \setlength{\itemindent}{\parindent}%
+ \setlength{\parsep}{\parskip}%
+ }%
+\item[]}{\end{list}}
+\usetikzlibrary{arrows}
+%\usepackage{palatino}
+%\usepackage{eulervm}
+\usecolortheme{lily}
+\newtheorem{com}{Comment}
+\newtheorem{lem} {Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{cor}{Corollary}
+\newtheorem{obs}{Observation}
+ \numberwithin{equation}{section}
+
+%\usepackage[latin1]{inputenc}
+\title[Text as Data] % (optional, nur bei langen Titeln nötig)
+{Text as Data}
+
+\author{Justin Grimmer}
+\institute[Stanford University]{Associate Professor\\Department of Political Science \\  Stanford University}
+\vspace{0.3in}
+
+
+\date{September 25th, 2014}%[Big Data Workshop] 
+%\date{\today}
+
+
+
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+%%Introduction: who is in the class
+%%what are they working on 
+
+
+\begin{frame}
+\frametitle{A General Framework for the Class}
+
+A focus on \alert{tasks} \pause 
+\begin{itemize}
+\invisible<1>{\item[1)] Decide on some objective to accomplish} \pause 
+\begin{itemize}
+\invisible<1-2>{\item[-] Classify} \pause 
+\invisible<1-3>{\item[-] Cluster} \pause 
+\invisible<1-4>{\item[-] Predict} \pause 
+\invisible<1-5>{\item[-] Describe} \pause 
+\invisible<1-6>{\item[-] Measure covariance, discover latent structure, find nearest neighbor, ...} 
+\end{itemize}
+
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{A General Framework for the Class}
+
+
+\begin{itemize}
+\item[2)] Use an objective function $\leadsto$ measure performance at task \pause \\
+\invisible<1>{Suppose we have data $\boldsymbol{X} \in \mathcal{X}$ and parameters $\boldsymbol{\theta} \in \boldsymbol{\Theta}$} \pause 
+
+
+\begin{eqnarray}
+\invisible<1-2>{&& f: \mathcal{X} \times \boldsymbol{\Theta} \rightarrow \Re \nonumber \\} \pause 
+ \invisible<1-3>{&& f(\boldsymbol{X}, \boldsymbol{\theta}) \nonumber } \pause 
+\end{eqnarray}
+\begin{itemize}
+\invisible<1-4>{\item[-] Derived from task/used for statistical properties$\leadsto$ minimize sum of squared residuals} \pause 
+\invisible<1-5>{\item[-] Formalization of intuition about ``good" performance $\leadsto$ k-means clustering} \pause 
+\invisible<1-6>{\item[-] \alert{Data generating process}} 
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{A general Framework for the Class}
+
+
+\begin{itemize}
+\item[3)] Method for optimizing objective function. \pause \\
+\invisible<1>{Find $\boldsymbol{\theta}^{*}  \in \boldsymbol{\Theta}$ such that } \pause 
+
+
+\begin{eqnarray}
+\invisible<1-2>{f(\boldsymbol{X}, \boldsymbol{\theta}^{*} )  \nonumber} \pause 
+\end{eqnarray}
+
+\invisible<1-3>{is a maximum (minimum)} \pause 
+\begin{itemize}
+\invisible<1-4>{\item[-] Analytic methods (Calculus)} \pause 
+\invisible<1-5>{\item[-] \alert{Computational} methods} 
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Today: Using (Bayesian) Statistics to Obtain Objective Functions}
+
+\begin{itemize}
+\item[-] Encode assumptions in \alert{data generating process}$\leadsto$ hierarchical model
+\item[-] Assume parameters and data are random variables
+\item[-] Conditional probability statement $\leadsto$ objective function
+\item[-] Use computational tools to optimize objective function
+\end{itemize}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Today: Using (Bayesian) Statistics to Obtain Objective Functions}
+
+Plan of Attack:
+\begin{itemize}
+\item[1)] Write out any joint density function as conditional relationship
+\item[2)] Show how this can be an objective function \alert{even if you've never taken likelihood/Bayesian/...}
+\item[3)] Discuss how to \alert{computationally} optimize
+\end{itemize}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Joint Distributions of Random Variables}
+
+\begin{defn}
+Suppose that we have random variables $\boldsymbol{X} = (X_{1}, X_{2}, \hdots, X_{K})$.  We will say that $\boldsymbol{X}$ is a jointly continuous random variable if for all $\boldsymbol{X} \in \Re^{K}$ there exists a function $f:\Re^{K} \rightarrow \Re$ such that for all $C \subset \Re^{K}$, 
+
+\begin{eqnarray}
+P\left( \boldsymbol{X} \in C \right) &= &\iint \hdots \iint_{(\boldsymbol{X}) \in C } f(\boldsymbol{x}) d\boldsymbol{X} \nonumber 
+\end{eqnarray}
+
+
+\end{defn}
+
+
+\begin{itemize}
+\item[-] A joint density $f(\boldsymbol{x})= f(x_{1}, x_{2}, \hdots, x_{K} ) $ encodes information about the behavior of the random variable $\boldsymbol{X}$
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Marginal Distribution}
+
+\footnotesize
+\begin{defn}
+Suppose $\boldsymbol{X} = (X_{1}, X_{2}, \hdots, X_{K})$ is a jointly continuous random variable.  Define $f_{X_{j}}(x)$ as the \alert{marginal} probability density function for $X_{j}$, 
+
+\begin{eqnarray}
+f_{X_{j}}(x) & = & \int_{-\infty}^{\infty}\int_{-\infty}^{\infty} \hdots \int_{-\infty}^{\infty}\int_{-\infty}^{\infty} \hdots \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(\boldsymbol{x}) dx_{1}dx_{2}\hdots dx_{j-1} dx_{j+1}\hdots dx_{K-1} dx_{K} \nonumber \\
+& = & \int_{\Re^{K-1} } f(\boldsymbol{x}) d\boldsymbol{X}_{-j} \nonumber 
+\end{eqnarray} 
+
+
+\end{defn}
+
+\begin{itemize}
+\item[-] To obtain the marginal distribution, $f_{X_{j}}(x)$ we integrate over all dimensions but $j$   
+\end{itemize}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Conditional Distributions and Independence of Random Variables}
+
+
+\begin{defn}
+Suppose $\boldsymbol{X}$ is a jointly continuous random variable.  Define $f_{\boldsymbol{X}_{-j} | X_{j}} (\boldsymbol{x})$ as the conditional density function, 
+\begin{eqnarray}
+f_{\boldsymbol{X}_{-j} | X_{j} } (\boldsymbol{x}_{-j} | x_{j} ) & = & \frac{f(x_{1}, x_{2}, \hdots, x_{K} )}{f_{X_{j}}(x_{j} ) } \nonumber 
+\end{eqnarray}
+
+\pause 
+\invisible<1>{Two random variables $X_{1}$ and $X_{2}$ are independent if 
+\begin{eqnarray}
+f_{X_{1}, X_{2} }(x_{1}, x_{2} ) & = & f_{X_{1}}(x_{1}) f_{X_{2}}(x_{2}) \nonumber 
+\end{eqnarray}
+}
+
+\end{defn}
+
+
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Conditional Independence of Random Variables}
+
+\begin{defn}
+
+Two random variables $X_{1}$ and $X_{2}$ are conditionally independent given $X_{3}$ if 
+\begin{eqnarray}
+f_{(X_{1}, X_{2})| X_{3} } (x_{1}, x_{2} | x_{3} ) & = & f_{X_{1}|X_{3}}(x_{1}| x_{3} ) f_{X_{2}|X_{3}}(x_{2}| x_{3} ) \nonumber 
+\end{eqnarray}
+
+\pause 
+
+\invisible<1>{Equivalently, 
+
+\begin{eqnarray}
+f_{X_{1} | X_{2}, X_{3} } (x_{1} | x_{2}, x_{3} ) & = & f_{X_{1} | X_{3} } (x_{1} | x_{3} ) \nonumber 
+\end{eqnarray}
+}
+
+\end{defn}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Joint Density as Conditional Relationship}
+
+\small
+\begin{thm}
+Suppose $\boldsymbol{X} = (X_{1}, X_{2}, \hdots, X_{K})$ is a jointly continuous random variable.  Then 
+
+\begin{eqnarray}
+f(\boldsymbol{x} ) & = & f(x_{1}, x_{2}, \hdots, x_{K}) \nonumber \\
+ & = & f_{X_{1}} (x_{1} ) f_{X_{2} | X_{1} } (x_{2} | x_{1} ) f_{X_{3} | X_{2} X_{1} } (x_{3} | x_2, x_{1}) \hdots f_{X_{K} | X_{1} \hdots X_{K-1} } (x_{K} | x_{1}, \hdots, x_{K-1} ) \nonumber 
+\end{eqnarray}
+
+
+
+\end{thm}
+
+\pause 
+\begin{itemize}
+\invisible<1>{\item[-] We can write joint distributions as a product of conditional distributions} \pause 
+\invisible<1-2>{\item[-] If there are \alert{conditional independences} in density we can simplify$\leadsto$ simplify some conditional expressions } 
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Beta-Binomial Model}
+
+\begin{defn}
+Suppose $Y$ is a continuous random variable with $Y \in [0,1]$ and pdf of $Y$ given by 
+
+\begin{eqnarray}
+f(y) & = & \frac{\Gamma(\alpha_1 + \alpha_2)}{\Gamma(\alpha_{1} ) \Gamma(\alpha_{2})} y^{\alpha_{1} - 1} (1- y)^{\alpha_{2} - 1 } \nonumber 
+\end{eqnarray}
+
+Then we will say $Y$ is a \alert{Beta} distribution with parameters $\alpha_{1}$ and $\alpha_{2}$.  Equivalently,
+\begin{eqnarray}
+Y & \sim & \text{Beta}(\alpha_{1}, \alpha_{2} ) \nonumber 
+\end{eqnarray}
+
+
+
+\end{defn}
+
+\pause 
+\begin{itemize}
+\invisible<1>{\item[-] Beta is a distribution on \alert{proportions} } \pause 
+\invisible<1-2>{\item[-] Beta is a special case of the \alert{Dirichlet} distribution } \pause 
+\invisible<1-3>{\item[-] $E[Y] = \frac{\alpha_{1}}{\alpha_{1} + \alpha_{2}}$} 
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Beta Distribution}
+
+\begin{center}
+\only<1>{\scalebox{0.5}{\includegraphics{Beta1.pdf}}}\only<2>{\scalebox{0.5}{\includegraphics{Beta2.pdf}}}\only<3>{\scalebox{0.5}{\includegraphics{Beta3.pdf}}}\only<4>{\scalebox{0.5}{\includegraphics{Betab.pdf}}}\only<5>{\scalebox{0.5}{\includegraphics{Beta4.pdf}}}\only<6>{\scalebox{0.5}{\includegraphics{Beta5.pdf}}}\only<7>{\scalebox{0.5}{\includegraphics{Beta6.pdf}}}\only<8>{\scalebox{0.5}{\includegraphics{Beta7.pdf}}}\only<9>{\scalebox{0.5}{\includegraphics{Beta8.pdf}}}
+
+\end{center}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Beta-Binomial Model}
+
+Suppose we are interested in the use of the word ``Obamacare" in a legislator's statements \\ \pause 
+\invisible<1>{We want to infer $\pi$, we observe incidence in a statement} \pause 
+\begin{eqnarray}
+\invisible<1-2>{\pi & \sim & \text{Beta}(\alpha_{1}, \alpha_{2}) \nonumber \\} \pause 
+\invisible<1-3>{Y|\pi & \sim & \text{Bernoulli}(\pi)\nonumber } \pause 
+\end{eqnarray}
+
+\invisible<1-4>{We can write $p(\pi, y| \alpha_{1}, \alpha_{2}) $ as } \pause 
+\begin{eqnarray}
+\invisible<1-5>{p(\pi, y|\alpha_{1}, \alpha_{2}) } \pause\invisible<1-6>{ &  = &  p(\pi| \alpha_{1}, \alpha_{2} ) p(y| \pi, \alpha_{1}, \alpha_{2}) = p(\pi|\alpha_{1}, \alpha_{2} ) p(y|\pi)  \nonumber } \pause \\
+\invisible<1-7>{& = & \frac{\Gamma(\alpha_{1} + \alpha_{2}) }{\Gamma(\alpha_{1} ) \Gamma(\alpha_{2} )} \pi^{\alpha_{1} - 1} ( 1- \pi)^{\alpha_{2} - 1}  \pi^{y} (1- \pi)^{1 - y} \nonumber } \pause \\
+\invisible<1-8>{ & = &  \frac{\Gamma(\alpha_{1} + \alpha_{2}) }{\Gamma(\alpha_{1} ) \Gamma(\alpha_{2} )} \pi^{ \alpha_{1} + y - 1} ( 1- \pi)^{\alpha_{2} + 1 - y - 1} }\nonumber 
+\end{eqnarray}
+
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Beta-Binomial Model}
+
+Suppose now we observe $n$ statements
+\begin{eqnarray}
+\pi & \sim & \text{Beta}(\alpha_{1}, \alpha_{2}) \nonumber \\
+Y_{i} |\pi & \sim & \text{Bernoulli}(\pi) \text{ for } i = 1, \hdots, n \nonumber 
+\end{eqnarray}
+
+$\boldsymbol{Y} = (Y_{1}, Y_{2}, \hdots, Y_{n})$  \pause \\
+
+\invisible<1>{We can write $p(\pi, \boldsymbol{y}|\alpha_{1}, \alpha_{2} ) $ as } \pause 
+\begin{eqnarray}
+\invisible<1-2>{p(\pi, \boldsymbol{y}| \alpha_{1}, \alpha_{2} )}\pause \invisible<1-3>{ & = & p(\pi|\alpha_{1}, \alpha_{2} ) p(\boldsymbol{y} | \pi ) \nonumber} \pause  \\
+\invisible<1-4>{&= & p(\pi| \alpha_{1}, \alpha_{2} ) \prod_{i=1}^{n} p(y_{i} | \pi) \nonumber } \pause \\
+\invisible<1-5>{& = & \frac{\Gamma(\alpha_{1} + \alpha_{2}) }{\Gamma(\alpha_{1} ) \Gamma(\alpha_{2} )} \pi^{\alpha_{1} - 1} ( 1- \pi)^{\alpha_{2} - 1} \prod_{i=1}^{n} \pi^{y_{i} } (1- \pi)^{1 - y_{i}} \nonumber } \pause \\
+ \invisible<1-6>{&  =&  \frac{\Gamma(\alpha_{1} + \alpha_{2}) }{\Gamma(\alpha_{1} ) \Gamma(\alpha_{2} )} \pi^{\sum_{i=1}^{n} y_{i} + \alpha_{1} -  1} (1-\pi)^{n + \alpha_{2}  - \sum_{i=1}^{n} y_{i} - 1} \nonumber } 
+\end{eqnarray}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Bayes' Theorem for Continuous Random Variables}
+
+
+\begin{thm}
+Suppose we have jointly continuous random variables $X_{1}$ and $X_{2}$.  Then, 
+
+\begin{eqnarray}
+f_{X_{1}|X_{2}}(x_{1}|x_{2} ) & = & \frac{f_{X_{1}} (x_{1} ) f_{X_{2} | X_{1} }(x_{2}| x_{1} ) }{f_{X_{2} } (x_{2}) } \nonumber 
+\end{eqnarray}
+
+
+
+\end{thm}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Beta-Binomial Model}
+
+We observe $\boldsymbol{y}$ and we want to learn about $\pi$  \pause \\
+\invisible<1>{\alert{Condition} on data, describe function of $\pi$.  } \pause 
+
+\begin{eqnarray}
+\invisible<1-2>{p(\pi| \boldsymbol{y}, \alpha_{1}, \alpha_{2} ) &  =  & \frac{p(\pi | \alpha_{1}, \alpha_{2}) p(\boldsymbol{y} | \pi, \alpha_{1}, \alpha_{2} )  }{p(\boldsymbol{y} )} \nonumber } \pause \\
+ \invisible<1-3>{& \alert{\propto} & p(\pi | \alpha_{1}, \alpha_{2}) p(\boldsymbol{y} | \pi ) \nonumber \\} \pause \invisible<1-4>{& \propto & \frac{\Gamma(\alpha_{1} + \alpha_{2}) }{\Gamma(\alpha_{1} ) \Gamma(\alpha_{2} )} \pi^{\sum_{i=1}^{n} y_{i} + \alpha_{1} -  1} (1-\pi)^{n + \alpha_{2}  - \sum_{i=1}^{n} y_{i} - 1} \nonumber} \pause 
+  \end{eqnarray}
+
+\invisible<1-5>{Defines a function of $\pi$, which we can use to describe the data.  \\} \pause 
+\invisible<1-6>{\alert{Optimize}$\leadsto$ \alert{analytically} or computationally.  } 
+
+
+
+\end{frame}
+
+
+\begin{frame}
+
+\begin{thm}
+Suppose $f:\Re^{K} \rightarrow \Re_{+}$.  If $\boldsymbol{x}^{*}$ maximizes $\log(f(x))$, then $\boldsymbol{x}^{*}$ maximizes $f(x)$.  
+\end{thm}
+
+
+\pause 
+\footnotesize
+\begin{eqnarray}
+\invisible<1>{\log \left(p(\pi| \boldsymbol{y}, \alpha_{1}, \alpha_{2} ) \right)}\pause \invisible<1-2>{ & = & \left(\sum_{i=1}^{n} y_i + \alpha_1 - 1\right) \log \pi \nonumber \\
+&& + (n + \alpha_2 - \sum_{i=1}^{n} y_{i} - 1 ) ( 1- \log \pi ) + \alert{c} \nonumber } \pause  \\
+\invisible<1-3>{\frac{\partial \log \left(p(\pi| \boldsymbol{y}, \alpha_{1}, \alpha_{2} ) \right) }{\partial \pi} & = & \frac{\sum_{i=1}^{n} y_i + \alpha_1 - 1}{\pi}  - \frac{(n + \alpha_2 - \sum_{i=1}^{n} y_{i} - 1 )}{1 - \pi} \nonumber } \pause \\
+\invisible<1-4>{0 & = & \frac{\sum_{i=1}^{n} y_i + \alpha_1 - 1}{\pi^{*}}  - \frac{n + \alpha_2 - \sum_{i=1}^{n} y_{i}  - 1}{1 - \pi^{*}} \nonumber } \pause \\
+\invisible<1-5>{\pi^{*} & = & \frac{\sum_{i=1}^{n} y_{i} + \alpha_{1} - 1}{ n + \alpha_{1} + \alpha_{2} - 2} \nonumber} \pause 
+\end{eqnarray}
+
+\invisible<1-6>{\alert{Second derivative test}$\leadsto$ maximum} 
+
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+\frametitle{The Probit Model}
+
+Suppose if we're interested in regression \pause \invisible<1>{$\leadsto$ prediction, classification, description\\} \pause 
+
+\invisible<1-2>{Assume the following data generation process} \pause 
+
+\begin{eqnarray}
+\invisible<1-3>{Y_{i} & \sim & \text{Bernoulli}(\pi_{i} ) \nonumber \\} \pause 
+ \invisible<1-4>{\pi_{i} & =  & \Phi(\boldsymbol{X}_{i} \boldsymbol{\beta} ) \nonumber } \pause 
+\end{eqnarray}
+
+\invisible<1-5>{where } \pause 
+\begin{itemize}
+\invisible<1-6>{\item[] $\Phi(\cdot)$ is the cumulative normal distribution function} \pause 
+\invisible<1-7>{\item[] $\boldsymbol{X}_{i} = (1, x_{i} )$} \pause 
+\invisible<1-8>{\item[] $\boldsymbol{\beta} = (\beta_{1}, \beta_{2} )  \leadsto$ \alert{parameters}.   } \pause 
+\invisible<1-9>{\item[] $N$ observations} \pause 
+\end{itemize}
+
+\invisible<1-10>{Implicit (improper) prior} 
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{The Probit Model$\leadsto$ Objective Function}
+
+
+
+\begin{eqnarray}
+p(\boldsymbol{\beta} | \boldsymbol{y}, \boldsymbol{X}) & \propto & p(\boldsymbol{y}| \boldsymbol{\beta}, \boldsymbol{X}) \nonumber \\
+ & \propto & \prod_{i=1}^{N} \Phi\left(\boldsymbol{X}_{i} \boldsymbol{\beta} \right)^{y_{i}} \left(1 - \Phi(\boldsymbol{X}_{i} \boldsymbol{\beta} ) \right)^{1- y_{i} } \nonumber 
+\end{eqnarray}
+
+
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{The Probit Model$\leadsto$ Optimization}
+
+\begin{thm}
+Suppose $f:\Re^{K} \rightarrow \Re_{+}$.  If $\boldsymbol{x}^{*}$ maximizes $\log(f(x))$, then $\boldsymbol{x}^{*}$ maximizes $f(x)$.  
+\end{thm}
+
+\begin{eqnarray}
+\log \left(p(\boldsymbol{\beta} | \boldsymbol{y}, \boldsymbol{X})\right) & = & \sum_{i=1}^{N} \left[ y_{i} \log( \Phi(\boldsymbol{X}_{i} \boldsymbol{\beta} )) + (1- y_{i} ) \log ( 1 -\Phi(\boldsymbol{X}_{i} \boldsymbol{\beta} ) ) \right] + \alert{c} \nonumber 
+\end{eqnarray}
+
+Find $\boldsymbol{\beta}^{*}$ to maximize $\log \left(p(\boldsymbol{\beta} | \boldsymbol{y}, \boldsymbol{X})\right) \leadsto$ computational method
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Computational Optimization Approaches}
+
+\alert{Analytic} (Closed form)$\leadsto$ Often difficult, impractical, or unavailable  \pause \\
+
+\invisible<1>{\alert{Computational}}\pause\invisible<1-2>{$\leadsto$ \alert{iterative} algorithm that converges to a solution (hopefully the right one!) } \pause 
+\begin{itemize}
+\invisible<1-3>{\item[-] Methods for optimization:} \pause 
+\begin{itemize}
+\invisible<1-4>{\item[-] \alert{Newton's method} and \alert{BFGS}} \pause 
+\invisible<1-5>{\item[-] Gradient descent (ascent)} \pause 
+\invisible<1-6>{\item[-] Expectation Maximization} \pause 
+\invisible<1-7>{\item[-] Genetic Optimization} \pause 
+\invisible<1-8>{\item[-] Branch and Bound ...} 
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Newton-Raphson Method}
+
+Iterative procedure to find a \alert{root} \\ \pause 
+\invisible<1>{Often solving for $x$ when $f(x) = 0$ is hard$\leadsto$ complicated function} \pause \\
+\invisible<1-2>{Solving for $x$ when $f(x)$ is linear$\leadsto$ easy} \pause \\
+\invisible<1-3>{Approximate with \alert{tangent line}, iteratively update}
+
+
+%%put an example here that shows how this might work
+
+%\scalebox{0.5}{\includegraphics{TangentExample.pdf}}
+
+%use tangent line to find root
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Tangent Line}
+
+
+\only<1>{\scalebox{0.6}{\includegraphics{TanLine26.pdf}}}
+\only<2>{\scalebox{0.6}{\includegraphics{TanLine1.pdf}}}
+\only<3>{\scalebox{0.6}{\includegraphics{TanLine2.pdf}}}
+\only<4>{\scalebox{0.6}{\includegraphics{TanLine3.pdf}}}
+\only<5>{\scalebox{0.6}{\includegraphics{TanLine4.pdf}}}
+\only<6>{\scalebox{0.6}{\includegraphics{TanLine5.pdf}}}
+\only<7>{\scalebox{0.6}{\includegraphics{TanLine6.pdf}}}
+\only<8>{\scalebox{0.6}{\includegraphics{TanLine7.pdf}}}
+\only<9>{\scalebox{0.6}{\includegraphics{TanLine8.pdf}}}
+\only<10>{\scalebox{0.6}{\includegraphics{TanLine9.pdf}}}
+\only<11>{\scalebox{0.6}{\includegraphics{TanLine10.pdf}}}
+\only<12>{\scalebox{0.6}{\includegraphics{TanLine11.pdf}}}
+\only<13>{\scalebox{0.6}{\includegraphics{TanLine12.pdf}}}
+\only<14>{\scalebox{0.6}{\includegraphics{TanLine13.pdf}}}
+\only<15>{\scalebox{0.6}{\includegraphics{TanLine14.pdf}}}
+\only<16>{\scalebox{0.6}{\includegraphics{TanLine15.pdf}}}
+\only<17>{\scalebox{0.6}{\includegraphics{TanLine16.pdf}}}
+\only<18>{\scalebox{0.6}{\includegraphics{TanLine17.pdf}}}
+\only<19>{\scalebox{0.6}{\includegraphics{TanLine18.pdf}}}
+\only<20>{\scalebox{0.6}{\includegraphics{TanLine19.pdf}}}
+\only<21>{\scalebox{0.6}{\includegraphics{TanLine20.pdf}}}
+\only<22>{\scalebox{0.6}{\includegraphics{TanLine21.pdf}}}
+\only<23>{\scalebox{0.6}{\includegraphics{TanLine22.pdf}}}
+\only<24>{\scalebox{0.6}{\includegraphics{TanLine23.pdf}}}
+\only<25>{\scalebox{0.6}{\includegraphics{TanLine24.pdf}}}
+\only<26>{\scalebox{0.6}{\includegraphics{TanLine25.pdf}}}
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Tangent Line}
+
+Formula for Tangent line at $x_{0}$: 
+
+
+\begin{eqnarray}
+\invisible<1>{g(x) =  \alert<4>{f^{'}(x_{0})} \alert<5>{(x - x_{0} )} + \alert<3>{f(x_{0} )} \nonumber }
+\end{eqnarray}
+
+
+\invisible<1-5>{We'll use formula for tangent line to generate updates}
+
+
+\pause \pause \pause \pause 
+
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+\frametitle{Newton-Raphson Method}
+
+Suppose we have some initial guess $x_{0}$.  We're going to approximate $f^{'}(x)$ with the tangent line to generate a new guess
+
+
+ \pause 
+
+\begin{eqnarray}
+\invisible<1>{g(x) & = & f^{''}(x_{0})(x - x_{0} ) + f^{'}(x_{0} ) \nonumber \\}
+\invisible<1-2>{0 & = & f^{''}(x_{0}) (x_{1} - x_{0}) + f^{'}(x_{0} ) \nonumber \\} %because at the root the function has to equal zero, so we're moving closer to it.
+\invisible<1-3>{x_{1} & = &  x_{0} - \frac{f^{'}(x_{0}) }{f^{''}(x_{0})} \nonumber \\ }
+\invisible<1-4>{x_{t+1} & = & x_{t} - \frac{f^{'}(x_{t} ) }{f^{''}(x_{t} ) }  }\nonumber 
+\end{eqnarray}
+
+\invisible<1-5>{Perform iteratively until change in $|x_{t+1} - x_{t}|<$ threshold }
+
+\pause \pause \pause \pause \pause 
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Example Function }
+
+$f(x) = x^3 + 2x^2 - 1$
+find $x$ that maximizes $f(x) $ with $x \in [-3, 0]$
+
+
+\scalebox{0.5}{\includegraphics{NRExample.pdf}}
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+
+\begin{eqnarray}
+f^{'}(x) & = & 3 x^2 + 4 x \nonumber \\
+f^{''}(x) & = & 6x + 4 \nonumber 
+\end{eqnarray}
+
+Suppose we have guess $x_{t}$ then the next step is:
+\begin{eqnarray}
+x_{t+1} & = & x_t - \frac{3 x_{t}^2 + 4 x_{t}}{6 x_{t} + 4} \nonumber
+\end{eqnarray}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle<7->{$x^{*} = -1.3333$}
+
+\only<1>{\scalebox{0.5}{\includegraphics{NRExamp1.pdf}}} 
+\only<2>{\scalebox{0.5}{\includegraphics{NRExamp2.pdf}}}
+\only<3>{\scalebox{0.5}{\includegraphics{NRExamp3.pdf}}}
+\only<4>{\scalebox{0.5}{\includegraphics{NRExamp4.pdf}}}
+\only<5>{\scalebox{0.5}{\includegraphics{NRExamp5.pdf}}}
+\only<6>{\scalebox{0.5}{\includegraphics{NRExamp6.pdf}}}
+\only<7>{\scalebox{0.5}{\includegraphics{NRExamp7.pdf}}}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{What is Happening with the Roots}
+
+\only<1>{\scalebox{0.5}{\includegraphics{NewtRaphDeriv20.pdf}}}
+\only<2>{\scalebox{0.5}{\includegraphics{NewtRaphDeriv1.pdf}}}
+\only<3>{\scalebox{0.5}{\includegraphics{NewtRaphDeriv2.pdf}}}
+\only<4>{\scalebox{0.5}{\includegraphics{NewtRaphDeriv3.pdf}}}
+\only<5>{\scalebox{0.5}{\includegraphics{NewtRaphDeriv4.pdf}}}
+\only<6>{\scalebox{0.5}{\includegraphics{NewtRaphDeriv5.pdf}}}
+\only<7>{\scalebox{0.5}{\includegraphics{NewtRaphDeriv6.pdf}}}
+\only<8>{\scalebox{0.5}{\includegraphics{NewtRaphDeriv7.pdf}}}
+\only<9>{\scalebox{0.5}{\includegraphics{NewtRaphDeriv8.pdf}}}
+\only<10>{\scalebox{0.5}{\includegraphics{NewtRaphDeriv9.pdf}}}
+\only<11>{\scalebox{0.5}{\includegraphics{NewtRaphDeriv10.pdf}}}
+\only<12>{\scalebox{0.5}{\includegraphics{NewtRaphDeriv11.pdf}}}
+\only<13>{\scalebox{0.5}{\includegraphics{NewtRaphDeriv12.pdf}}}
+
+
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+
+
+\only<1>{\scalebox{0.5}{\includegraphics{NRExamp8.pdf}}} 
+\only<2>{\scalebox{0.5}{\includegraphics{NRExamp9.pdf}}}
+\only<3>{\scalebox{0.5}{\includegraphics{NRExamp10.pdf}}}
+\only<4>{\scalebox{0.5}{\includegraphics{NRExamp11.pdf}}}
+\only<5>{\scalebox{0.5}{\includegraphics{NRExamp12.pdf}}}
+\only<6>{\scalebox{0.5}{\includegraphics{NRExamp13.pdf}}}
+\only<7>{\scalebox{0.5}{\includegraphics{NRExamp14.pdf}}} 
+\only<8>{\scalebox{0.5}{\includegraphics{NRExamp15.pdf}}}
+\only<9>{\scalebox{0.5}{\includegraphics{NRExamp16.pdf}}}
+\only<10>{\scalebox{0.5}{\includegraphics{NRExamp17.pdf}}}
+\only<11>{\scalebox{0.5}{\includegraphics{NRExamp18.pdf}}}
+\only<12>{\scalebox{0.5}{\includegraphics{NRExamp19.pdf}}}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Multivariate Optimization}
+
+
+\begin{eqnarray}
+\log \left(p(\boldsymbol{\beta} | \boldsymbol{y}, \boldsymbol{X})\right) & = & \sum_{i=1}^{N} \left[ y_{i} \log( \Phi(\boldsymbol{X}_{i} \boldsymbol{\beta} )) + (1- y_{i} ) \log ( 1 -\Phi(\boldsymbol{X}_{i} \boldsymbol{\beta} ) ) \right] + \alert{c} \nonumber 
+\end{eqnarray}
+
+To do so:\\
+
+Apply \alert{BFGS} (quasi-Newton) in {\tt R}, in {\tt optim} \\
+
+{\tt R code}
+\pause 
+
+\invisible<1>{Estimates: predict, classify, describe, ...} 
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Probit Regression, with Prior}
+
+Consider the following data generation process
+\begin{eqnarray}
+Y_{i} & \sim & \text{Bernoulli}(\pi_{i} ) \nonumber \\
+\pi_{i} & = & \Phi(\boldsymbol{X}_{i} \boldsymbol{\beta} ) \nonumber \\
+\alert{\beta_{j}} & \sim & \text{Normal}(\mu, \sigma^2) \nonumber 
+\end{eqnarray}
+
+\small
+\begin{eqnarray}
+p(\boldsymbol{\beta}| \boldsymbol{X}, \boldsymbol{Y}, \mu, \sigma^2) & \propto & p(\boldsymbol{\beta} | \mu, \sigma^2) \times p(\boldsymbol{y} | \boldsymbol{X}, \boldsymbol{\beta} ) \nonumber \\
+& \propto & \prod_{j=1}^{2} \frac{1}{\sqrt{2\pi \sigma^2} } \exp\left( -\frac{ ( \beta_{j} - \mu)^2}{2\sigma^2} \right) \times  \prod_{i=1}^{N} \Phi(\boldsymbol{X}_{i} \boldsymbol{\beta})^{y_{i}} (1 - \Phi(\boldsymbol{X}_{i} \boldsymbol{\beta} ) ) \nonumber 
+\end{eqnarray}
+
+
+\alert{Homework} $\leadsto$ explore behavior of $\widehat{\beta}$ as $\mu$, $\sigma^2$ vary.  
+
+
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Where We're Going}
+
+\begin{itemize}
+\item[1)] Task
+\item[2)] Objective Function
+\item[3)] Optimization procedure
+\end{itemize}
+
+All supposes we have data. \\
+Next week$\leadsto$ converting text data
+
+
+
+\end{frame}
+
+
+
+\end{document}

@@ -1,0 +1,28 @@
+##this is some example code for running mallet
+##a java based command line tool
+
+##navigate to the directory where you have mallet installed.  we're going to execute the following commands there.  
+
+##there are two basic commands for using mallet: an ingenstion step and then a ``training" step 
+
+##the basic syntax for the ingenstion step is:
+
+bin/mallet import-dir --input /Users/justingrimmer/dropbox/HousePress/JEFF_FLAKE_20100 --output /users/justingrimmer/dropbox/teaching/text/tad14/class11/flake_use.mallet --keep-sequence --remove-stopwords 
+
+##the command we're excuting here is the import-dir command.  the --input gives the directory (still with the Jeff Flake) --output tells it where we're going to send the corresponding object.  other commands are just to make mallet run
+
+
+bin/mallet train-topics --input /users/justingrimmer/dropbox/teaching/text/tad14/class11/flake_use.mallet --num-topics 3 --optimize-interval 5 --output-doc-topics /users/justingrimmer/dropbox/teaching/text/tad14/class11/FlakeExample_Topics --output-topic-keys /users/justingrimmer/dropbox/teaching/text/tad14/class11/FlakeExample_keys
+
+
+
+
+##trying a different number
+
+bin/mallet import-dir --input /Users/justingrimmer/dropbox/HousePress/JEFF_FLAKE_20100 --output /users/justingrimmer/dropbox/teaching/text/tad14/class11/flake_use.mallet --keep-sequence --remove-stopwords 
+
+##the command we're excuting here is the import-dir command.  the --input gives the directory (still with the Jeff Flake) --output tells it where we're going to send the corresponding object.  other commands are just to make mallet run
+
+
+bin/mallet train-topics --input /users/justingrimmer/dropbox/teaching/text/tad14/class11/flake_use.mallet --num-topics 20 --optimize-interval 5 --output-doc-topics /users/justingrimmer/dropbox/teaching/text/tad14/class11/FlakeExample_Topics_20 --output-topic-keys /users/justingrimmer/dropbox/teaching/text/tad14/class11/FlakeExample_keys_20
+

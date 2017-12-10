@@ -1,0 +1,527 @@
+\documentclass{beamer}
+
+%\usepackage[table]{xcolor}
+\mode<presentation> {
+  \usetheme{Boadilla}
+%  \usetheme{Pittsburgh}
+%\usefonttheme[2]{sans}
+\renewcommand{\familydefault}{cmss}
+%\usepackage{lmodern}
+%\usepackage[T1]{fontenc}
+%\usepackage{palatino}
+%\usepackage{cmbright}
+  \setbeamercovered{transparent}
+\useinnertheme{rectangles}
+}
+%\usepackage{normalem}{ulem}
+%\usepackage{colortbl, textcomp}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{structure}{fg= black}
+\definecolor{trial}{cmyk}{1,0,0, 0}
+\definecolor{trial2}{cmyk}{0.00,0,1, 0}
+\definecolor{darkgreen}{rgb}{0,.4, 0.1}
+\usepackage{array}
+\beamertemplatesolidbackgroundcolor{white}  \setbeamercolor{alerted
+text}{fg=red}
+
+\setbeamertemplate{caption}[numbered]\newcounter{mylastframe}
+
+%\usepackage{color}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{colortbl}
+%\usepackage[usenames, dvipsnames]{color}
+%\setbeamertemplate{caption}[numbered]\newcounter{mylastframe}c
+%\newcolumntype{Y}{\columncolor[cmyk]{0, 0, 1, 0}\raggedright}
+%\newcolumntype{C}{\columncolor[cmyk]{1, 0, 0, 0}\raggedright}
+%\newcolumntype{G}{\columncolor[rgb]{0, 1, 0}\raggedright}
+%\newcolumntype{R}{\columncolor[rgb]{1, 0, 0}\raggedright}
+
+%\begin{beamerboxesrounded}[upper=uppercol,lower=lowercol,shadow=true]{Block}
+%$A = B$.
+%\end{beamerboxesrounded}}
+\renewcommand{\familydefault}{cmss}
+%\usepackage[all]{xy}
+
+\usepackage{tikz}
+\usepackage{lipsum}
+
+ \newenvironment{changemargin}[3]{%
+ \begin{list}{}{%
+ \setlength{\topsep}{0pt}%
+ \setlength{\leftmargin}{#1}%
+ \setlength{\rightmargin}{#2}%
+ \setlength{\topmargin}{#3}%
+ \setlength{\listparindent}{\parindent}%
+ \setlength{\itemindent}{\parindent}%
+ \setlength{\parsep}{\parskip}%
+ }%
+\item[]}{\end{list}}
+\usetikzlibrary{arrows}
+%\usepackage{palatino}
+%\usepackage{eulervm}
+\usecolortheme{lily}
+%\usepackage[latin1]{inputenc}
+\title[Text as Data] % (optional, nur bei langen Titeln nötig)
+{Text as Data}
+
+\author{Justin Grimmer}
+\institute[Stanford University]{Associate Professor\\Department of Political Science \\  Stanford University}
+\vspace{0.3in}
+
+
+\date{November 20th, 2014}%[Big Data Workshop] 
+%\date{\today}
+
+
+
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Ideological Scaling}
+\begin{itemize}
+\item[1)] Task
+\begin{itemize}
+\item[-] Measure political actors' position in policy space
+\item[-] Low dimensional representation of beliefs
+\end{itemize}
+\item[2)] Objective function
+\begin{itemize}
+\item[-] Linear Discriminant Analysis (ish)$\leadsto$ Wordscores (today)
+\item[-] Item Response Theory $\leadsto$ Wordfish 
+\item[-] Item Response Theory + Roll Call Votes $\leadsto$ Issue-specific ideal points (12/2)
+\end{itemize}
+\item[3)] Optimization
+\begin{itemize}
+\item[-] Wordscores$\leadsto$ straightforward, based on training texts 
+\item[-] Wordfish$\leadsto$ EM, MCMC methods
+\end{itemize}
+\item[4)] Validation
+\begin{itemize}
+\item[-] What is the goal of embedding?
+\item[-] What is the \alert{gold standard}?
+\end{itemize}
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{The Spatial Model}
+
+\begin{itemize}
+\item[-] Suppose we have actor $i$ ($i= 1, 2,3, \hdots, N$) \pause \\
+\invisible<1>{\item[-] Actor has \alert{ideal point} $\boldsymbol{\theta}_{i} \in \Re^{M}$ } \pause 
+\invisible<1-2>{\item[-] We describe actor $i$'s utility from proposal $\boldsymbol{p} \in \Re^{M}$ with utility function} \pause 
+\begin{eqnarray}
+\invisible<1-3>{u_{i}(\boldsymbol{\theta}_{i}, \boldsymbol{p}) & = & -d(\boldsymbol{\theta}_{i}, \boldsymbol{p}) \nonumber } \pause \\
+\invisible<1-4>{& = & -\sum_{l=1}^{L} (\underbrace{\theta_{il}}_{\text{ideal policy}} - p_{l})^2 \nonumber } \pause 
+\end{eqnarray}
+\end{itemize}
+
+\invisible<1-5>{Estimation goal: $\widehat{\boldsymbol{\theta}}_{i}$\\} \pause 
+\invisible<1-6>{\alert{Scaling}$\leadsto$ placing actors in low-dimensional space (like principal components!)} 
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Estimating Ideal Points: Roll Call Data and the US Congress}
+
+
+US Congress and Roll Call  \pause 
+\begin{itemize}
+\invisible<1>{\item[-] Poole and Rosenthal {\tt voteview}} \pause 
+\begin{itemize}
+\invisible<1-2>{\item[-] Roll Call Data$\leadsto$ 1789-Present} \pause 
+\invisible<1-3>{\item[-] {\tt NOMINATE} methods$\leadsto$ place legislators on one dimension, estimate of \alert{ideology}} \pause
+\end{itemize}
+\invisible<1-4>{\item[-] Wildly successful:} \pause
+\begin{itemize}
+\invisible<1-5>{\item[-] Estimates are accurate: face validity Congressional scholars agree upon} \pause
+\invisible<1-6>{\item[-] Insightful$\leadsto$ unidimensional Congress} \pause
+\invisible<1-7>{\item[-] Extensible: insight of IRT allows model to be embedded in many forms} \pause
+\invisible<1-8>{\item[-] Widely used: hard to write a paper on American political institutions with ideal points} 
+\end{itemize}
+\end{itemize}
+
+
+\large
+\invisible<1-9>{Why not just use roll call votes?} 
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Estimating Ideal Points in General}
+
+
+Two Limitations with the NOMINATE project: \pause 
+\begin{itemize}
+\invisible<1>{\item[1)] US Congress is distinct}\pause\invisible<1-2>{$\leadsto$ roll call votes fail to measure ideology in other settings} \pause 
+\begin{itemize}
+\invisible<1-3>{\item[-] Weak party pressure$\leadsto$ individual discretion on votes} \pause 
+\invisible<1-4>{\item[-] Parliamentary systems$\leadsto$ no discretion, no variation.  } \pause 
+\invisible<1-5>{\item[-] Spirling and Quinn (2011)$\leadsto$ mixture model like models for blocs in UK Parliament} \pause
+\end{itemize}
+\invisible<1-6>{\item[2)] Not everyone votes!} \pause 
+\begin{itemize}
+\invisible<1-7>{\item[-] Voters$\leadsto$ survey responses (but problems with that)} \pause 
+\invisible<1-8>{\item[-] Challengers$\leadsto$ NPAT surveys (but they don't fill those out anymore)} \pause 
+\invisible<1-9>{\item[-] Bonica (2013, 2014)$\leadsto$ estimate ideology from donations (but not everyone donates)} 
+\end{itemize}
+
+
+\end{itemize}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Estimating Ideal Points in General}
+
+But Everyone talks! \pause 
+
+\begin{itemize}
+\invisible<1>{\item[-] If we could \alert{scale} based on conversation, we can measure ideology anywhere} \pause 
+\invisible<1-2>{\item[-] Much of the literature$\leadsto$ relies upon intuition from US Congress} \pause 
+\begin{itemize}
+\invisible<1-3>{\item[-] Hard \alert{not} to find ideology} \pause 
+\invisible<1-4>{\item[-] Behavior that is primarily ideological} \pause 
+\end{itemize}
+\invisible<1-5>{\item[-] Reality: scaling is much more difficult than roll call voting examples}\pause 
+\begin{itemize}
+\invisible<1-6>{\item[-] Hard to find ideology } \pause 
+\invisible<1-7>{\item[-] Much of political speech reveals little about position on ideological spectrum$\leadsto$ advertising, regional} \pause 
+\end{itemize}
+\end{itemize}
+
+\huge 
+
+\invisible<1-8>{Healthy skepticism!} 
+
+\end{frame}
+
+\begin{frame}
+
+Our plan \pause 
+\begin{itemize}
+\invisible<1>{\item[1)] Wordscores$\leadsto$ ``supervised" scaling } \pause 
+\invisible<1-2>{\item[2)] Wordfish$\leadsto$ single dimension} 
+\end{itemize}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle<1>{Wordscores$\leadsto$ Big in Europe}
+\frametitle<2>{Wordscores, Like the Hoff$\leadsto$ Big in Europe}
+\pause 
+\only<2>{\scalebox{0.5}{\includegraphics{Hasselhoff.jpg}}} 
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Wordscores: Objective Function}
+
+For each legislator $i$, suppose we observe $D_{i}$ documents.  \pause \\
+\invisible<1>{Define:} \pause 
+\begin{eqnarray}
+\invisible<1-2>{\boldsymbol{x}_{i} & = & \sum_{l = 1}^{D_{i} } \boldsymbol{x}_{il} \nonumber } \pause \\
+\invisible<1-3>{& = &  \sum_{l = 1}^{D_{i} } (x_{il1}, x_{il2}, \hdots, x_{ilJ}) \nonumber } \pause 
+\end{eqnarray}
+
+\invisible<1-4>{$\boldsymbol{x}_{i}\leadsto$ aggregation across documents.  \\} 
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Wordscores: Objective Functions}
+
+Choose two legislators as \alert{exemplars} \pause 
+\begin{itemize}
+\invisible<1>{\item[-] Legislator $L \in \{1, 2, \hdots, N\}$ is \alert{liberal}.  $Y_{L} = - 1$} \pause 
+\invisible<1-2>{\item[-] For example, might select \alert{Elizabeth Warren} } \pause 
+\invisible<1-3>{\item[-] Legislator $C \in \{1, 2, \hdots, N\}$ is \alert{Conservative}.  $Y_{C} = 1$ } \pause 
+\invisible<1-4>{\item[-] For example, might select \alert{Ted Cruz}} \pause 
+\end{itemize}
+
+
+\invisible<1-5>{For each word $j$ we can define:} \pause 
+\begin{eqnarray}
+\invisible<1-6>{P_{jL} & = & \text{Probability of word from Liberal} \nonumber \\} \pause 
+\invisible<1-7>{P_{jC} & = & \text{Probability of word from Conservative} \nonumber } \pause 
+\end{eqnarray}
+
+\invisible<1-8>{Define the \alert{score} for word $j$} \pause 
+\begin{eqnarray}
+\invisible<1-9>{S_{j} & = & Y_{C} P_{jC} + Y_{L} P_{jL} \nonumber \\} \pause 
+\invisible<1-10>{& = & P_{jC} - P_{jL} \nonumber } 
+\end{eqnarray}
+
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Wordscores: Objective Functions}
+
+Scale other legislators: \pause 
+\begin{eqnarray}
+\invisible<1>{N_{i} & = & \sum_{j=1}^{J}  \boldsymbol{x}_{i}  \nonumber } 
+\end{eqnarray}
+\pause 
+
+\invisible<1-2>{$\hat{\theta}_{i}$ is } \pause 
+\begin{eqnarray}
+\invisible<1-3>{\hat{\theta}_{i} & = & \sum_{j=1}^{J} \left(\frac{x_{ij}}{N_{i}} \right)S_{j} \nonumber } \pause \\
+\invisible<1-4>{ & = & \frac{\boldsymbol{x}_{i}^{'}}{N_{i} }\boldsymbol{S} \nonumber }
+\end{eqnarray}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Wordscores: Optimization}
+
+
+\begin{eqnarray}
+N_{L} & = & \sum_{m=1}^{J} x_{mL} \nonumber \\
+N_{C} & = & \sum_{m=1}^{J} x_{mC} \nonumber 
+\end{eqnarray}
+\pause
+\invisible<1>{Estimate $P_{jL}$, $P_{jC}$, and $S_{j}$} \pause 
+\begin{eqnarray}
+\invisible<1-2>{P_{jL} & = & \frac{ \frac{x_{jL}}{N_{L}}}{\frac{x_{jL}}{N_{L}} + \frac{x_{jC}}{N_{C}}  } \nonumber \\} \pause
+\invisible<1-3>{P_{jC} & = &  1 - P_{jL} = \frac{ \frac{x_{jC}}{N_{C}}}{\frac{x_{jL}}{N_{L}} + \frac{x_{jC}}{N_{C}}  } \nonumber \\} \pause
+\invisible<1-4>{S_{j} & = & P_{jC} - P_{jL} \nonumber } 
+\end{eqnarray}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Applied to the Senate Press Releases}
+
+$L = $ Ted Kennedy\\
+$C = $ Tom Coburn \\
+Apply to other senators.    
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle<1>{Applying to Senate Press Releases$\leadsto$ Gold Standard Scaling from NOMINATE}
+\frametitle<2>{Applying to Senate Press Releases$\leadsto$ WordScores}
+\only<1>{\scalebox{0.5}{\includegraphics{Votes1.pdf}}} 
+\only<2>{\scalebox{0.45}{\includegraphics{WordScores.pdf}} }
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Supervised Scaling}
+
+Wordscores is one example of \alert{supervised} embedding: \pause 
+\begin{itemize}
+\invisible<1>{\item[1)] Linear Discriminant Analysis (LDA)$\leadsto$ the Federalist Papers} \pause 
+\invisible<1-2>{\item[2)] Multinomial Inverse Regression} \pause 
+\invisible<1-3>{\item[3)] \alert{Any method that separates words}} \pause 
+\end{itemize}
+
+\invisible<1-4>{The findings will depend \alert{heavily} on supervision} \pause
+\begin{itemize}
+\invisible<1-5>{\item[-] Sensitive to who is chosen} \pause 
+\invisible<1-6>{\item[-] False prediction problem$\leadsto$ speech accomplishes many goals, only some of which are ideological} 
+\end{itemize}
+
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{What Can Go Wrong with Wordscores?} 
+
+
+Lowe (2008): Discusses potentially problematic wordscores properties \pause 
+\begin{itemize}
+\invisible<1>{\item[1)] Each word is weighted equally (fixable with different scoring procedure) } \pause
+\invisible<1-2>{\item[2)] Unique words are conflated with centrist (fixable with MCQ fightin' words style algorithm)} \pause 
+\invisible<1-3>{\item[3)] General problem: \alert{hard to interpret}$\leadsto$ lack of a model}\pause 
+\end{itemize}
+
+\invisible<1-4>{\alert{To be fair}: fast, nonparametric, and novel [trailblazing] method for scoring documents  (starts conversation)}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Unsupervised Embedding}
+
+Basic idea: \pause 
+\begin{itemize}
+\invisible<1>{\item[-] Actors have underlying \alert{latent} position} \pause 
+\invisible<1-2>{\item[-] Actors articulate that latent position in their speech} \pause 
+\invisible<1-3>{\item[-] This is associated with word usage, so high discriminating words correspond to ideological speech } \pause
+\invisible<1-4>{\item[-] Some words \alert{discriminate} better than others$\leadsto$ encode that in our model} \pause 
+\end{itemize}
+
+\invisible<1-5>{Simplest model: Principal Components}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Application of Principal Components in {\tt R}}
+
+Consider press releases from 2005 US Senators \pause \\
+\invisible<1>{Define $\boldsymbol{x}_{i} = (x_{i1}, x_{i2}, \hdots, x_{iJ})$ as the rate senator $i$ uses $J$ words.  }\pause 
+\begin{eqnarray}
+\invisible<1-2>{x_{ij} & = & \frac{\text{No. Times $i$ uses word $j$}}{\text{No. words $i$ uses}} \nonumber } \pause 
+\end{eqnarray}
+
+\invisible<1-3>{{\tt  dtm}: $100 \times 2796$ matrix containing word rates for senators\\} \pause 
+\invisible<1-4>{{\tt prcomp(dtm) } applies principal components} 
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Application of Principal Components in {\tt R}}
+
+
+\only<1>{\scalebox{0.5}{\includegraphics{FirstPrinComp.pdf}}}
+\only<2>{\scalebox{0.5}{\includegraphics{CreditClaimPrinComp.pdf}}}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Probabilistic Unsupervised Embeddings}
+
+Principal components is powerful\pause\invisible<1>{$\leadsto$ statistical model for unsupervised scaling\\} \pause
+\invisible<1-2>{\alert{Item Response Theory} (IRT)} \pause
+
+\begin{itemize}
+\invisible<1-3>{\item[-] Origins: educational testing} \pause
+\invisible<1-4>{\item[-] Jackman (2002), Clinton, Jackman, and Rivers (2004) apply to roll call voting} \pause
+\invisible<1-5>{\item[-] Power of IRT:} \pause 
+\begin{itemize}
+\invisible<1-6>{\item[a)] Estimate ideal points with few observations} \pause
+\invisible<1-7>{\item[b)] \alert{Makes clear how to extend models}} \pause
+\invisible<1-8>{\item[c)] Tuesday$\leadsto$ IRT and topic models to scale with votes + text} \pause
+\end{itemize}
+\invisible<1-9>{\item[-] Clinton, Jackman, and Rivers (2004)$\leadsto$ intuition about IRT} \pause
+\invisible<1-10>{\item[-] Rivers (2002)$\leadsto$ Identification conditions} \pause
+\invisible<1-11>{\item[-] Bonica (2014a, 2014b)$\leadsto$ uses IRT (like the one we're about to use) to scale donors} \pause
+\end{itemize}
+
+\invisible<1-12>{Monroe and Maeda (2005) and \alert{Slopkin and Proksch} (2008) develop similar algorithms} 
+\end{frame}
+
+
+\begin{frame}
+\frametitle{WordFish Objective Function}
+
+
+Suppose we have legislator $i$. \pause   \\
+
+
+\begin{eqnarray}
+\invisible<1>{x_{ij} & \sim & \text{Poisson}(\lambda_{ij} )  \nonumber \\} \pause
+\invisible<1-2>{\lambda_{ij} & = & \exp(\alpha_{i} + \psi_{j} + \beta_j \times \theta_{i} ) \nonumber } \pause 
+\end{eqnarray}
+\invisible<1-3>{Where, } \pause 
+\begin{eqnarray}
+\invisible<1-4>{\lambda_{ij} & = & \text{Rate individual $i$ uses word $j$ } \nonumber \\} \pause 
+\invisible<1-5>{\alpha_{i} & = & \text{Individual $i$ loquaciousness}  \nonumber \\} \pause 
+\invisible<1-6>{\psi_{j} & = & \text{Word $j$'s frequency} \nonumber \\} \pause 
+\invisible<1-7>{\beta_{j} &= & \text{Word $j$'s discrimination} \nonumber \\} \pause 
+\invisible<1-8>{\theta_{i} & = & \text{Legislator $i$'s latent positions} \nonumber } \pause 
+\end{eqnarray}
+
+\invisible<1-9>{``Regression" of $x_{ij}$ on ideal points $\theta_{i}$, where we have to learn $\theta_{i}$} 
+
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{WordFish Objective Function/Optimization}
+
+Implies the following posterior distribution:\pause 
+\begin{small}
+\begin{eqnarray}
+\invisible<1>{p(\boldsymbol{\theta}, \boldsymbol{\alpha}, \boldsymbol{\psi}, \boldsymbol{\beta}) & \propto & p(\boldsymbol{\alpha}) p(\boldsymbol{\beta}) p(\boldsymbol{\psi}) p(\boldsymbol{\theta}) \times \nonumber \\}
+\invisible<1>{&& \prod_{i=1}^{N} \prod_{j=1}^{J} \frac{\exp\left[ - \left(\alpha_{i} + \psi_{j} + \beta_j \times \theta_{i}\right)   \right] (\alpha_{i} + \psi_{j} + \beta_j \times \theta_{i})^{x_{ij}}}{x_{ij}!} \nonumber }
+\end{eqnarray}
+\end{small}
+\pause
+\invisible<1-2>{Estimate parameters:} \pause
+\begin{itemize}
+\invisible<1-3>{\item[-] EM-algorithm} \pause 
+\invisible<1-4>{\item[-] MCMC algorithm} \pause
+\invisible<1-5>{\item[-] Variational Approximation}  \pause 
+\end{itemize}
+
+\invisible<1-6>{{\tt Wordfish} package in {\tt R}} 
+
+
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle<1>{Applications: German Party Manifestos}
+\frametitle<2>{Applications: German Party Manifestos}
+
+
+\only<1>{\scalebox{0.5}{\includegraphics{WordFish1.pdf}}}
+\only<2>{\scalebox{0.5}{\includegraphics{WordFish3.pdf}}}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{The Problem with Text-Based Scaling}
+
+What does validation mean?
+\begin{itemize}
+\item[1)] Replicate NOMINATE, DIME, or other gold standards?
+\item[2)] Agreement with experts
+\item[3)] Prediction of other behavior
+\end{itemize}
+
+Must answer this to make progress on pure text scaling
+
+
+\end{frame}
+
+
+
+
+\end{document}

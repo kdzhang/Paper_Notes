@@ -1,0 +1,723 @@
+\documentclass{beamer}
+
+%\usepackage[table]{xcolor}
+\mode<presentation> {
+  \usetheme{Boadilla}
+%  \usetheme{Pittsburgh}
+%\usefonttheme[2]{sans}
+\renewcommand{\familydefault}{cmss}
+%\usepackage{lmodern}
+%\usepackage[T1]{fontenc}
+%\usepackage{palatino}
+%\usepackage{cmbright}
+  \setbeamercovered{transparent}
+\useinnertheme{rectangles}
+}
+%\usepackage{normalem}{ulem}
+%\usepackage{colortbl, textcomp}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{structure}{fg= black}
+\definecolor{trial}{cmyk}{1,0,0, 0}
+\definecolor{trial2}{cmyk}{0.00,0,1, 0}
+\definecolor{darkgreen}{rgb}{0,.4, 0.1}
+\usepackage{array}
+\beamertemplatesolidbackgroundcolor{white}  \setbeamercolor{alerted
+text}{fg=red}
+
+\setbeamertemplate{caption}[numbered]\newcounter{mylastframe}
+
+%\usepackage{color}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{colortbl}
+%\usepackage[usenames, dvipsnames]{color}
+%\setbeamertemplate{caption}[numbered]\newcounter{mylastframe}c
+%\newcolumntype{Y}{\columncolor[cmyk]{0, 0, 1, 0}\raggedright}
+%\newcolumntype{C}{\columncolor[cmyk]{1, 0, 0, 0}\raggedright}
+%\newcolumntype{G}{\columncolor[rgb]{0, 1, 0}\raggedright}
+%\newcolumntype{R}{\columncolor[rgb]{1, 0, 0}\raggedright}
+
+%\begin{beamerboxesrounded}[upper=uppercol,lower=lowercol,shadow=true]{Block}
+%$A = B$.
+%\end{beamerboxesrounded}}
+\renewcommand{\familydefault}{cmss}
+%\usepackage[all]{xy}
+
+\usepackage{tikz}
+\usepackage{lipsum}
+
+ \newenvironment{changemargin}[3]{%
+ \begin{list}{}{%
+ \setlength{\topsep}{0pt}%
+ \setlength{\leftmargin}{#1}%
+ \setlength{\rightmargin}{#2}%
+ \setlength{\topmargin}{#3}%
+ \setlength{\listparindent}{\parindent}%
+ \setlength{\itemindent}{\parindent}%
+ \setlength{\parsep}{\parskip}%
+ }%
+\item[]}{\end{list}}
+\usetikzlibrary{arrows}
+%\usepackage{palatino}
+%\usepackage{eulervm}
+\usecolortheme{lily}
+%\usepackage[latin1]{inputenc}
+\title[Text as Data] % (optional, nur bei langen Titeln nötig)
+{Text as Data}
+
+\author{Justin Grimmer}
+\institute[Stanford University]{Associate Professor\\Department of Political Science \\  Stanford University}
+\vspace{0.3in}
+
+
+\date{November 13th, 2014}%[Big Data Workshop] 
+%\date{\today}
+
+
+
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{ReadMe: Optimization for a Different Goal (Hopkins and King 2010) } 
+
+Naive Bayes, SVM, LASSO, Ridge, $\hdots$: focused on individual document classification. \pause \\
+\invisible<1>{But what if we're focused on \alert{proportions only}? } \pause  \\
+\invisible<1-2>{Hopkins and King (2010): method for characterizing distribution of classes} \pause  \\
+\invisible<1-3>{\alert{Can be much more accurate than individual classifiers}, requires fewer assumptions (\alert{do not need random sample of documents } ) .} \pause   
+\begin{itemize}
+\invisible<1-4>{\item[-] King and Lu (2008): derive method for characterizing causes of deaths for verbal autopsies }\pause 
+\invisible<1-5>{\item[-] Hopkins and King (2010): extend the method to text documents } \pause 
+\end{itemize}
+
+
+\invisible<1-6>{Basic intuition: } \pause 
+\begin{itemize}
+\invisible<1-7>{\item[-] Examine joint distribution of characteristics (without making Naive Bayes like assumption)
+\item[-] Focus on distributions (only) makes this analysis possible} 
+\end{itemize}
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{ReadMe: Optimization for a Different Goal (Hopkins and King 2010) } 
+
+Measure \alert{only} presence/absence of each term [$(J x 1) $ vector ] \pause 
+\begin{eqnarray}
+\invisible<1>{\boldsymbol{x}_i & = & (1, 0, 0, 1, \hdots, 0) \nonumber } \pause 
+\end{eqnarray}
+
+\invisible<1-2>{What are the possible realizations of $\boldsymbol{x}_i$?} \pause 
+\begin{itemize}
+\invisible<1-3>{\item[-] $2^{J}$ possible vectors} \pause 
+\end{itemize}
+
+\invisible<1-4>{Define:} \pause 
+\begin{eqnarray}
+\invisible<1-5>{P(\boldsymbol{x}) & = & \text{probability of observing } \boldsymbol{x}} \pause  \nonumber \\
+\invisible<1-6>{P(\boldsymbol{x}|C_j) & = & \text{Probability of observing } \boldsymbol{x} \text{ conditional on category } C_j} \pause  \nonumber \\
+\invisible<1-7>{P(\boldsymbol{X}| C) & = & \text{Matrix collecting vectors} } \pause \nonumber \\
+\invisible<1-8>{P(C ) & = & P(C_1, C_2, \hdots, C_K) \text{ target quantity of interest } } \pause \nonumber
+\end{eqnarray}
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{ReadMe: Optimization for a Different Goal (Hopkins and King 2010) } 
+
+\begin{eqnarray}
+\underbrace{P(\boldsymbol{x} )}_{2^{J} x 1}  & = & \underbrace{P(\boldsymbol{x}| C )}_{2^{J} x K}  \underbrace{P(C)}_{K x 1 }  \nonumber
+\end{eqnarray}
+Matrix algebra problem to solve, for $P(C)$ \\
+Like Naive Bayes, requires two pieces to estimate\\
+Complication $2^{J} >> \text{no. documents} $\\
+\alert{Kernel Smoothing Methods} (without a formal model)
+\begin{itemize}
+\item[-] $P(\boldsymbol{x})$ = estimate directly from test set
+\item[-] $P(\boldsymbol{x}| C)$ = estimate from training set 
+\begin{itemize}
+\item[-] Key assumption: $P(\boldsymbol{x}| C)$ in training set is equivalent to $P(\boldsymbol{x}| C)$ in test set
+\end{itemize}
+\item[-] If true, can perform biased sampling of documents, worry less about drift...
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Algorithm Summarized} 
+
+\begin{itemize}
+\item[-] Estimate $\hat{p}(\boldsymbol{x})$ from test set
+\item[-] Estimate $\hat{p}(\boldsymbol{x}|C)$ from training set 
+\item[-] Use $\hat{p}(\boldsymbol{x})$ and $\hat{p}(\boldsymbol{x}|C)$ to solve for $p(C)$
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Assessing Model Performance} 
+
+Not classifying individual documents $\rightarrow$ different standards\\
+\alert{Mean Square Error} : 
+\begin{eqnarray}
+\text{E}[(\hat{\theta} - \theta) ^2] & = & \text{var} (\hat{\theta} ) + \text{Bias}(\hat{\theta},  \theta)^2 \nonumber 
+\end{eqnarray}
+Suppose we have true proportions $P(C)^{\text{true}}$.  Then, we'll estimate \alert{Root Mean Square Error } 
+\begin{eqnarray}
+\text{RMSE} & = & \sqrt{ \frac{\sum_{j=1}^{J} (P(C_j)^{\text{true}} - P(C_j) ) } {J} } \nonumber \\
+\text{Mean Abs. Prediction Error} & = & | \frac{\sum_{j=1}^{J} (P(C_j)^{\text{true}} - P(C_j) ) } {J} | \nonumber
+\end{eqnarray}
+
+\alert{Visualize}: plot true and estimated proportions
+
+
+\end{frame}
+
+
+\begin{frame}
+\begin{center}
+\only<1>{\scalebox{0.8}{\includegraphics{Shot1.png}}} 
+\end{center}
+\only<2>{\scalebox{0.5}{\includegraphics{Shot2.png}}}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Using the House Press Release Data}
+
+\begin{tabular}{lll} 
+\hline\hline
+Method & RMSE & APSE  \\
+\hline
+ReadMe &  0.036  & 0.056 \\
+NaiveBayes & 0.096 & 0.14 \\
+SVM & 0.052 & 0.084 \\
+\hline
+\end{tabular}
+
+
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Code to Run in R}
+
+
+
+
+
+Control file: \\
+\begin{tabular}{lll} 
+filename & truth & trainingset \\
+\hline
+20July2009LEWIS53.txt & 4 & \alert{1} \\
+26July2006LEWIS249.txt & 2 & \alert{0} \\
+\hline
+\end{tabular} 
+
+
+
+{\tt tdm<- undergrad(control=control, fullfreq=F)  } \\
+{\tt process<- preprocess(tdm) } \\
+{\tt output<- undergrad(process) } \\
+{\tt output\$est.CSMF \#\# proportion in each category} \\
+{\tt output\$true.CSMF \#\# if labeled for validation set (but not used in training set) } 
+
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Classification (Prediction)}
+\begin{itemize}
+\item[1)] Task
+\begin{itemize}
+\item[-] Classify Documents
+\item[-] Measure proportions
+\end{itemize}
+\item[2)] Objective Function
+\begin{eqnarray}
+Y & = & f(\underbrace{\boldsymbol{\beta}}_{\text{coefficients}}, \boldsymbol{X}, \boldsymbol{Y}, \underbrace{\boldsymbol{\lambda}}_{\text{Tuning}}) + \epsilon \nonumber 
+\end{eqnarray}
+Models often assume $\boldsymbol{\lambda}$ are known$\leadsto$ search over lambda values
+\item[3)] Optimization
+\begin{itemize}
+\item[-] Grid search, examine \alert{loss} function
+\item[-] Best procedure: test performance on data held in ``vault"
+\item[-] Approximate in two ways:
+\begin{itemize}
+\item[a)] Analytically: AIC, BIC
+\item[b)] Computationally: \alert{Cross validation}
+\end{itemize}
+\end{itemize}
+\item[4)] Validation
+\begin{itemize}
+\item[-] Out of sample predictive performance
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Loss Functions and Model Complexity}
+
+
+Suppose each document $i$ has labels (scores) $Y_{i}$ and count vector $\boldsymbol{x}_{i} = (x_{i1}, x_{i2}, \hdots, x_{iJ})$. \pause   \\
+\invisible<1>{Fit model to obtain $\hat{\boldsymbol{\beta}}$.  \\} \pause 
+\invisible<1-2>{Potential \alert{loss} functions:} \pause 
+\begin{eqnarray}
+\invisible<1-3>{L\left(Y_{i}, f(\hat{\boldsymbol{\beta}}, \boldsymbol{x}_{i} , \boldsymbol{\lambda})\right)}\pause \invisible<1-4>{ & = & \left(Y_{i} - f(\hat{\boldsymbol{\beta}}, \boldsymbol{x}_{i} , \boldsymbol{\lambda})\right)^{2} \nonumber \\} \pause
+\invisible<1-5>{& = & \left| Y_{i} - f(\hat{\boldsymbol{\beta}}, \boldsymbol{x}_{i} , \boldsymbol{\lambda})\right| \nonumber \\} \pause 
+\invisible<1-6>{& = & I\left(Y_{i}  = f(\hat{\boldsymbol{\beta}}, \boldsymbol{x}_{i} , \boldsymbol{\lambda})\right) \nonumber } 
+\end{eqnarray}
+
+
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Loss Functions and Model Complexity}
+
+
+Suppose that we have: \pause 
+\begin{itemize}
+\invisible<1>{\item[-] Training sets, $\mathcal{T}$, with $|\mathcal{T}| = N_{\text{train}}$ } \pause 
+\invisible<1-2>{\item[-] Test sets, $\mathcal{O}$ with $| \mathcal{O}| = N_{\text{test}}$} \pause 
+\end{itemize}
+
+\invisible<1-3>{Training (in-sample) error is:} \pause 
+
+\begin{eqnarray}
+\invisible<1-4>{\text{Error}_{\text{in}}\pause & = & \sum_{i \in \mathcal{T}} \frac{1}{N_{\text{train}}} L(Y_{i} , f(\hat{\boldsymbol{\beta}}, \boldsymbol{x}_{i} , \boldsymbol{\lambda})) \nonumber } \pause 
+\end{eqnarray}
+
+\invisible<1-5>{We'd like to estimate out of sample performance with } 
+\begin{eqnarray}
+\invisible<1-6>{\text{Error}_{\text{out}} & = & \text{E}[L(\boldsymbol{Y}_{i \in \mathcal{O}} , f(\hat{\boldsymbol{\beta}} , \boldsymbol{X}_{i \in \mathcal{O}} , \boldsymbol{\lambda}))| \mathcal{T} ] \nonumber } \pause 
+\end{eqnarray}
+
+\invisible<1-7>{where the expectation is taken over \alert{samples} for test sets and supposes we have a training set.   } \pause 
+
+\begin{eqnarray}
+\invisible<1-8>{\text{Error} & = & \text{E}\left[\text{E}[L(\boldsymbol{Y} , f(\hat{\boldsymbol{\beta}} , \boldsymbol{X}, \boldsymbol{\lambda}))| \mathcal{T} ] \right] \nonumber } 
+\end{eqnarray}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Loss Functions and Model Complexity}
+
+Suppose $Y_{i} = f(\boldsymbol{x}_{i} ) + \epsilon_{i}$ \pause  \\
+\invisible<1>{Where $E[\epsilon_{i} ] = 0 $ } \pause \\
+\invisible<1-2>{$\text{var}(\epsilon_{i}) = \sigma^{2}_{\epsilon} $} \pause \\
+\invisible<1-3>{Define $f(\hat{\boldsymbol{\beta}}, \boldsymbol{x}, \boldsymbol{\lambda} ) = \hat{f}(\boldsymbol{x})$ } \pause \\
+\invisible<1-4>{With squared error loss: } \pause 
+\begin{eqnarray}
+\invisible<1-5>{\text{Error}(\boldsymbol{x}_{0}) & = & \text{E}[(Y_{i} - \hat{f}(\boldsymbol{x}_{i}))^{2} | \boldsymbol{x}_{i} = \boldsymbol{x}_{0} ]  \nonumber \\} \pause 
+\invisible<1-6>{& = & \text{E}[(f(\boldsymbol{x}_{i}) + \epsilon_{i}  - \hat{f}(\boldsymbol{x}_{i}))^{2} | \boldsymbol{x}_{i} = \boldsymbol{x}_{0} ]  \nonumber \\} \pause 
+\invisible<1-7>{& = & \sigma^{2}_{\epsilon} + [ f(\boldsymbol{x}_{i}) - \text{E}\hat{f}(\boldsymbol{x}_{i})]^{2}  + E[\left(\hat{f}(\boldsymbol{x}_{i} ) - E[\hat{f}(\boldsymbol{x}_{i} )]\right)^{2} ] \nonumber \\} \pause 
+\invisible<1-8>{& = & \text{Irreducible error} + \text{Bias}^{2} + \text{Variance} \nonumber } 
+\end{eqnarray}
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{How Do We Build A Model?}
+
+
+There are many ways to fit models \\
+And many choices made when performing model fit\\
+How do we choose? \pause \\
+
+\invisible<1>{Bad way to choose:}\pause \invisible<1-2>{ within sample model fit (HTF Figure 7.1) } 
+
+\begin{center}
+\scalebox{0.5}{\includegraphics{TestTrain.png}}
+\end{center}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{How Do We Build A Model?}
+
+\begin{center}
+\scalebox{0.325}{\includegraphics{TestTrain.png}}
+\end{center}
+
+
+Model \alert{overfit}$\leadsto$ in sample error is \alert{optimistic}: \pause 
+\begin{itemize}
+\invisible<1>{\item[-] Some model complexity captures \alert{systematic} features of the data} \pause 
+\invisible<1-2>{\item[-] Characteristics found in both training and test set} \pause 
+\invisible<1-3>{\item[-] Reduces error in both training and test set } \pause 
+\invisible<1-4>{\item[-] Additional model complexity: \alert{idiosyncratic} features of the training set} \pause 
+\invisible<1-5>{\item[-] Reduces error in training set, increases error in test set} 
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Probit Regression (for motivational purposes)}
+
+
+Suppose: 
+\begin{eqnarray}
+Y_{i} & \sim & \text{Bernoulli}(\pi_{i}) \nonumber \\
+\pi_{i} & = & \Phi(\boldsymbol{\beta}^{'}\boldsymbol{x}_{i}) \nonumber 
+\end{eqnarray}
+
+where $\Phi(\cdot)$ is the cumulative normal distribution.\\
+Implies log-likelihood
+\begin{eqnarray}
+\log \text{L}(\boldsymbol{\beta}| \boldsymbol{X} , \boldsymbol{Y}) &  = & \sum_{i=1}^{N} \left[ Y_{i} \log \Phi(\boldsymbol{\beta}^{'}\boldsymbol{x}_{i} )   + (1-Y_{i}) \log (1-  \Phi(\boldsymbol{\beta}^{'}\boldsymbol{x}_{i} )) \right] \nonumber  
+\end{eqnarray}
+
+Log-likelihood is a loss function, but optimistic$\leadsto$ improves with more parameters 
+
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Analytic Solutions}
+
+Approximate optimism and compensate in loss function.  \pause \\
+
+\invisible<1>{Akaike Information Criterion (AIC).\\} \pause 
+\invisible<1-2>{As $N \rightarrow \infty $ } \pause 
+
+\begin{eqnarray}
+\invisible<1-3>{- 2 \text{E} [ \log P_{\hat{\boldsymbol{\beta}}} (Y)] & = & -\frac{2}{N} \text{E} [\log \text{L}(\hat{\boldsymbol{\beta}}| \boldsymbol{X} , \boldsymbol{Y})]  + 2 \frac{d}{N} \nonumber \\} \pause 
+\invisible<1-4>{\text{AIC} & = & - \frac{2}{N} \log \text{L}(\hat{\boldsymbol{\beta}}| \boldsymbol{X} , \boldsymbol{Y}) + 2 \frac{d}{N} \nonumber } \pause
+\end{eqnarray}
+
+\invisible<1-5>{where $d$ are the number of parameters in the model} \pause 
+
+\begin{itemize}
+\invisible<1-6>{\item[-] Intuition: balances model fit with penalty for complexity} \pause 
+\invisible<1-7>{\item[-] Derived from method to estimate \alert{optimism} in likelihood based models} \pause 
+\invisible<1-8>{\item[-] Derived from a method to compute similarity between estimated model and true model (under assumptions of course)} \pause 
+\invisible<1-9>{\item[-] Can be extended to general models, though requires estimate of irresolvable error} 
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Analytic Solutions}
+
+Bayesian Information Criterion (BIC) [Schwarz Criterion] \pause 
+
+\begin{eqnarray}
+\invisible<1>{\text{BIC} &  = &  - 2 \log \text{L}(\boldsymbol{\beta}| \boldsymbol{X} , \boldsymbol{Y}) + (\log N) d \nonumber } \pause 
+\end{eqnarray}
+
+
+\invisible<1-2>{where $d$ is again the effective number of parameters} \pause 
+\begin{itemize}
+\invisible<1-3>{\item[-] Intuition: balances model fit with penalty for complexity} \pause 
+\invisible<1-4>{\item[-] Derived from \alert{Bayesian} approach to model selection} \pause 
+\invisible<1-5>{\item[-] Approximation to Bayes' factor} \pause 
+\invisible<1-6>{\item[-] \alert{Penalizes more heavily than AIC}} 
+\end{itemize}
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{BIC or AIC?}
+
+\begin{center}
+\only<1>{\scalebox{0.55}{\includegraphics{Bayes1.pdf}}}\only<2>{\scalebox{0.55}{\includegraphics{Bayes2.pdf}}}\only<3>{\scalebox{0.55}{\includegraphics{Bayes3.pdf}}}\only<4>{\scalebox{0.55}{\includegraphics{Bayes4.pdf}}}\only<5>{\scalebox{0.55}{\includegraphics{Bayes5.pdf}}}\only<6>{\scalebox{0.55}{\includegraphics{Bayes6.pdf}}}\only<7>{\scalebox{0.55}{\includegraphics{Bayes7.pdf}}}\only<8>{\scalebox{0.55}{\includegraphics{Bayes8.pdf}}}\only<9>{\scalebox{0.55}{\includegraphics{Bayes9.pdf}}}\only<10>{\scalebox{0.55}{\includegraphics{Bayes10.pdf}}}\only<11>{\scalebox{0.55}{\includegraphics{AIC1.pdf}}}\only<12>{\scalebox{0.55}{\includegraphics{AIC2.pdf}}}\only<13>{\scalebox{0.55}{\includegraphics{AIC3.pdf}}}\only<14>{\scalebox{0.55}{\includegraphics{AIC4.pdf}}}\only<15>{\scalebox{0.55}{\includegraphics{AIC5.pdf}}}\only<16>{\scalebox{0.55}{\includegraphics{AIC6.pdf}}}\only<17>{\scalebox{0.55}{\includegraphics{AIC7.pdf}}}\only<18>{\scalebox{0.55}{\includegraphics{AIC8.pdf}}}\only<19>{\scalebox{0.55}{\includegraphics{AIC9.pdf}}}\only<20>{\scalebox{0.55}{\includegraphics{AIC10.pdf}}}
+\end{center}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{BIC or AIC?}
+
+\begin{itemize}
+\item[-] BIC
+\begin{itemize}
+\item[-] Asymptotically consistent
+\item[-] As $N\rightarrow \infty$ will choose correct model with probability 1
+\item[-] Small samples$\leadsto$ overpenalize
+\end{itemize}
+\item[-] AIC
+\begin{itemize}
+\item[-] No asymptotic guarantees
+\item[-] In large samples$\leadsto$ favors complexity
+\item[-] Small samples$\leadsto$ avoids over penalization
+\end{itemize}
+\end{itemize}
+
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{How Do We Select A Model?}
+
+Analytic statistics for selection, include penalty for complexity \pause 
+\begin{itemize}
+\invisible<1>{\item[-] AIC : Akaka Information Criterion} \pause 
+\invisible<1-2>{\item[-] BIC: Bayesian Information Criterion} \pause 
+\invisible<1-3>{\item[-] DIC: Deviance Information Criterion} \pause 
+\end{itemize}
+
+\invisible<1-4>{Can work well, but...} \pause 
+\begin{itemize}
+\invisible<1-5>{\item[-] Rely on specific loss function} \pause 
+\invisible<1-6>{\item[-] Rely on asymptotic argument} \pause 
+\invisible<1-7>{\item[-] Rely on estimate of number of parameters} \pause 
+\invisible<1-8>{\item[-] \alert{Extremely model dependent} } \pause 
+\end{itemize}
+
+\invisible<1-9>{Need: general tool for evaluating models, \alert{replicates} decision problem} 
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Cross-Validation: Some Intuition} 
+
+Recall Optimal division of data: \pause 
+\begin{itemize}
+\invisible<1>{\item[-] Train: build model} \pause 
+\invisible<1-2>{\item[-] Validation: assess model} \pause 
+\invisible<1-3>{\item[-] Test: classify remaining documents} \pause 
+\end{itemize} 
+
+\invisible<1-4>{K-fold Cross-validation idea: create many training and test sets.  } \pause 
+\begin{itemize}
+\invisible<1-5>{\item[-] Idea: use observations both in training and test sets} \pause 
+\invisible<1-6>{\item[-] Each step: use held out data to evaluate performance} \pause 
+\invisible<1-7>{\item[-] \alert{Avoid overfitting} and have context specific penalty } \pause 
+\end{itemize}
+
+\invisible<1-8>{Estimates:}
+\begin{eqnarray}
+\invisible<1-8>{\text{Error} & = & \text{E}\left[\text{E}[L(\boldsymbol{Y} , f(\hat{\boldsymbol{\beta}} , \boldsymbol{X}, \boldsymbol{\lambda}))| \mathcal{T} ] \right] \nonumber }
+\end{eqnarray}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Cross-Validation: A How To Guide} 
+
+Process: \pause 
+\begin{itemize}
+\invisible<1>{\item[-]  Randomly partition data into K groups. } \pause 
+\invisible<1-2>{\item[] (Group 1, Group 2, Group3, $\hdots$, Group K ) } \pause 
+\invisible<1-3>{\item[-]  Rotate through groups as follows} \pause 
+\end{itemize}
+\begin{tabular}{lll} 
+\invisible<1-4>{Step & Training & Validation (``Test") \\} \pause 
+\invisible<1-5>{1 & Group2, Group3, Group 4, $\hdots$, Group K & Group 1\\} \pause 
+\invisible<1-6>{2 & Group 1, Group3, Group 4, $\hdots$, Group K & Group 2 \\} \pause 
+\invisible<1-7>{3 & Group 1, Group 2, Group 4, $\hdots$, Group K & Group 3 \\} \pause 
+\invisible<1-8>{$\vdots$ & $\vdots$ & $\vdots$ \\} \pause 
+\invisible<1-9>{K & Group 1, Group 2, Group 3, $\hdots$, Group K - 1 & Group K } 
+\end{tabular} 
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Cross-Validation: A How To Guide} 
+\footnotesize
+\begin{tabular}{lll} 
+Step & Training & Validation (``Test") \\
+1 & Group2, Group3, Group 4, $\hdots$, Group K & Group 1\\
+2 & Group 1, Group3, Group 4, $\hdots$, Group K & Group 2 \\
+3 & Group 1, Group 2, Group 4, $\hdots$, Group K & Group 3 \\
+$\vdots$ & $\vdots$ & $\vdots$ \\
+K & Group 1, Group 2, Group 3, $\hdots$, Group K - 1 & Group K 
+\end{tabular} 
+\normalsize
+ \pause \invisible<1>{Strategy: } \pause 
+\begin{itemize}
+\invisible<1-2>{\item[-] Divide data into $K$ groups} \pause 
+\invisible<1-3>{\item[-] Train data on $K-1$ groups.  Estimate $\hat{f}^{-K}(\boldsymbol{X}, \boldsymbol{\lambda})$  } \pause 
+\invisible<1-4>{\item[-] Predict values for $K^{\text{th}}$} \pause 
+\invisible<1-5>{\item[-] Summarize performance with loss function: $L(\boldsymbol{Y}_i , \hat{f}^{-k} (\boldsymbol{X}, \boldsymbol{\lambda})  ) $} \pause 
+\begin{itemize}
+\invisible<1-6>{\item[-] Mean square error, Absolute error, Prediction error, ...} \pause 
+\end{itemize}
+\invisible<1-7>{\item[] CV(ind. classification)  = $ \frac{1}{N}\sum_{i=1}^{N} L(\boldsymbol{Y}_i , f^{-k} (\boldsymbol{X}_i)  ) $} \pause 
+\invisible<1-8>{\item[] CV(proportions)   =  $\frac{1}{K} \sum_{j=1}^{K} \text{Mean Square Error Proportions from Group j}$} \pause 
+\invisible<1-9>{\item[-] Final choice: model with highest $CV$ score} 
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{How Do We Select $K$? (HTF, Section 7.10)  }
+
+Common values of $K$ 
+\begin{itemize}
+\item[-] $K = 5$: Five fold cross validation
+\item[-] $K = 10$: Ten fold cross validation
+\item[-] $K = N $: Leave one out cross validation
+\end{itemize}
+
+Considerations:
+\begin{itemize}
+\item[-] How sensitive are inferences to number of coded documents? (HTF, pg 243-244) 
+\item[-] 200 labeled documents 
+\begin{itemize}
+\item[-] $K= N \rightarrow$ 199 documents to train, 
+\item[-] $K = 10 \rightarrow$ 180 documents to train
+\item[-] $K = 5 \rightarrow$ 160 documents to train
+\end{itemize}
+\item[-] 50 labeled documents
+\begin{itemize}
+\item[-] $K= N \rightarrow$ 49 documents to train, 
+\item[-] $K = 10 \rightarrow$ 45 documents to train
+\item[-] $K = 5 \rightarrow$ 40 documents to train
+\end{itemize}
+\item[-] How long will it take to run models?  
+\begin{itemize}
+\item[-] $K-$fold cross validation requires $K \times $ One model run 
+\end{itemize}
+\item[-] What is the correct loss function?
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{If you cross validate, you really need to cross validate (Section 7.10.2, ESL)} 
+
+\begin{itemize}
+\item[-] Use CV to estimate prediction error
+\item[-] \alert{All} supervised steps performed in cross-validation
+\item[-] \alert{Underestimate} prediction error
+\item[-] \alert{Could lead to selecting lower performing model} 
+\end{itemize} 
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Generalized Cross Validation and Ridge Regression}
+
+In some special cases there are analytic solutions: \\ \pause 
+
+\begin{eqnarray}
+\invisible<1>{\boldsymbol{\beta}^{\text{Ridge}} & = & \left(\boldsymbol{X}^{'}\boldsymbol{X} + \lambda \boldsymbol{I}_{J} \right)^{-1} \boldsymbol{X}^{'} \boldsymbol{Y} \nonumber } \pause \\
+\invisible<1-2>{\widehat{\boldsymbol{Y}} & = & \boldsymbol{X}(\boldsymbol{\beta})^{\text{Ridge}} \nonumber\\} \pause 
+\invisible<1-3>{& = & \underbrace{\boldsymbol{X}\left(\boldsymbol{X}^{'}\boldsymbol{X} + \lambda \boldsymbol{I}_{J} \right)^{-1} \boldsymbol{X}^{'}}_{\text{Hat Matrix}} \boldsymbol{Y} \nonumber\\} \pause
+\invisible<1-4>{\widehat{\boldsymbol{Y}} & = & \underbrace{\boldsymbol{H}}_{\text{Smoother Matrix}} \boldsymbol{Y}  \nonumber } \pause
+\end{eqnarray}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Generalized Cross Validation and Ridge Regression}
+
+
+Why do we care?  \pause \\
+\invisible<1>{Leave one out cross validation\\} \pause 
+\begin{eqnarray}
+\invisible<1-2>{\text{Cross Validation}(1) & = & \frac{1}{N} \sum_{i=1}^{N} (Y_{i} - f (\boldsymbol{X}_{-i}, \boldsymbol{Y}_{-i}, \lambda, \hat{\boldsymbol{\beta}} ))^{2} \nonumber \\} \pause 
+\invisible<1-3>{& = & \frac{1}{N} \sum_{i=1}^{N}  \left(\frac{Y_{i} - f (\boldsymbol{X}, \boldsymbol{Y}, \lambda, \hat{\boldsymbol{\beta} }) }{1 - H_{ii}} \right)^2 \nonumber} 
+\end{eqnarray}
+
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Generalized Cross Validation and Ridge Regression}
+
+Calculating $\boldsymbol{H}$ can be computationally expensive \pause \\
+\begin{itemize}
+\invisible<1>{\item[-] $\text{Trace}(\boldsymbol{H}) \equiv \text{Tr}(\boldsymbol{H})  = \sum_{i=1}^{N} H_{ii} $ } \pause 
+\invisible<1-2>{\item[-] $\text{Tr}(\boldsymbol{H})$ = Effective number of parameters (class regression = number of independent variables + 1)} \pause 
+\invisible<1-3>{\item[-] For Ridge regression:} \pause 
+\begin{eqnarray}
+\invisible<1-4>{\text{Tr}(\boldsymbol{H}) & = & \sum_{i=1}^{N} \frac{\lambda_{i}}{\lambda_{i} + \lambda} \nonumber } \pause 
+\end{eqnarray}
+\invisible<1-5>{where $\lambda_{i}$ is the $i^{\text{th}}$ Eigenvalue from $\boldsymbol{\Sigma} = \boldsymbol{X}^{'}\boldsymbol{X}$} \pause \invisible<1-6>{ (!!!!!)} \pause 
+\end{itemize}
+
+
+\invisible<1-7>{Define generalized cross validation:} \pause 
+\begin{eqnarray}
+\invisible<1-8>{\text{GCV} &  = & \frac{1}{N} \sum_{i=1}^{N} \left( \frac{Y_{i} - \hat{Y}_{i}}{1 - \frac{\text{Tr}(\boldsymbol{H})}{N} }    \right)^2 \nonumber } \pause 
+\end{eqnarray}
+
+\invisible<1-9>{Applicable in any setting where we can write \alert{Smoother} matrix} \pause 
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Cross Validation}
+
+Use cross validation extensively:
+\begin{itemize}
+\item[1)] Selecting tuning parameters
+\item[2)] Learning weights in an ensemble
+\item[3)] But it is no panacea:
+\begin{itemize}
+\item[-] Depends on $K$
+\item[-] Sampling$\leadsto$ maintain dependencies
+\end{itemize}
+\end{itemize}
+
+Next week: Ensembles + Ideological scaling
+
+
+\end{frame}
+
+
+
+\end{document}

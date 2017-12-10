@@ -1,0 +1,818 @@
+\documentclass{beamer}
+
+%\usepackage[table]{xcolor}
+\mode<presentation> {
+  \usetheme{Boadilla}
+%  \usetheme{Pittsburgh}
+%\usefonttheme[2]{sans}
+\renewcommand{\familydefault}{cmss}
+%\usepackage{lmodern}
+%\usepackage[T1]{fontenc}
+%\usepackage{palatino}
+%\usepackage{cmbright}
+  \setbeamercovered{transparent}
+\useinnertheme{rectangles}
+}
+%\usepackage{normalem}{ulem}
+%\usepackage{colortbl, textcomp}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{structure}{fg= black}
+\definecolor{trial}{cmyk}{1,0,0, 0}
+\definecolor{trial2}{cmyk}{0.00,0,1, 0}
+\definecolor{darkgreen}{rgb}{0,.4, 0.1}
+\usepackage{array}
+\newcommand{\argmin}{\arg\!\min}
+\beamertemplatesolidbackgroundcolor{white}  \setbeamercolor{alerted
+text}{fg=red}
+
+\setbeamertemplate{caption}[numbered]\newcounter{mylastframe}
+
+%\usepackage{color}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{colortbl}
+%\usepackage[usenames, dvipsnames]{color}
+%\setbeamertemplate{caption}[numbered]\newcounter{mylastframe}c
+%\newcolumntype{Y}{\columncolor[cmyk]{0, 0, 1, 0}\raggedright}
+%\newcolumntype{C}{\columncolor[cmyk]{1, 0, 0, 0}\raggedright}
+%\newcolumntype{G}{\columncolor[rgb]{0, 1, 0}\raggedright}
+%\newcolumntype{R}{\columncolor[rgb]{1, 0, 0}\raggedright}
+
+%\begin{beamerboxesrounded}[upper=uppercol,lower=lowercol,shadow=true]{Block}
+%$A = B$.
+%\end{beamerboxesrounded}}
+\renewcommand{\familydefault}{cmss}
+%\usepackage[all]{xy}
+
+\usepackage{tikz}
+\usepackage{lipsum}
+
+ \newenvironment{changemargin}[3]{%
+ \begin{list}{}{%
+ \setlength{\topsep}{0pt}%
+ \setlength{\leftmargin}{#1}%
+ \setlength{\rightmargin}{#2}%
+ \setlength{\topmargin}{#3}%
+ \setlength{\listparindent}{\parindent}%
+ \setlength{\itemindent}{\parindent}%
+ \setlength{\parsep}{\parskip}%
+ }%
+\item[]}{\end{list}}
+\usetikzlibrary{arrows}
+%\usepackage{palatino}
+%\usepackage{eulervm}
+\usecolortheme{lily}
+\newtheorem{com}{Comment}
+\newtheorem{lem} {Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{cor}{Corollary}
+\newtheorem{obs}{Observation}
+ \numberwithin{equation}{section}
+
+%\usepackage[latin1]{inputenc}
+\title[Text as Data] % (optional, nur bei langen Titeln nötig)
+{Text as Data}
+
+\author{Justin Grimmer}
+\institute[Stanford University]{Associate Professor\\Department of Political Science \\  Stanford University}
+\vspace{0.3in}
+
+
+\date{October 23rd, 2014}%[Big Data Workshop] 
+%\date{\today}
+
+
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Interpreting Clusterings + Computer Assisted Clusterings}
+
+\begin{itemize}
+\begin{footnotesize}
+\item[1)] Task: \pause 
+\begin{itemize}
+\invisible<1>{\item[-] Select a clustering model, Characterize Model Fit}  \pause 
+\invisible<1-2>{\item[-] Choose the number of components for our mixture} \pause 
+\end{itemize}
+\invisible<1-3>{\item[2)] Objective function:} \pause 
+\begin{itemize}
+\invisible<1-4>{\item[-] Mathematical objective function} \pause 
+\begin{eqnarray}
+\invisible<1-5>{\text{Math Obj} & = & f(\boldsymbol{X}, \boldsymbol{T}, \boldsymbol{\Theta}) \nonumber } \pause 
+\end{eqnarray}
+\invisible<1-6>{\item[-] Substantively $\Theta$:} \pause 
+\begin{itemize}
+\invisible<1-7>{\item[-] Cohesive: words that are prominent in $\boldsymbol{\theta}_{k}$ actually occur together} \pause 
+\invisible<1-8>{\item[-] Exclusive: words that are featured in $\boldsymbol{\theta}_{k}$ only occur in $k$} \pause 
+\invisible<1-9>{\item[-] The mathematical ``groupings" align with meaningful groupings} \pause 
+\end{itemize}
+\end{itemize}
+\invisible<1-10>{\item[3)] Optimization} \pause 
+\begin{itemize}
+\invisible<1-11>{\item[-] Select the \alert{best} model.} \pause 
+\begin{itemize}
+\invisible<1-12>{\item[-] Run several candidate models$\leadsto$ optimize $\boldsymbol{\Theta}$ and $\boldsymbol{T}$ } \pause 
+\invisible<1-13>{\item[-] Stats + Substance to select model + $K$ } \pause 
+\end{itemize}
+\end{itemize}
+\invisible<1-14>{\item[4)] Validation} \pause 
+\begin{itemize}
+\invisible<1-15>{\item[-] Is our statistic capturing what we want from the clustering?} \pause 
+\invisible<1-16>{\item[-] Are there features we're missing} \pause 
+\invisible<1-17>{\item[-] \alert{Very Open Research Question}} 
+\end{itemize}
+\end{footnotesize}
+
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{A Motivating Clustering Model$\leadsto$ Mixture of von Mises Fisher Distributions}
+
+$J$ element long unit-length vector\pause 
+\begin{eqnarray}
+\invisible<1>{\boldsymbol{x}_{i}^{*}  & = &  \frac{\boldsymbol{x}_{i}}{\sqrt{\boldsymbol{x}_{i}^{'}\boldsymbol{x}_{i}} } } \nonumber 
+\end{eqnarray}
+ \pause
+
+\invisible<1-2>{Mixture of von Mises-Fisher (vMF) distributions:}\pause 
+
+
+\begin{eqnarray}
+\invisible<1-3>{\boldsymbol{\tau}_{i} & \sim & \overbrace{\text{Multinomial}(1, \boldsymbol{\pi})}^{\text{Mixture component}} \nonumber \\} \pause 
+\invisible<1-4>{\boldsymbol{x}_{i}^{*} | \tau_{ik} = 1, \boldsymbol{\mu}_{k} & \sim & \underbrace{\text{vMF}(\kappa, \boldsymbol{\mu}_{k})}_{\text{Language model}} \nonumber } \pause 
+\end{eqnarray}
+
+\invisible<1-5>{Provides:} \pause 
+\begin{itemize}
+\invisible<1-6>{\item $\boldsymbol{\tau}_{i}\leadsto$ Each document's cluster assignment} \pause 
+\invisible<1-7>{\item $\boldsymbol{\pi} = (\pi_{1}, \pi_{2}, \hdots, \pi_{K})\leadsto$ Proportion of documents in each component } \pause 
+\invisible<1-8>{\item $\boldsymbol{\mu}_{k}\leadsto$ Exemplar document for cluster $k$} \pause 
+\end{itemize}
+
+\invisible<1-9>{EM algorithm in slides appendix}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}
+\frametitle{Measuring Cluster Performance: Out of Sample Prediction}
+
+How well does our model perform?\pause\invisible<1>{$\leadsto$ predict new documents?} \pause   \\
+\invisible<1-2>{Problem}\pause\invisible<1-3>{$\leadsto$ in sample evaluation leads to overfit. } \pause \\
+\invisible<1-4>{Solution$\leadsto$ evaluate performance on \alert{held out} data} \pause \\
+
+\invisible<1-5>{For held out document $\boldsymbol{x}^{*}_{\text{out}}$ } \pause 
+
+\begin{eqnarray}
+\invisible<1-6>{\log p(\boldsymbol{x}^{*}_{\text{out}}| \boldsymbol{\mu},\boldsymbol{\pi}, \boldsymbol{X} ) & = & \log \sum_{k=1}^{K} p(\boldsymbol{x}^{*}_{\text{out}}, \tau_{ik} | \boldsymbol{\mu}_{k} , \boldsymbol{\pi}, \boldsymbol{X}) \nonumber \\ } \pause 
+\invisible<1-7>{& = & \log \sum_{k=1}^{K} \left[ \pi_{k} \exp(\kappa \boldsymbol{\mu}_{k}^{'} \boldsymbol{x}^{*}_{\text{out}})\right] \nonumber \\ } \pause 
+\invisible<1-8>{\text{Perplexity}_{\text{word}} & = & \exp\left( - \log p(\boldsymbol{x}^{*}_{\text{out}}| \boldsymbol{\mu},\boldsymbol{\pi} )   \right) \nonumber } 
+\end{eqnarray}
+
+\end{frame}
+
+\begin{frame}
+
+\scalebox{0.5}{\includegraphics{Perplex1.pdf}}
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{What's Prediction Got to Do With It?}
+
+\begin{itemize}
+\item[-] Prediction$\leadsto$ One Task \pause \\
+\invisible<1>{\item[-] Do we care about it?}\pause\invisible<1-2>{$\leadsto$ Social science application where we're predicting new texts?} \pause\\
+\invisible<1-3>{\item[-] Does it correspond to how we might use the model?} \pause 
+\end{itemize}
+
+
+\invisible<1-4>{Chang et al 2009 (``Reading the Tea Leaves") :} \pause 
+\begin{itemize}
+\invisible<1-5>{\item[-] Compare perplexity with \alert{human} based evaluations} \pause 
+\invisible<1-6>{\item[-] \alert{NEGATIVE} relationship between perplexity and human based evaluations} \pause 
+\end{itemize}
+
+\invisible<1-7>{Different strategy$\leadsto$ measure quality in \alert{topics} and \alert{clusters} } \pause \\
+\begin{itemize}
+\invisible<1-8>{\item[-] Statistics: measure \alert{cohesiveness} and \alert{exclusivity}} (Roberts, et al AJPS Forthcoming) \pause 
+\invisible<1-9>{\item[-] Experiments: measure \alert{topic} and \alert{cluster} quality} 
+\end{itemize}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Measuring \alert{Cohesiveness} and Exclusivity}
+\pause 
+\begin{itemize}
+\invisible<1>{\item[-] Consider the output of a 3-component mixture of model (say, Multinomials or von Mises-Fisher models)\\} \pause 
+\invisible<1-2>{\item[-] We might select 5 \alert{top} words for each topic} \pause 
+\end{itemize}
+\begin{tabular}{l|lllll}
+\hline \hline
+\invisible<1-3>{Topic 1 & bill & congressman & earmarks & following & house} \pause \\
+\invisible<1-4>{Topic 2 & immigration & reform & security & border & worker}\pause \\
+\invisible<1-5>{Topic 3 & earmark & egregious & pork & fiscal & today} \pause  \\
+\hline\hline
+\end{tabular}
+\begin{itemize}
+\invisible<1-6>{\item[-] An ideal topic?$\leadsto$ will see these words co-occur in documents} \pause
+\invisible<1-7>{\item[-] Define $\boldsymbol{v}_{k} = (v_{1k}, v_{2k}, \hdots, v_{Lk})$ be the top words for a topic} \pause
+\invisible<1-8>{\item[-] For example $\boldsymbol{v}_{3}$ = (earmark , egregious , pork , fiscal , today )} 
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Measuring \alert{Cohesiveness} and Exclusivity}
+
+Define the function $D$ as a function that counts the number of times its argument occurs: \pause 
+\begin{eqnarray}
+\invisible<1>{D(\text{earmark}, \text{egregious} ) & = & \text{ No. times earmark and egregious co-occur} \nonumber \\} \pause 
+\invisible<1-2>{D(\text{egregious}) & = & \text{ Number of times Egregious occurs} \nonumber } \pause 
+\end{eqnarray}
+
+
+\invisible<1-3>{Define cohesiveness for topic $k$ as } \pause 
+\begin{eqnarray}
+\invisible<1-4>{\text{Cohesive}_{k}  & = & \sum_{l=2}^{L} \sum_{m=1}^{l-1} \log \left( \frac{D(v_{lk}, v_{mk}) + 1}{ D(v_{mk})  }  \right)\nonumber } \pause 
+\end{eqnarray}
+
+\invisible<1-5>{Define overall cohesiveness as:} \pause 
+\begin{eqnarray}
+\invisible<1-6>{\text{Cohesive}  & = & (\sum_{k=1}^{K} \text{Cohesive}_{k})/K    \nonumber \\} \pause 
+\invisible<1-7>{&= & \left( \sum_{k=1}^{K} \sum_{l=2}^{L} \sum_{m=1}^{l-1} \log \left( \frac{D(v_{lk}, v_{mk}) + 1}{ D(v_{mk})  }  \right)\right)/K\nonumber } 
+\end{eqnarray}
+
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Measuring Cohesiveness and \alert{Exclusivity}}
+
+We also want topics that are exclusive\pause \invisible<1>{$\leadsto$ few replicates of each topic} \pause 
+
+\begin{eqnarray}
+\invisible<1-2>{\text{Exclusivity}(k, v) & = &  \frac{\mu_{k, v}}{\sum_{l=1}^{K} \mu_{l,v}} \nonumber } \pause 
+\end{eqnarray}
+
+\invisible<1-3>{Suppose again we pick $L$ top words.  Measure Exclusivity for a topic as for a topic as:} \pause
+\begin{eqnarray}
+\invisible<1-4>{\text{Exclusivity}_{k} & = & \sum_{j: v_{j} \in \boldsymbol{v}_{k}} \frac{\mu_{k, j}}{\sum_{l=1}^{K} \mu_{l,j}} \nonumber \\} \pause 
+\invisible<1-5>{\text{Exclusivity} & = & \left(\sum_{k=1}^{K} \text{Exclusivity}_{k}\right)/K \nonumber \\} \pause 
+\invisible<1-6>{& = & \left(\sum_{k=1}^{K} \sum_{j: v_{j} \in \boldsymbol{v}_{k}} \frac{\mu_{k, j}}{\sum_{l=1}^{K} \mu_{l,j}}\right)/K \nonumber} 
+\end{eqnarray}
+
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+
+\only<1>{\scalebox{0.5}{\includegraphics{Cohesive1.pdf}}}
+\only<2>{\scalebox{0.5}{\includegraphics{Exclusive1.pdf}}}
+\only<3>{\scalebox{0.5}{\includegraphics{Frontier1.pdf}}}
+
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Experimental Approaches}
+
+Mathematical approaches\pause \invisible<1>{$\leadsto$ suppose we can capture quality with numbers assumes we're \alert{in the model}$\leadsto$ including text representation } \pause \\
+\invisible<1-2>{\alert{Humans}$\leadsto$ read texts} \pause \\
+\invisible<1-3>{\alert{Humans}$\leadsto$ use cluster output} \pause \\
+
+\invisible<1-4>{Do \alert{humans} think the model is performing well?\\} \pause 
+
+\begin{itemize}
+\invisible<1-5>{\item[1)] Topic Quality} \pause
+\invisible<1-6>{\item[2)] Cluster Quality} 
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Experimental Approaches}
+
+
+\begin{itemize}
+\item[1)] Take $M$ top words for a topic
+\item[2)] Randomly select a top word from another topic
+\begin{itemize}
+\item[2a)] Sample the topic number from $l$ from $K-1$ (uniform probability)
+\item[2b)] Sample word $j$ from the $M$ top words in topic $l$
+\item[2c)] Permute the words and randomly insert the \alert{intruder}:
+\item[-] List: 
+\begin{eqnarray}
+\text{test} &  =  & (v_{k, 3}, v_{k, 1}, \alert{v_{l, j}}, v_{k, 2}, v_{k, 4}, v_{k,5}) \nonumber 
+\end{eqnarray}
+\end{itemize}
+\end{itemize}
+
+
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Example Experiment: Word Intrusion (Weiss and Grimmer, In Progress)}
+
+
+\only<1-2>{{\tt bowl, \alert<2>{flooding}, olympic, olympics, nfl, coach}}
+
+\only<3-4>{{\tt stocks, investors, fed, \alert<4>{guns},  trading, earning}}
+
+\invisible<1-4>{Higher rate of intruder identification $\leadsto$ more exclusive/cohesive topics}  \\
+
+\vspace{0.25in}
+
+\invisible<1-5>{Deploy on Mechanical Turk} 
+
+\pause \pause \pause \pause \pause 
+
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Cluster Quality (Grimmer and King 2011) } 
+
+Assessing Cluster Quality with experiments
+\pause
+\begin{itemize}
+\invisible<1>{\item[-] Goal: group together similar documents} \pause 
+\invisible<1-2>{\item[-] Who knows if similarity measure corresponds with semantic similarity} 
+\end{itemize} \pause 
+\invisible<1-3>{
+$\leadsto$ Inject human judgement on pairs of documents} \\
+\vspace{0.125in}
+
+\pause \invisible<1-4>{Design to assess cluster quality} \pause
+\begin{itemize}
+\invisible<1-5>{\item[-] Estimate clusterings }\pause
+ \invisible<1-6>{\item[-] Sample pairs of documents (hint: you only need to compare discrepant pairs)} \pause
+\invisible<1-7>{\item[-] Scale: (1) unrelated, (2) loosely related,
+(3) closely related (richer instructions, based on thing you want to cluster on) } \pause \invisible<1-8>{\item[-] Cluster Quality
+= mean(within cluster) - mean(between clusters)}\pause 
+\invisible<1-9>{\item[-] Select clustering with highest cluster quality } \pause 
+\invisible<1-10>{\item[-] Can be used to compare any clusterings, regardless of source} 
+%\invisible<1-9>{\item[-] Clust. Qual(Our Method) - Clust. Qual
+%(Comparison Method)} \pause
+%\invisible<1-9>{\item[-] \alert{Bias results against ourselves by
+%not letting evaluators choose clustering}}
+\end{itemize}
+
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}
+\frametitle{How do we Choose $K$?}
+
+Generate many candidate models
+\begin{itemize}
+\item[1)] Assess Cohesiveness/Exclusivity, select models on frontier
+\item[2)] Use experiments 
+\item[3)] \alert{Read}
+\item[4)] Final decision$\leadsto$ combination
+\end{itemize}
+
+
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Computer Assisted Clustering Methods}
+There are a lot of different clustering models (and many variations within each): \\
+
+
+k-means \pause \invisible<1>{, Mixture of multinomials} \pause \invisible<1-2>{, k-medoids} \pause \invisible<1-3>{, affinity propagation} \pause \invisible<1-4>{, agglomerative Hierarchical} \pause 
+\invisible<1-5>{ fuzzy k-means, trimmed k-means, k-Harmonic means, fuzzy k-medoids, fuzzy k modes, maximum entropy clustering, model based hierarchical (agglomerative), proximus, ROCK, divisive hierarchical, DISMEA, Fuzzy, QTClust, self-organizing map, self-organizing tree, unnormalized spectral, MS spectral, NJW Spectral, SM Spectral, Dirichlet Process Multinomial, Dirichlet Process Normal, Dirichlet Process von-mises Fisher, Mixture of von mises-Fisher (EM), Mixture of von Mises Fisher (VA), Mixture of normals, co-clustering mutual information, co-clustering SVD, LLAhclust, CLUES, bclust, c-shell, qtClustering, LDA, Express Agenda Model, Hierarchical Dirichlet process prior, multinomial, uniform process mulitinomial, Chinese Restaurant Distance Dirichlet process multinomial, Pitmann-Yor Process multinomial, LSA, ...} 
+
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{The Problem with Fully Automated Clustering (Grimmer and King 2011) }
+  \begin{itemize}
+  \item[-] Large quantitative literature on \alert{cluster analysis}
+  \pause
+  \invisible<1>{\item[-] The Goal --- an optimal application-independent cluster
+    analysis method ---}\pause \invisible<1-2>{ is mathematically impossible:} \pause
+ \begin{itemize}
+     \invisible<1-3>{ \item[-] \alert{No free lunch theorem}: every possible clustering
+      method performs equally well on average over all possible
+      substantive applications} \pause
+ \end{itemize}
+\invisible<1-4>{\item[-] Existing methods:} \pause
+  \begin{itemize}
+\invisible<1-5>{\item[-] \alert{Many choices}: model-based,
+subspace, spectral,
+      grid-based, graph- based, fuzzy $k$-modes, affinity propagation,
+      self-organizing maps,\alert{$\dots$}} \pause
+\invisible<1-6>{\item[-] \alert{Well-defined} statistical, data
+analytic, or machine
+      learning foundations} \pause
+\invisible<1-7>{\item[-] How to add substantive knowledge: With few
+        exceptions, \alert{unclear}} \pause
+\invisible<1-8>{\item[-] The literature: \alert{little guidance on
+when methods apply}} \pause
+  \invisible<1-9>{\item[-] \alert{Deriving such guidance: difficult or
+  impossible}} \pause
+   \end{itemize}
+  \end{itemize}
+  \large
+\invisible<1-10>{ \alert{Deep problem in cluster analysis
+literature: full automation requires more information}}
+%\invisible<1-8>{\item[-] (Perhaps true by definition in unsupervised
+%learning: If we knew the DGP, we wouldn't be at the discovery
+%stage.)
+\normalsize
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Fully Automated $\rightarrow$ Computer Assisted (Grimmer and King 2011) } 
+
+
+\pause 
+\begin{itemize}
+\invisible<1>{\item[-] \alert{Fully Automated Clustering} may succeed, fails in general.  Too hard to know when to apply models} \pause 
+\invisible<1-2>{\item[-] An alternative: \alert{Computer Assisted Clustering} } \pause
+\begin{itemize}
+\invisible<1-3>{\item[-] Easy (if you don't think about it): list all clustering, choose \alert{best}} \pause
+\invisible<1-4>{\item[-] \alert{Impossible in Practice} } \pause
+\invisible<1-5>{\item[-] Solution: \alert{Organized list} } \pause
+\invisible<1-6>{\item[-] \alert{Insight}: Many clusterings are perceptually identical} \pause
+\invisible<1-7>{\item[-] Consider two clusterings of 10,000 documents, we move one document from 5 to 6.  } \pause
+\end{itemize}
+\invisible<1-8>{\item[-] \alert{How to organize clusterings so humans can undestand?}} \pause
+\invisible<1-9>{\item[-] Our answer: a geography of clusterings} 
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{A New Strategy (Grimmer and King 2011) } 
+  \begin{enumerate}
+  \item[1)] \alert{Code text as numbers} (in one \emph{or more} of several
+   ways)  \pause
+ \invisible<1>{ \item[2)] \alert{Apply many different clustering methods} to the data ---
+    each representing different (unstated) substantive assumptions} \pause
+   \begin{itemize}
+    \invisible<1-2>{\item[-] Introduce sampling methods to extend search beyond existing methods} \pause
+    %\invisible<1-3>{\item[-] Take a uniform draw from the Bell space (related to Pitman-Yor Process)}
+ %  \invisible<1-2>{ \item[-] Adaptive search over tuning parameters for
+ %  methods} \pause
+ %  \invisible<1-3>{ \item[-] Efficient fully Bayesian inference via Variational Approximations (\alert{parametric} and
+ %   \alert{nonparametric} Bayesian models)} \pause
+    \end{itemize}
+  \invisible<1-3>{\item[3)] Develop a metric
+    between clusterings} \pause
+  \invisible<1-4>{\item[4)] Create a \alert{metric space of clusterings}, and a 2-D
+    projection} \pause
+  \invisible<1-5>{\item[5)] Introduce the \alert{local cluster ensemble} to summarize any
+    point, including points with no existing clustering} \pause
+    \begin{itemize}
+   \invisible<1-6>{ \item[-] New Clustering: weighted average of clusterings from methods }
+   \end{itemize}\pause
+  \invisible<1-7>{\item[6)] Use \alert{animated visualization}: use the local
+    cluster ensemble to explore the space of clusterings (smoothly
+    morphing from one into others)} \pause
+\invisible<1-8>{\item[7)] $\alert{\leadsto}$ Millions of clusterings easily comprehended}     \pause 
+\invisible<1-9>{\item[8)] (Or, our new strategy: represent entire Bell space directly; no need to examine document contents ) }     
+ \end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Crosas, Grimmer, King, and Stewart$\leadsto$ Consilience} 
+
+A brief live demonstration
+
+ 
+
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Example Discovery:  What Do Members of Congress Do?}
+\begin{itemize}
+\item[-] Paper (Grimmer and King 2011): introduce new evaluation methods (like Cluster Quality) \pause
+\end{itemize}
+
+\begin{itemize}
+\invisible<1>{\item[-] David Mayhew's (1974) famous typology} \pause
+\begin{enumerate}
+\invisible<1-2>{\item[-] Advertising}\pause \invisible<1-3>{\item[-]
+Credit Claiming} \pause
+ \invisible<1-4>{\item[-] Position Taking}
+\end{enumerate}
+\pause \invisible<1-5>{\item[-] Data: 200 press releases from Frank
+Lautenberg's office (D-NJ) } \pause \invisible<1-6>{\item[-] Apply
+our method (relying on many clustering algorithms)}% \pause \invisible<1-7>{\item[-] Result}
+% \invisible<1-8>{we find one
+%more: \alert{Partisan Taunting}}
+\end{itemize}
+
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Example Discovery\invisible<1-16>{: Partisan Taunting}}
+\begin{columns}[]
+\column{0.55\textwidth} \vspace{0.2in}
+\begin{flushleft}
+\only<1>{\scalebox{0.3}{\includegraphics{TauntingSpace.pdf}}}
+\only<2>{\scalebox{0.3}{\includegraphics{TauntingSpaceAffProp.pdf}}}
+\only<3>{\scalebox{0.3}{\includegraphics{TauntingSpaceAffPropMixVMF.pdf}}}
+\only<4>{\scalebox{0.3}{\includegraphics{TauntingSpace.pdf}}}
+\only<5>{\scalebox{0.3}{\includegraphics{TauntingSpaceLCE1.pdf}}}
+\only<6>{\scalebox{0.3}{\includegraphics{TauntingSpaceLCE.pdf}}}
+\only<7>{\scalebox{0.3}{\includegraphics{TauntingSpace.pdf}}}
+\only<8>{\scalebox{0.3}{\includegraphics{TauntingSpaceHull.pdf}}}
+\only<9-12>{\scalebox{0.3}{\includegraphics{TauntingSpacePoint.pdf}}}
+\only<13>{\scalebox{0.3}{\includegraphics{ClusterSpace1.pdf}}}
+\only<14>{\scalebox{0.3}{\includegraphics{ClusterCredit.pdf}}}
+\only<15>{\scalebox{0.3}{\includegraphics{ClusterCredit2.pdf}}}
+\only<16>{\scalebox{0.3}{\includegraphics{Clusterad.pdf}}}
+\only<17>{\scalebox{0.3}{\includegraphics{Clustertaunt.pdf}}}
+\end{flushleft}
+
+%\only<1-3>{\scalebox{0.4}{\includegraphics{BlackSpace.pdf}}}
+\column{0.45\textwidth}\only<9-12>{ \invisible<1-3>{Mixture:}
+\footnotesize
+\begin{enumerate}
+\invisible<1-9>{\item[0.39] Hclust-Canberra-McQuitty}
+\invisible<1-10>{\item[0.30]  Spectral clustering \\ Random Walk
+\\(Metrics 1-6)} \invisible<1-9>{\item[0.13]
+Hclust-Correlation-Ward} \invisible<1-9>{\item[0.09]
+Hclust-Pearson-Ward} \invisible<1-11>{\item[0.05] Kmediods-Cosine}
+\invisible<1-10>{\item[0.04] Spectral clustering\\ Symmetric \\
+(Metrics 1-6)}
+\end{enumerate}
+}
+\begin{flushleft}
+\only<2-3>{Each point is a \alert{clustering}\\
+Affinity Propagation-Cosine  (Dueck and Frey 2007)\\
+\invisible<1-2>{\alert{Close to:}\\
+ Mixture of von Mises-Fisher distributions (Banerjee et. al. 2005)} \\
+\invisible<1-2>{ $\Rightarrow$ Similar clustering of documents}}
+
+\only<4-6>{Space between methods:\\ \invisible<4-5>{\alert{local
+cluster ensemble}} }
+
+\only<8>{Found a \alert{region} with clusterings that all reveal the
+same important insight}
+
+
+\only<14>{\alert{Credit Claiming, Pork}:\\}
+ \only<14>{``Sens. Frank R. Lautenberg
+(D-NJ) and Robert Menendez (D-NJ) announced that the U.S. Department
+of Commerce has awarded a \$100,000 grant to the South Jersey
+Economic Development District"} \only<15>{\alert{Credit Claiming,
+Legislation}:\\}
+ \only<15>{``As the Senate begins its recess, Senator Frank Lautenberg today pointed to a string of victories
+in Congress on his legislative agenda during this work period"}
+\only<16>{\alert{Advertising}:\\}
+ \only<16>{``Senate Adopts Lautenberg/Menendez Resolution Honoring Spelling Bee Champion from
+New Jersey"} \only<17>{\alert{Partisan Taunting}:\\}
+\only<17>{``Republicans Selling Out Nation on Chemical Plant
+Security" } %\only<21>{``Senator Lautenberg's amendment would change
+%the name of ...the Republican bill...to `More Tax Breaks for the
+%Rich and More Debt for Our Grandchildren Deficit Expansion
+%Reconciliation Act of 2006' "} %\only<22-23>{ \\
+%\invisible<1-22>{\Large \alert{Taunting ruins deliberation}}}
+\end{flushleft}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{In Sample Illustration of Partisan Taunting}
+\framesubtitle{Important Concept Overlooked in Mayhew's (1974)
+typology} \invisible<1-3>{\alert{Definition}: Explicit, public, and
+negative attacks on another political party or its members}\\
+\invisible<1-4>{\alert{Consequences for representation}: Deliberative, Polarization, Policy} \normalsize
+\begin{columns}
+\column{0.25\textwidth}
+\begin{flushleft}
+\scalebox{0.35}{\includegraphics{LautChicken.jpg}}
+
+Sen. Lautenberg on Senate Floor 4/29/04 \\
+\end{flushleft}
+\column{0.1\textwidth}
+
+ \column{0.55\textwidth}
+\begin{itemize}
+\item[-] ``Senator Lautenberg Blasts Republicans as
+      `Chicken Hawks' '' [Government~Oversight] \pause
+\invisible<1>{\item[-] ``The scopes trial took place in 1925. Sadly,
+President Bush's veto today shows that we haven't progressed much
+since then''
+      [Healthcare]}\pause
+%\invisible<1-2>{\item[-] `` Senator Lautenberg Expressed Shock Over
+%President Bush's Mock Search for Weapons of Mass Destruction" [War
+%on Terrorism]} \pause
+\invisible<1-2>{\item[-] ``Every day the House Republicans dragged
+this out was a day that made our communities less safe."[Homeland
+Security]} \pause \pause
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Out of Sample Confirmation of Partisan Taunting }
+\begin{itemize}
+\item[-] Discovered using 200 press releases; 1 senator. \pause
+\invisible<1>{\item[-] Demonstrate prevalence using senators' press releases.} \pause \invisible<1-2>{\item[-] Apply supervised
+learning method: measure \alert{proportion of press releases} a
+senator taunts other party}
+\end{itemize}
+\invisible<1-3>{\begin{figure}[hbt!]
+\begin{center}
+\scalebox{0.4}{\includegraphics{PartisanTauntHistBlack.pdf}}
+\end{center}
+\end{figure}}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Out of Sample Confirmation of Partisan Taunting}
+\begin{itemize}
+\item[-] Discovered using 200 press releases; 1 senator.
+\item[-] Demonstrate prevalence using senators' press releases. 
+\item[-] Apply supervised learning method: measure \alert{proportion of press releases} a senator
+taunts other party
+\end{itemize}
+\only<1>{
+\begin{figure}[hbt!]
+\begin{center}
+\scalebox{0.4}{\includegraphics{PartisanTauntHistBlack.pdf}}
+\end{center}
+\end{figure}} \pause
+\only<2>{
+\begin{figure}[hbt!]
+\begin{center}
+\scalebox{0.4}{\includegraphics{PartisanTauntHistBlack2.pdf}}
+\end{center}\end{figure}
+}
+\end{frame}
+
+\begin{frame}
+\frametitle{Over Time Tauting Rates in Speeches}
+
+\begin{figure}[hbt!]
+      \begin{center}
+        \scalebox{0.45}{\includegraphics{OverTimeParty.pdf}}
+      \end{center}
+     \end{figure}
+      
+ \end{frame}
+
+
+
+\begin{frame}
+%\frametitle{Advancing Inference Through Computer Assisted Conceptualization}
+%\begin{tikzpicture}
+ %\node (concept) at (-1,8)[] {1) \alert{Conceptualization}};
+ %\node (measure) at (-1.37,5.85) [] {2) Measurement};
+ %\node (valid) at (-1.64, 3.2) [] {3) Validation};
+
+
+%\node (quant) at (5 ,4.525) [] {\alert{Quantitative Methods}};
+%\draw[->] (quant) to [out=180, in=355] (measure);
+ %  \draw[->] (quant) to [out=185, in=5] (valid);
+
+%\node (qual) at (5 ,7.16) [] {Qualitative Methods}; \draw[->] (qual)
+%to [out=175, in=355] (concept);
+ %  \draw[->] (qual) to [out=185, in=5] (measure);
+
+
+ %\draw[->, red,thick] (quant) to [out=175, in=345] (concept);
+
+%\end{tikzpicture}
+
+ How do we formulate conceptualizations?\pause  \\
+
+\invisible<1>{ Tension in potential methods} \pause 
+\begin{enumerate}
+\invisible<1-2>{\item[1)]  FAC methods tuned to problem } \pause 
+\begin{itemize}
+\invisible<1-3>{\item[-] Provides single answer, uncertainty estimates} \pause 
+\invisible<1-4>{\item[-] Imposes many unstated assumptions, narrow set of conceptualizations considered} \pause 
+\invisible<1-5>{\item[-] Difficult for political scientist to tune to their problem} \pause 
+\end{itemize}
+\invisible<1-6>{\item[2)] CAC methods to explore a space of partitions} \pause 
+\begin{itemize}
+\invisible<1-7>{\item[-] Varies assumptions, ensures many different conceptualizations considered} \pause 
+\invisible<1-8>{\item[-] Burden on user to discover conceptualization} \pause 
+\end{itemize}
+\end{enumerate}
+
+\begin{itemize}
+\invisible<1-9>{\item[-] Best evaluation: An improbable experiment } \pause 
+\begin{itemize}
+\invisible<1-10>{\item[-] Randomly assign incoming grad students to three conditions} \pause 
+\begin{itemize}
+\invisible<1-11>{\item[-] Topic Models (FAC)} \pause 
+\invisible<1-12>{\item[-] Semi-supervised methods (CAC)} \pause 
+\invisible<1-13>{\item[-] Manual methods} \pause 
+\end{itemize}
+\invisible<1-14>{\item[-] Observe group with most productivity 20-30 years later} \pause 
+\end{itemize}
+\invisible<1-15>{\item[-] To identify limits of methods, when to use which approach, need evaluations for the \alert{usefulness} of conceptualizations}
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Clustering, FAC and CAC} 
+
+
+This week
+\begin{itemize}
+\item[-] Introduction to clustering
+\item[-] Fully automated clustering algorithms
+\item[-] Introduction to computer assisted clustering
+\end{itemize}
+Next week:
+\begin{itemize}
+\item[-] \alert{Vanilla Topic models}
+\item[-] Structural Topic Models
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{EM Algorithm for Mixture of vMF Distributions}
+
+\begin{itemize}
+\item[1)] Initialize $\boldsymbol{\mu}$
+\item[2)] Set $r_{ik}$ to 
+\begin{eqnarray}
+r_{ik} & = & \frac{ \pi_{k} \exp(\kappa \boldsymbol{\mu}_{k}^{'}\boldsymbol{x}_{i}^{*})  }{ \sum_{l=1}^{K} \pi_{k} \exp(\kappa \boldsymbol{\mu}_{l}^{'}\boldsymbol{x}_{i}^{*})  } \nonumber 
+\end{eqnarray}
+\item[3)] Set $\boldsymbol{\mu}_{k}$ to 
+\begin{eqnarray}
+\boldsymbol{\mu}_{k} & = & \frac{\sum_{i=1}^{N} r_{ik} \boldsymbol{x}_{i}  }{||\sum_{i=1}^{N} r_{ik} \boldsymbol{x}_{i}|| } \nonumber 
+\end{eqnarray}
+Set $\pi_{k} = \sum_{i=1}^{N} \frac{ r_{ik} }{ N }$
+\item[4)] Assess change in objective function
+\end{itemize}
+
+
+
+\end{frame}
+
+
+
+\end{document}
+
+
+
+
+
+\end{document}
