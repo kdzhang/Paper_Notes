@@ -1939,12 +1939,32 @@ In appendix, the empirical moment is shown to converge in probability to:
 \end{align*}
 The first two lines larger than 0 by rationality assumption, the third line is 0 in expectation since $\nu_1$ is mean independent of agents' information set. The forth line is tricky, and we need to pick $h^i$ to make it zero in expectation.
 
+``Note that $h^i_{x_j}$ selects observations based on product characteristics. For example, if the i th moment considers conventional vehicles only, then $h^i_{x_j}=1$  when the cabover , compact , and long dummy variables in $x_j$ equal 0, and $h^i_{x_j}=0$ otherwise. 
+Further, $h^i_{x_j,t}$  depends on the demand shifters specific to the subset of product types and action under consideration. For example, the construction industry accounts for the largest proportion of medium GWR vehicles. Hence, if the i th moment considers the entry of medium GWR vehicle buyers, then $h^i_{x_j,t}=1$ for $t$ in which the proportion of prospective buyers from the construction industry is particularly high. 
+Finally, $\tilde h^i_{f,x_j,t}=1$ selects observations such that either $j \in J _ { f , t - 1 }$ or 
+$j \notin J_{f, t-1}$ . For example, if the $i$th moment considers entry, then $\tilde h^i_{f,x_j,t}=1$ when $j \notin J_{f,t-1}$. 
+Note that $C$ is a constant equal to 1 if $\tilde h^i_{f,x_j,t}$ selects $j \notin J_{f,t-1}$ and equal to $- \lambda$ otherwise, as described below.''
+
 Things to be noted here:
 \begin{enumerate}
 	\item $\mathcal E$ represents agent's subjective expectation, and $E$ is the expectation by actual DGP.
 	\item The unobservable $\mathcal E[\theta_{f,x_j,t}]$ has been substituted by parameter $\theta_f$. We have to take care of $\nu_2$ because it may induce selection problem.
 	\item $h_{f, x_{j}, t}^{i}\left\{j \notin J_{f, t}\right\}$ is used as instruments and to control the endogenous problem induced by $\nu_2$.
 \end{enumerate}
+
+
+\mytitle{Instrument Variables}
+
+As in many PPHI application papers, the IVs here are just a set of indicator functions to pick selected observations.
+
+The idea is to use demand side shifters to pick periods when certain types of products will surely be introduced, and to pick periods when certain types will surely be retired.
+For these instruments to be valid, it requires that there is no selection of $\nu_2$ in the subset of observations picked by instruments $h_i$.
+Why such $h_i$ will not induce the selection of $\nu_2$?
+This is like a \cite{Tamer:2003hi} argument. 
+If there are some periods that the demand for product $j$ is super high, then someone will introduce the product regardless of $\nu_2$.
+
+The key is that the structural error term $\nu_2$ is characteristic-year specific rather than firm-product-year specific, so while the inequalities vary at the firm-product-year level, the structural error term does not.
+At each time period, $\nu_{2,t}$ is a vector with 6 elements. The same $\nu_2$ applies to all firm-products as long as their characteristics are the same.
 
 
 
