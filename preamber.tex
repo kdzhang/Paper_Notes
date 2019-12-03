@@ -1,0 +1,94 @@
+\documentclass{book}
+% \usepackage[utf8]{inputenc}
+
+\usepackage{amssymb,amsmath,amsfonts,eurosym,geometry,graphicx,caption,color,setspace,sectsty,footmisc,caption,array,hyperref,dsfont}
+
+% \usepackage{indentfirst}	% make indent in first paragraph
+\setlength\parindent{0pt}
+\setlength{\parskip}{1em}
+% \renewcommand{\baselinestretch}{1.5}
+
+\usepackage{bm}
+\usepackage{geometry}		% to make typesettings like margins
+\usepackage{mathrsfs}
+
+% \usepackage{natbib}			% to insert citations
+\usepackage[natbib,authordate,noibid,backend=biber]{biblatex-chicago}
+\addbibresource{/Users/mac/Dropbox/Academic_Writings/reference-macwin.bib}
+% \addbibresource{C:/Users/Kaida/Dropbox/Academic_Writings/reference-win.bib}
+
+
+\usepackage[table,xcdraw]{xcolor}			% extend the colors can be used
+
+% \usepackage{bibentry}		% package used to insert full citation in body text
+% replaced by \fullcite in biblatex
+
+% \makeatletter 
+% \renewcommand\BR@b@bibitem[2][]{\BR@bibitem[#1]{#2}\BR@c@bibitem{#2}}
+% \makeatother
+% \nobibliography*
+
+
+\usepackage{setspace}		% set space for comment bullet
+
+\usepackage{graphicx}		% to insert image
+\graphicspath{ {images/} }
+
+\usepackage[english]{babel}
+
+\usepackage{tocbibind}		% to add toc and bib into table of content
+\usepackage{bookmark}	% to separate the last chapter from previous ones
+
+\usepackage{amsthm}
+\makeatletter
+\def\th@plain{%
+  \thm@notefont{}% same as heading font
+  \itshape % body font
+}
+\def\th@definition{%
+  \thm@notefont{}% same as heading font
+  \normalfont % body font
+}
+
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section] % reset theorem numbering for each chapter
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section] % definition numbers are dependent on theorem numbers
+\newtheorem{exmp}{Example}[section] % same for example numbers
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{obs}{Observation}
+\newtheorem{que}{Question}[section]
+\newtheorem{assp}{Assumption}[section]
+
+\newenvironment{myproof}
+{\noindent\textit{Proof:}}{\hfill$\square$}
+
+\newenvironment{answer}
+{\noindent\textit{Answer:}}{\hfill$\square$}
+
+% \citestyle{chicago}
+\geometry{letterpaper, margin=0.75in}
+% \setlength\parindent{0pt} % to cancel indent
+
+
+% A list of new commands
+\newcommand{\R}{\mathbb{R}}			% depends on the package amssymb
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\myline}{\vspace{3mm} \hrule \vspace{4mm}}
+
+\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\blue}[1]{{\color{blue} #1}}
+\newcommand{\mytitle}[1]{{\large{\textbf{#1}}}}
+\newcommand{\mysubtitle}[1]{{\normalsize{\textbf{#1}}}}
+
+
+\usepackage{amsmath}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\usepackage[normalem]{ulem} %to strike the words
+\usepackage{microtype}
+
+% \usepackage{graphicx}
+% \usepackage[table,xcdraw]{xcolor}
