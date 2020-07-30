@@ -11,12 +11,12 @@
 \usepackage{bm}
 \usepackage{geometry}		% to make typesettings like margins
 \usepackage{mathrsfs}
+\usepackage{enumitem}
 
 % \usepackage{natbib}			% to insert citations
 \usepackage[natbib,authordate,noibid,backend=biber]{biblatex-chicago}
-\addbibresource{/Users/mac/Dropbox/Academic_Writings/reference-macwin.bib}
+\addbibresource{../../reference-macwin.bib} % in Academic_Writings folder
 % \addbibresource{C:/Users/Kaida/Dropbox/Academic_Writings/reference-win.bib}
-
 
 \usepackage[table,xcdraw]{xcolor}			% extend the colors can be used
 
@@ -78,8 +78,11 @@
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\myline}{\vspace{3mm} \hrule \vspace{4mm}}
 
+
+\definecolor{battleshipgrey}{rgb}{0.52, 0.52, 0.51}
 \newcommand{\red}[1]{{\color{red} #1}}
 \newcommand{\blue}[1]{{\color{blue} #1}}
+\newcommand{\grey}[1]{{\color{battleshipgrey} #1}}
 \newcommand{\mytitle}[1]{{\large{\textbf{#1}}}}
 \newcommand{\mysubtitle}[1]{{\normalsize{\textbf{#1}}}}
 

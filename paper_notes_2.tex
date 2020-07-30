@@ -37,12 +37,18 @@
 
 \part{Causal Inference}
     
-\chapter{Matching} % (fold)
-\label{cha:matching}
+\chapter{Treatment Effects} % (fold)
+\label{cha:treatment_effects}
+
+\paragraph{Ideal RCT}
+
+What can ideal RCT achieve?
+The limit of RCT identification is the marginal distribution of $Y_i(0)$ and $Y_i(1)$, and henceforth any function of the two.
+Therefore, $ATT \equiv E[Y_i(1)-Y_i(0)]$ is identified, while $\theta\equiv corr(Y_i(1),Y_i(0))$ is not identified, because the later requires $E[Y_i(1)Y_i(0)]$ which is unidentified.
 
 
-\section{General Matching} % (fold)
-\label{sec:general_matching}
+\section{Matching} % (fold)
+\label{sec:matching}
 
 \textbf{Glossary}
 
@@ -152,6 +158,32 @@ Given propensity score $p(X_i)$, we can form an empirical estimator.
 \end{align*}
 Simply replacing $E[\cdot]$ by $\frac{1}{N} \sum_{i=1}^N$ gives us the empirical counterpart for this estimator.
 This estimator also reveals the close relationship between regression estimator and matching estimator (below following MHE p.82).
+
+\paragraph{Propensity Score and Fixed Effects}
+
+\citet{ArkhangelskyImbens2019} discusses how the propensity score can relax some assumptions of fixed effect.
+The traditional FE model usually assumes a linearly additive group term (fixed effect), and such linearity is too restrictive.
+
+The paper is motivated by the numerical equivalence:
+\[
+    Y_{i}=\alpha_{C_{i}}+W_{i} \tau+X_{i}^{\top} \beta+\varepsilon_{i}
+\] 
+is equivalent to
+\[
+    Y_{i}=\alpha+W_{i} \tau+X_{i}^{\top} \beta+\bar{W}_{C_{i}} \delta+\bar{X}_{C_{i}}^{\top} \gamma+\varepsilon_{i}
+\]
+\grey{KZ: I cannot derive the above two equation. And I failed to find relevant proofs in \citet{Mundlak1978}.}
+
+So fundamentally the underlying identification assumption is:
+\[
+    W_{i} \perp\left(Y_{i}(0), Y_{i}(1)\right) | X_{i}, \bar{W}_{C_{i}}, \bar{X}_{C_{i}}
+\]
+They also show that the \underline{ATE is consistent} even if the conditional mean function is \underline{misspecified}, as long as we we weight the unit by \underline{inverse of propensity score}.
+\[
+    \left(\hat{\alpha}_{c}, \hat{\tau}, \hat{\beta}\right)=\arg \min _{\alpha_{c}, \tau, \beta} \sum_{i=1}^{N}\left(Y_{i}-\alpha_{C_{i}}-W_{i} \tau-X_{i}^{\top} \beta\right)^{2} \frac{1}{p\left(X_{i}, C_{i}\right)^{W_{i}}\left(1-p\left(X_{i}, C_{i}\right)\right)^{1-W_{i}}}
+\]
+
+\grey{They also propose the estimator, but I do not understand those parts.}
 
 
 \chapter{Instrument Variables} % (fold)
@@ -307,12 +339,33 @@ they show that $\Delta_{j,k}$ can be derived from observable moving patterns:
 \chapter{Demand Estimation} % (fold)
 \label{cha:demand_estimation}
 
+Basics: \citet{BerryLevinsohnPakes1995}
+
+Micro moments: \citet{Petrin2002}, \citet{BerryLevinsohnPakes2004}
+
+Vertical relationships: \citet{Villas-Boas2007}, \citet{CrawfordYurukoglu2012}
+
+Durable consumptions: \citet{HendelNevo2006}
+
+
+\chapter{Vertical Relationships} % (fold)
+\label{cha:vertical_relationships}
+
+\paragraph{\citet{CrawfordYurukoglu2012}} This paper uses a Nash-in-Nash model to model the bargain process between upstream and downstream firms.
+Recall that in \citet{Villas-Boas2007}, the contract is either linear, or that upstream/downstream has all bargain power. This paper is a generalization in this aspect.
+
+
+% chapter vertical_relationships (end)
+
 \section{Villas-Boas, 2007 RES} % (fold)
 \label{sec:villas_boas_2007_res}
 
 \textbf{\fullcite{Villas-Boas2007}}
 
-The main goal of this paper is to recover the margins of both retailers and whosalers with only retailing data.
+The main goal of this paper is to recover the margins of both retailers and wholesalers with only retailing data.
+Unlike later papers like \citet{CrawfordYurukoglu2012} which endogenizes a bargain process, the relationship between the upstream and downstream firms are assumed to be one of the several stylized forms: simple linear contract, wholesaler with all rents, retailer with all rents.
+The paper tries to tell which one is more likely to be the truth among these stylized models.
+
 
 The demand side is typical BLP with random coefficients $\alpha_i, \beta_i$:
 \[
@@ -334,13 +387,16 @@ and we can write FOC for product $j$ of retailer $r$:
 \]
 which is equivalent to the following equation holds for all commodities in the market $\mathcal J$:
 \[
-    s_{it} + \sum_{j \ in \mathcal J} [p_{jt} - p^w_{jt} - c^r_{jt}] \mathds 1\{i,j \in \mathcal J_r\} \frac{\partial s_{jt}}{ \partial p_{it}} = 0,\ \  \forall i \in \mathcal J
+    s_{it} + \sum_{j \ in \  \mathcal J_t} [p_{jt} - p^w_{jt} - c^r_{jt}] \mathds 1\{i,j \in \mathcal J_r\} \frac{\partial s_{jt}}{ \partial p_{it}} = 0,\ \  \forall i \in \mathcal J_t, \forall t
 \]
 
-Then stack all products in the market together in the market (this step is tricky):
-\[
+Then stack all products in the market together in the market to write the matrix form:
+\begin{align*}
+    s_t(p) + (T_r * \Delta_r)(p_t-p_t^w-c_t^w) = 0 \\
+    \Rightarrow
     p_{t}-p_{t}^{w}-c_{t}^{r}=-\left(T_{r} * \Delta_{r t}\right)^{-1} s_{t}(p)
-\]
+    \tag{6}
+\end{align*}
 where $T_r$ is the ownership matrix, $T_r(i,j)$ equals to 1 if $i,j$ belong to the same owner, other wise 0. 
 $\Delta_{rt}$ is the retailer's response matrix, $\Delta_{rt}(i,j)= \frac{\partial s_{jt}}{\partial p_{it}}$.
 Both $p^w_t$ and $c^r_t$ are unobservable, other parts are observable. 
@@ -372,14 +428,23 @@ where $G,H$ are matrixes for $g,h$ respectively.
 Thus the FOC of wholesalers can be written as:
 \[
     p_{t}^{w}-c_{t}^{w}=-\left(T_{w} * \Delta_{w t}\right)^{-1} s_{t}(p)
+    \tag{11}
 \]
+
+\paragraph{Estimation}
+
+This paper does not really estimate the supply side.
+Instead, it estimates only the demand side of retailers, then use this demand side to back out the margins of both retailers and wholesalers.
+The margins can be backed out by equation (6) and (11) RHS.
+
+
 
 % section villas_boas_2007_res (end)
 
 \chapter{Dynamic Estimation}
 \label{cha:dynamic_estimation}
 
-\citet{Rust1987} proposes Fixed Nested Point approach.
+\citet{Rust1987} proposes Nested Fixed Point approach.
 The bad thing is computation complexity.
 
 \section{Hendel, Nevo, 2006 EMCA} % (fold)
@@ -487,8 +552,8 @@ This simplifies the DP problem because $\omega_{xt}$ is a scalar, so we do not h
 So if we can rewrite the DP using $\omega_{xt}$, we solve the problem of 
 It can be shown that the DP problem is equivalent to the below DP using the inclusive value: (see their appendix for proof)
 \[
-    \begin{array}{l}{V\left(i_{t}, \omega_{t}, \varepsilon_{t}, \nu_{t}\right)} \\ {\quad=\operatorname{Max}_{\{c, x\}}\left\{u\left(c+\nu_{t}\right)-C\left(i_{t+1}\right)+\omega_{x t}+\varepsilon_{x t}\right.} \\ 
-    \quad \quad \quad {\left.\quad+\delta E\left[V\left(i_{t+1}, \omega_{t+1}, \varepsilon_{t+1}, \nu_{t+1}\right) | i_{t}, \omega_{t}, \varepsilon_{t}, \nu_{t}, c, x\right]\right\}}\end{array}
+    \begin{array}{l}{V\left(i_{t}, \omega_{t}, \varepsilon_{t}, \nu_{t}\right)} \\ {\quad=\operatorname{Max}_{\{c, x\}}\left\{u\left(c+\nu_{t}\right)-C\left(i_{t+1}\right)+\blue{\omega_{x t}}+\varepsilon_{x t}\right.} \\ 
+    \quad \quad \quad {\left.\quad+\delta E\left[V\left(i_{t+1}, \blue{\omega_{t+1}}, \varepsilon_{t+1}, \nu_{t+1}\right) | i_{t}, \omega_{t}, \varepsilon_{t}, \nu_{t}, c, x\right]\right\}}\end{array}
 \]
 The key of the proof is to use the fact that all error terms are i.i.d. and T1EV distributed, so there is a closed form of expected maximum utility over alternative brands, which is $\omega_{xt}$.
 
@@ -518,6 +583,31 @@ Observational learning can be seen as a mechanism underlying peer effect \citep{
 
 \part{Education}
 
+\chapter{School Effectiveness (Value Added)}
+
+Notice that most structural paper makes the school value added as homogeneous within a school, not heterogeneous across students, why? 
+Examples include \citet{Allende2019,Neilson2018}.
+This can be another contribution of my paper.
+
+
+
+\section{Black-White Gap} % (fold)
+\label{sec:black_white_gap}
+
+\paragraph{\citet[AEJ:AE]{ElderZhou2020}} This paper shows that the black-white gap in non-cognitive ability is underestimated. 
+Because non-cognitive ability is reported by the teachers, and the teacher will use similar peers as references. 
+Black students have poorer behaved peers than their white classmates.
+The authors use more objective measures like test scores to correct this subjective measure.
+The underlying assumption is that there are correlations between the objective and subjective measures between schools.
+This paper needs further read, I have not read the actual method yet.
+
+% section black_white_gap (end)
+
+
+
+% chapter end
+
+
 \chapter{Demand for Education}
 
 A huge literature in school choice:
@@ -529,6 +619,7 @@ A huge literature in school choice:
         \item Methodology paper combining residential sorting with school choice: \textcite{Rothstein2006}, \textcite{BayerTimmins2007}, \textcite{BayerFerreiraMcMillan2007}, \textcite{BayerMcMillan2010}, \Textcite{BayerMcMillanMurphyEtAl2016}
         \item Empirical: \textcite{CordesSchwartzStiefel2019} uses NYC residential data to study the effect of mobility; \citet{EppleJhaSieg2018} seems to also estimate a demand model with student sorting
     \end{itemize}
+    \item Using discrete choice models: \citet{Allende2019}, \citet{Neilson2018}
 \end{itemize}
 
 Some other papers focus more on the school competition:
@@ -555,6 +646,7 @@ Heterogeneous student response to inputs:
 Endogenous school differentiation:
 \begin{itemize}
     \item \textcite{MacLeodUrquiola2012}, \textcite{GilrainePetronijevicSingleton2019}
+    \item \citet{Neilson2018}
 \end{itemize}
 
 
@@ -562,7 +654,7 @@ Endogenous school differentiation:
 \subsection*{Review: Demand for schools}
 
 \paragraph{\citet{HastingsKaneStaiger2009}}
-They use a simple exploded logit model to show that the demand for high academic quality is heterogeneous across families.
+They use a simple exploded logit model to show that the demand for high academic quality are heterogeneous across families.
 The more affluent families put higher weights on academic performance, but poorer families and minorities put higher weights in the race composition of the school.
 
 Cons:
@@ -581,6 +673,8 @@ Note that this is actually tricky, because when they estimate the demand, they a
 The main contribution of their paper is an algorithm of calculating the counterfactual equilibrium with peer effects.
 The demand estimation part is quite standard.
 They use MLE for the demand estimation.
+
+\red{Add their IV strategy}
 
 Cons:
 \begin{enumerate}
@@ -601,6 +695,92 @@ They use panel data to control student/campus fixed effect to exclude the sortin
 They focus on the response at district level instead of campus level.
 One charter school nearby increase the Math and Reading test score by 0.021 sd; as a comparison, those who move to another campus have a negative effect of 0.104 sd on Math. 
 They also find the effect is more salient for black and Hispanic students.
+
+
+\section{Discrete School Choice} % (fold)
+\label{sec:discrete school choice}
+
+There are a growing literature showing this, borrowing tools from IO, including \citet{Neilson2018}, \citet{Allende2019}.
+
+\paragraph{\citet[JMP]{Allende2019}}
+
+This paper features \underline{endogenous school quality} + \underline{student sorting} + \underline{social interactions}.
+\grey{Worth carefully re-reading, and also the reference here.}
+
+The schools have three stages: 1) quality investment; 2) price setting; 3) school demand based on quality, price, and social interactions.
+
+The school quality $\theta_{jt}$ is assumed to be \underline{uniform} within a school, though it can depend on certain policies:
+\[
+    Y_{i j t}(\tau)=\mathbf{X}_{i t}^{\prime} \pi^{x}+\theta_{j t}(\tau)+\epsilon_{i j t}
+\]
+The school quality $\theta_{jt}$ can be further decomposed to inputs:
+\[
+    \theta_{j t}(\tau)=\mathbf{z}_{j t}(\tau)^{\prime} \pi^{z}+\underbrace{\mathbf{I}_{\mathrm{jt}}(\tau)^{\prime} \pi^{I}(\tau)+\epsilon_{j t}^{s}(\tau)}_{\mu_{j t}(\tau)}
+\]
+Notice, in this paper \blue{only $\mu_{jt}(\tau)$ is relevant}, there is no further decomposition of the terms.
+
+\mysubtitle{Demand side:}
+
+Individual utility is typical as in BLP and \citet{Neilson2018}. It also includes some unknown student level unobservables, I guess this is because they do not have huge computation burden in other parts.
+
+\grey{Why the price coefficient $\alpha_i$ and distance coefficient $\beta_i^d$ not have unobservable part? What is special about price and distance? (page 20)}
+
+The demand is based on \textit{nodes} and \textit{schools}. 
+This setting is similar to \citet{Neilson2018} and leverages the detailed node-level geographic data.
+The choice probability is defined as:
+\[
+    \mathcal{S}_{i j t}^{n k}\left(\boldsymbol{\mu}, \mathbf{p}, \mathbf{z}^{y}, \mathbf{z}^{e}\right)=\left(\frac{\exp \left(U_{i j t}\left(\boldsymbol{\mu}, \mathbf{p}, \mathbf{z}^{y}, \mathbf{z}^{e}\right)\right)}{\sum_{l \in \Omega_{i}} \exp \left(U_{i l t}\left(\boldsymbol{\mu}, \mathbf{p}, \mathbf{z}^{y}, \mathbf{z}^{e}\right)\right)}\right)
+\]
+where $i$ is student, $j$ is school, $t$ is time, $n$ is node, $k$ is the student type. 
+Student type $k$ is observable. $\mu$ is school quality, $p$ is tuition, $z^y, z^e$ are school observable characteristics.
+Note that the information is aggregated at the node-school level, so she uses GMM instead of MLE, thus the computation burden is smaller.
+
+Student body composition is assumed to be perfectly expected by the family.
+
+\mysubtitle{Supply side:}
+
+Similar as in \citet{Neilson2018}, the private schools are profit-maximizing, with following cost structure:
+\[
+    M C_{j}\left(\mu_{j t}\right)=\sum_{l} \gamma_{l} w_{j t}^{l}+\gamma_{\mu} \mu_{j t}+\omega_{j t}
+\]
+\[
+    F C_{j}\left(\mu_{j t}\right)=\sum_{l} \lambda_{l} w_{j t}^{l}+\psi_{j t} \mu_{j t}, \quad \text { where } \psi_{j t}=\bar{\psi}_{j}+\Delta \psi_{j t}
+\]
+\grey{One difficulty in my paper is that I cannot really observe the cost characteristics $w_{jt}^l$, but instead the monetary expenditure. Possible solutions: to find more direct cost characteristics data.}
+
+A worth learning feature in this paper is that Allende \blue{(analytically) decompose the effects} to direct effects, peer effects, and strategic social effects, which makes it clear about the channel of this model.
+
+\mysubtitle{Identification}
+
+There are three endogeneity to be solved: the quality of school, the price of school, and the student composition.
+
+The main identification leverages a natural experiment: the public school teacher strike in Lima. This makes more students turn to private schools.
+
+IV for \underline{student body composition}:
+\begin{itemize}
+    \item Lagged strike exposure index
+    \item Local market structure: share of private and number of schools
+    \item Local demographics: share of high SES
+\end{itemize}
+
+IV for \underline{price and quality}: (all distance weighted when applicable)
+\begin{itemize}
+    \item Public school teacher wage index
+    \item Public school teacher vacancies for post-reform contracts (distance weighted)
+    \item Stock of graduates with education degrees ($t-1$)
+    \item Tests scores for teachers ($t-1$)
+    \item The flow of new graduates with education degrees in the market
+\end{itemize}
+
+Notice that she presents all the first stages to show relevance.
+\grey{Seems this only requires school level data so can be done soon?}
+
+RD to identify \underline{price parameters}:
+\begin{itemize}
+    \item There is individual level variation in price generated discontinuity of private school voucher program.
+\end{itemize}
+
+% section endogenous_school_decisions (end)
 
 
 % section review_spillover_effects (end)
@@ -736,8 +916,77 @@ The resulting change captures the responsiveness of demand to quality.
 They use this variation to conduct DiD to show that higher expenditure will improve the student performance.
 
 
+\chapter{Road Construction Program}
 
 
+\noindent
+\textbf{Some Research Ideas}
+
+\begin{enumerate}
+    \item The price elasticity of the farmers before and after market access
+\end{enumerate}
+
+
+\paragraph{\citet{Aggarwal2018}}
+
+This paper is very similar to \citet{AdukiaAsherNovosad2019,AsherNovosad2019,Shamdasani2019} in terms of topics.
+It includes a lot of details of the rural road construction plan effects.
+
+To sum up:
+\begin{enumerate}[nosep]
+    \item Enrollments: enrollments for children less than 14 years old increase, while for elder than 14 years old decrease.
+    \item Employment: the decrease in enrollments in elder teenagers all goes to increase in work, for both boys and girls (table 7).
+    \item Employment sector: The increase in employment does not go to agriculture sector, for both boys and girls (table 8). For boys, the highest increase is in construction sector, and for girls is in animal rearing sector.
+    \item Employment Locations: For prime-age men (25-45) and girls, huge increase in urban works, smaller increase for boys, almost no increase for prime-age women (table 11).
+    \item Food diversity increases.
+    \item Fertilizer use increases.
+\end{enumerate}
+
+
+
+
+\paragraph{\citet{AdukiaAsherNovosad2019}}
+
+This paper studies the effect of massive road construction plan on rural enrollments in India.
+The prior is ambiguous in the direction of the effect.
+On the one hand, the road makes villagers easier to go outside for a higher wage, which lowers the incentive to stay at school;
+on the other hand, the road makes the diploma more worthy since the human capital can sell a better price outside of the village, which increases the incentive to stay at school.
+\textbf{Method:}
+This paper uses a RD method to get the causal effect.
+They leverage the fact that the road construction is discontinuous at some village population level, like 1000. But other covariates are continuous around that threshold.
+\textbf{Data:}
+The data they use is the same as \citet{AsherNovosad2019}, which is now public.
+\textbf{Conclusion:}
+They find that the middle school enrollments significantly increase after the road construction.
+
+
+\paragraph{\citet{Shamdasani2019}}
+
+This paper shows the massive road construction program has \textbf{heterogeneous} effect on villages, depending on their proximity to the town. 
+Villages far from the town are still not convenient to go to the town after road construction. 
+Thus, the first order effect for such villages is that they experience large gains in agriculture through crop diversification, with effects operating through rural-to-rural labor market integration.
+Such effects are huge, in the scale of 20\% to 50\%.
+\textbf{Method:} DiD.
+
+Closely related to \citet{AsherNovosad2019}.
+But this paper seems to use some independent data, worth reading.
+
+KZ: My derived idea from this is that the road construction has heterogeneous effects to the different villages, thus should have different effects on school enrolling decisions.
+For example, if there is no working opportunity in the village for high school graduates even after the road construction, then they shall not have incentive to enroll into high school.
+In contrast, if in near villages high school graduates can migrate into the town, then they will have higher incentive to enroll.
+The opposite may arise, though, if the young workers are important.
+
+\paragraph{\citet{Reis2020}}
+
+This paper uses a dynamic model similar to \citet{AttanasioMeghirSantiago2011} to study the joint problem of girls' enrolling and mothers' working decisions.
+
+I don't understand why this paper can be published in IER...
+
+\paragraph{\citet[IZA WP]{NajeebMoraleLopez-Acevedo2020}}
+
+This paper documents some important facts about female employment in south Asia.
+They find that 
+``(i) overall since 2001, women’s employment participation across South Asian countries has been low and broadly unchanged; (ii) the gender employment gap emerges more clearly in middle age brackets; (iii) rural female employment is higher than urban; (iv) agriculture is the economic sector accounting for the greatest share of female employment, although this is slowly changing in some countries, and; (v) women with mid-level education tend to have lower employment rates than those with both lower and higher education.''
 
 
 
